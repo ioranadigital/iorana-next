@@ -3,25 +3,25 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 // Importación de Páginas usando el alias @ (apunta a la raíz del proyecto)
-import Index from "@/pages/Index";
-import NotFound from "@/pages/NotFound";
-import Privacidad from "@/pages/Privacidad";
-import Terminos from "@/pages/Terminos";
-import SeoTecnico from "@/pages/servicios/SeoTecnico";
-import PpcPaidSearch from "@/pages/servicios/PpcPaidSearch";
-import ContentMarketing from "@/pages/servicios/ContentMarketing";
-import Automatizaciones from "@/pages/servicios/Automatizaciones";
-import DesarrolloWeb from "@/pages/servicios/DesarrolloWeb";
-import ImagenDeMarca from "@/pages/servicios/ImagenDeMarca";
-import KitDigital from "@/pages/soluciones/KitDigital";
-import DisenoLandings from "@/pages/soluciones/DisenoLandings";
-import TodoParaTuNegocio from "@/pages/soluciones/TodoParaTuNegocio";
-import ComoEstaOptimizadoMiWeb from "@/pages/soluciones/ComoEstaOptimizadoMiWeb";
+import Index from "../pages/Index";
+import NotFound from "../pages/NotFound";
+import Privacidad from "../pages/Privacidad";
+import Terminos from "../pages/Terminos";
+import SeoTecnico from "../pages/servicios/SeoTecnico";
+import PpcPaidSearch from "../pages/servicios/PpcPaidSearch";
+import ContentMarketing from "../pages/servicios/ContentMarketing";
+import Automatizaciones from "../pages/servicios/Automatizaciones";
+import DesarrolloWeb from "../pages/servicios/DesarrolloWeb";
+import ImagenDeMarca from "../pages/servicios/ImagenDeMarca";
+import KitDigital from "../pages/soluciones/KitDigital";
+import DisenoLandings from "../pages/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "../pages/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "../pages/soluciones/ComoEstaOptimizadoMiWeb";
 
 const queryClient = new QueryClient();
 
