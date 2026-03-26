@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
-// CAMBIO CLAVE: Usamos el Link de react-router-dom para las rutas internas
 import { Link } from "react-router-dom"; 
 import { usePathname, useRouter } from "next/navigation";
 
@@ -28,7 +27,6 @@ const Navbar = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const pathname = usePathname();
-  const router = useRouter();
   const isHome = pathname === '/';
 
   useEffect(() => {
@@ -50,7 +48,6 @@ const Navbar = () => {
     { label: 'FAQ', href: '#faq' },
   ];
 
-  // Esta función maneja el scroll suave para los anclajes (#)
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
       if (isHome) {
@@ -59,7 +56,6 @@ const Navbar = () => {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // Si no estamos en Home, usamos el router de Next para ir a la Home + anclaje
         window.location.href = '/' + href;
       }
     }
@@ -82,7 +78,6 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
           <img src="/iorana-marketing-digital.png" alt="Logo" className="h-8 w-auto object-contain shrink-0" />
-          {/* Usamos un enlace normal para volver a la raíz real de Next.js */}
           <a href="/" className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
             IORANA <span className="text-[#ebf2f7]/80">Digital</span>
           </a>
@@ -170,7 +165,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-[#0a2b49] border-b border-[#ebf2f7]/10 p-4 flex flex-col gap-2 max-h-[80vh] overflow-y-auto">
           <button onClick={() => handleNavClick('#hero')} className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00]">
@@ -210,3 +204,21 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
+          )}
+
+          {navLinks.slice(1).map((l) => (
+            <button
+              key={l.label}
+              onClick={() => handleNavClick(l.href)}
+              className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00]"
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
