@@ -1,19 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// 1. Usamos dynamic de Next.js para cargar el Router solo en el cliente
+import dynamic from "next/dynamic";
+import { Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-// 1. Páginas en la carpeta 'app'
+// Cargamos BrowserRouter dinámicamente y desactivamos el SSR (Server Side Rendering)
+const BrowserRouter = dynamic(
+  () => import("react-router-dom").then((mod) => mod.BrowserRouter),
+  { ssr: false }
+);
+
+// 2. Imports de tus vistas y páginas
 import Index from "./Index"; 
 import NotFound from "./NotFound";
 import Privacidad from "./Privacidad";
 import Terminos from "./Terminos";
 
-// 2. Servicios (Estructura plana dentro de ../views/servicios/)
 import SeoTecnico from "../views/servicios/SeoTecnico";
 import PpcPaidSearch from "../views/servicios/PpcPaidSearch";
 import ContentMarketing from "../views/servicios/ContentMarketing";
@@ -21,7 +28,6 @@ import Automatizaciones from "../views/servicios/Automatizaciones";
 import DesarrolloWeb from "../views/servicios/DesarrolloWeb";
 import ImagenDeMarca from "../views/servicios/ImagenDeMarca";
 
-// 3. Soluciones (Estructura plana dentro de ../views/soluciones/)
 import KitDigital from "../views/soluciones/KitDigital";
 import DisenoLandings from "../views/soluciones/DisenoLandings";
 import TodoParaTuNegocio from "../views/soluciones/TodoParaTuNegocio";
@@ -32,13 +38,11 @@ const queryClient = new QueryClient();
 export default function Page() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // El "Escudo": Solo se activa en el cliente (navegador)
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Si Next.js intenta renderizar esto en el servidor (Vercel Build),
-  // devolvemos un div vacío para evitar el error de 'document is not defined'
+  // Mientras se monta, mostramos un fondo sólido para evitar parpadeos
   if (!isMounted) {
     return <div className="min-h-screen bg-[#0a2b49]" />;
   }
@@ -54,7 +58,7 @@ export default function Page() {
             <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/terminos" element={<Terminos />} />
             
-            {/* Rutas de Servicios */}
+            {/* Servicios */}
             <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
             <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
             <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
@@ -62,7 +66,7 @@ export default function Page() {
             <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
             <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
             
-            {/* Rutas de Soluciones */}
+            {/* Soluciones */}
             <Route path="/soluciones/kit-digital" element={<KitDigital />} />
             <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
             <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
