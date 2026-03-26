@@ -7,11 +7,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-// Importación de Páginas (Rutas relativas saliendo de 'app' hacia 'views')
-import Index from "../views/Index";
-import NotFound from "../views/NotFound";
-import Privacidad from "../views/Privacidad";
-import Terminos from "../views/Terminos";
+// 1. Páginas que están DENTRO de la carpeta 'app' (según tu captura)
+import Index from "./Index"; 
+import NotFound from "./NotFound";
+import Privacidad from "./Privacidad";
+import Terminos from "./Terminos";
+
+// 2. Páginas que están DENTRO de 'views' (que está fuera de 'app')
 import SeoTecnico from "../views/servicios/SeoTecnico";
 import PpcPaidSearch from "../views/servicios/PpcPaidSearch";
 import ContentMarketing from "../views/servicios/ContentMarketing";
@@ -37,7 +39,6 @@ export default function Page() {
             <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/terminos" element={<Terminos />} />
             
-            {/* Rutas de Servicios */}
             <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
             <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
             <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
@@ -45,13 +46,11 @@ export default function Page() {
             <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
             <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
             
-            {/* Rutas de Soluciones */}
             <Route path="/soluciones/kit-digital" element={<KitDigital />} />
             <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
             <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
             <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
             
-            {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
