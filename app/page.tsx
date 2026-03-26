@@ -7,21 +7,21 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-// Importación de Páginas (Rutas corregidas para Next.js App Router)
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Privacidad from "./pages/Privacidad";
-import Terminos from "./pages/Terminos";
-import SeoTecnico from "./pages/servicios/SeoTecnico";
-import PpcPaidSearch from "./pages/servicios/PpcPaidSearch";
-import ContentMarketing from "./pages/servicios/ContentMarketing";
-import Automatizaciones from "./pages/servicios/Automatizaciones";
-import DesarrolloWeb from "./pages/servicios/DesarrolloWeb";
-import ImagenDeMarca from "./pages/servicios/ImagenDeMarca";
-import KitDigital from "./pages/soluciones/KitDigital";
-import DisenoLandings from "./pages/soluciones/DisenoLandings";
-import TodoParaTuNegocio from "./pages/soluciones/TodoParaTuNegocio";
-import ComoEstaOptimizadoMiWeb from "./pages/soluciones/ComoEstaOptimizadoMiWeb";
+// Importación de Páginas usando el alias @ (apunta a la raíz del proyecto)
+import Index from "@/pages/Index";
+import NotFound from "@/pages/NotFound";
+import Privacidad from "@/pages/Privacidad";
+import Terminos from "@/pages/Terminos";
+import SeoTecnico from "@/pages/servicios/SeoTecnico";
+import PpcPaidSearch from "@/pages/servicios/PpcPaidSearch";
+import ContentMarketing from "@/pages/servicios/ContentMarketing";
+import Automatizaciones from "@/pages/servicios/Automatizaciones";
+import DesarrolloWeb from "@/pages/servicios/DesarrolloWeb";
+import ImagenDeMarca from "@/pages/servicios/ImagenDeMarca";
+import KitDigital from "@/pages/soluciones/KitDigital";
+import DisenoLandings from "@/pages/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "@/pages/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "@/pages/soluciones/ComoEstaOptimizadoMiWeb";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +37,6 @@ export default function Page() {
             <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/terminos" element={<Terminos />} />
             
-            {/* Rutas de Servicios */}
             <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
             <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
             <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
@@ -45,13 +44,11 @@ export default function Page() {
             <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
             <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
             
-            {/* Rutas de Soluciones */}
             <Route path="/soluciones/kit-digital" element={<KitDigital />} />
             <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
             <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
             <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
             
-            {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
