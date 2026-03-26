@@ -77,10 +77,12 @@ const NotFound = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button asChild size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90">
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
-                Volver al inicio
-              </Link>
+      <Link href="/" passHref>
+  <Button size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90">
+    <Home className="mr-2 h-4 w-4" />
+    Volver al inicio
+  </Button>
+</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10">
               <Link to="/#servicios">
