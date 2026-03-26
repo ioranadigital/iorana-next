@@ -1,6 +1,8 @@
-import { useLocation } from "react-router-dom";
+"use client";
+
+import React, { useEffect } from "react";
 import Link from "next/link"; 
-import { useEffect } from "react";
+import { usePathname } from "next/navigation"; // Usamos el hook de Next.js en vez de react-router
 import { motion } from "framer-motion";
 import { ArrowRight, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,10 +10,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const NotFound = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error("404 Error: User attempted to access non-existent route:", pathname);
     document.title = "Página no encontrada | Iorana Digital";
     
     const setMeta = (attr: string, key: string, content: string) => {
@@ -25,7 +27,7 @@ const NotFound = () => {
     };
     setMeta("name", "robots", "noindex, nofollow");
     setMeta("name", "description", "La página que buscas no existe. Vuelve al inicio o explora nuestros servicios de marketing digital.");
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -76,20 +78,21 @@ const NotFound = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button asChild size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90">
-      <Link href="/" passHref>
-  <Button size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90">
-    <Home className="mr-2 h-4 w-4" />
-    Volver al inicio
-  </Button>
-</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10">
-              <Link to="/#servicios">
+            {/* BOTÓN INICIO: Corregido sin asChild para evitar errores de tipos */}
+            <Link href="/" passHref>
+              <Button size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90 w-full sm:w-auto">
+                <Home className="mr-2 h-4 w-4" />
+                Volver al inicio
+              </Button>
+            </Link>
+
+            {/* BOTÓN SERVICIOS: Corregido con href de Next.js */}
+            <Link href="/#servicios" passHref>
+              <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
                 Ver nuestros servicios
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </main>
