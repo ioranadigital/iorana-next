@@ -2,7 +2,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
-import Link from "next/link";
+// CAMBIO CLAVE: Usamos el Link de react-router-dom para las rutas internas
+import { Link } from "react-router-dom"; 
 import { usePathname, useRouter } from "next/navigation";
 
 const serviceLinks = [
@@ -11,11 +12,10 @@ const serviceLinks = [
   { label: 'Content Marketing', href: '/servicios/content-marketing' },
   { label: 'Automatizaciones', href: '/servicios/automatizaciones' },
   { label: 'Desarrollo Web', href: '/servicios/desarrollo-web' },
-{ label: 'Imagen de Marca', href: '/servicios/imagen-de-marca' },
+  { label: 'Imagen de Marca', href: '/servicios/imagen-de-marca' },
 ];
 
 const solutionLinks = [
-//{ label: 'Kit Digital', href: '/soluciones/kit-digital' },
   { label: 'Diseño de Landings', href: '/soluciones/diseno-de-landings' },
   { label: 'Todo para Tu Negocio', href: '/soluciones/todo-para-tu-negocio' },
   { label: 'Informe Gratuito', href: '/soluciones/como-esta-optimizado-mi-web' },
@@ -50,6 +50,7 @@ const Navbar = () => {
     { label: 'FAQ', href: '#faq' },
   ];
 
+  // Esta función maneja el scroll suave para los anclajes (#)
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
       if (isHome) {
@@ -58,10 +59,9 @@ const Navbar = () => {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        router.push('/' + href);
+        // Si no estamos en Home, usamos el router de Next para ir a la Home + anclaje
+        window.location.href = '/' + href;
       }
-    } else {
-      router.push(href);
     }
     setOpen(false);
   };
@@ -82,9 +82,10 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
           <img src="/iorana-marketing-digital.png" alt="Logo" className="h-8 w-auto object-contain shrink-0" />
-          <Link href="/" className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
+          {/* Usamos un enlace normal para volver a la raíz real de Next.js */}
+          <a href="/" className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
             IORANA <span className="text-[#ebf2f7]/80">Digital</span>
-          </Link>
+          </a>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -95,7 +96,6 @@ const Navbar = () => {
             Inicio
           </button>
 
-          {/* Mega menu: Servicios + Soluciones */}
           <div
             className="relative h-16 flex items-center"
             onMouseEnter={handleMouseEnter}
@@ -110,14 +110,13 @@ const Navbar = () => {
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-[520px] pt-2">
                 <div className="bg-[#0a2b49] border border-[#ebf2f7]/15 rounded-xl shadow-2xl p-6 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="grid grid-cols-2 gap-8">
-                    {/* Servicios */}
                     <div>
                       <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest mb-3">Servicios</div>
                       <div className="space-y-1">
                         {serviceLinks.map((s) => (
                           <Link
                             key={s.href}
-                            href={s.href}
+                            to={s.href}
                             className="block px-3 py-2 text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-[#ebf2f7]/5 rounded-lg transition-colors"
                             onClick={() => setMegaOpen(false)}
                           >
@@ -126,14 +125,13 @@ const Navbar = () => {
                         ))}
                       </div>
                     </div>
-                    {/* Soluciones */}
                     <div>
                       <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest mb-3">Soluciones</div>
                       <div className="space-y-1">
                         {solutionLinks.map((s) => (
                           <Link
                             key={s.href}
-                            href={s.href}
+                            to={s.href}
                             className="block px-3 py-2 text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-[#ebf2f7]/5 rounded-lg transition-colors"
                             onClick={() => setMegaOpen(false)}
                           >
@@ -179,7 +177,6 @@ const Navbar = () => {
             Inicio
           </button>
 
-          {/* Mobile Services/Solutions dropdown */}
           <button
             onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
             className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00] flex items-center justify-between"
@@ -194,7 +191,7 @@ const Navbar = () => {
               {serviceLinks.map((s) => (
                 <Link
                   key={s.href}
-                  href={s.href}
+                  to={s.href}
                   className="block py-2 text-[#ebf2f7]/80 hover:text-[#ff8c00] text-sm"
                   onClick={() => setOpen(false)}
                 >
@@ -205,7 +202,7 @@ const Navbar = () => {
               {solutionLinks.map((s) => (
                 <Link
                   key={s.href}
-                  href={s.href}
+                  to={s.href}
                   className="block py-2 text-[#ebf2f7]/80 hover:text-[#ff8c00] text-sm"
                   onClick={() => setOpen(false)}
                 >
@@ -213,21 +210,3 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
-          )}
-
-          {navLinks.slice(1).map((l) => (
-            <button
-              key={l.label}
-              onClick={() => handleNavClick(l.href)}
-              className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00]"
-            >
-              {l.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </nav>
-  );
-};
-
-export default Navbar;
