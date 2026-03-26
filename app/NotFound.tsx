@@ -1,4 +1,5 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Link from "next/link"; 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Home } from "lucide-react";
