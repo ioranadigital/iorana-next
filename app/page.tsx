@@ -9,20 +9,20 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 
 // Importación de Páginas
 // Nota: Si el build da error, verifica que la carpeta sea "pages" en minúscula
-import Index from "@/app/pagesIndex";
-import NotFound from "@/app/pagesNotFound";
-import Privacidad from "@/app/pagesPrivacidad";
-import Terminos from "@/app/pagesTerminos";
-import SeoTecnico from "@/app/pagesservicios/SeoTecnico";
-import PpcPaidSearch from "@/app/pagesservicios/PpcPaidSearch";
-import ContentMarketing from "@/app/pagesservicios/ContentMarketing";
-import Automatizaciones from "@/app/pagesservicios/Automatizaciones";
-import DesarrolloWeb from "@/app/pagesservicios/DesarrolloWeb";
-import ImagenDeMarca from "@/app/pagesservicios/ImagenDeMarca";
-import KitDigital from "@/app/pagessoluciones/KitDigital";
-import DisenoLandings from "@/app/pagessoluciones/DisenoLandings";
-import TodoParaTuNegocio from "@/app/pagessoluciones/TodoParaTuNegocio";
-import ComoEstaOptimizadoMiWeb from "./pages/soluciones/ComoEstaOptimizadoMiWeb";
+import Index from "@/app/pages/Index";
+import NotFound from "@/app/pages/NotFound";
+import Privacidad from "@/app/pages/Privacidad";
+import Terminos from "@/app/pages/Terminos";
+import SeoTecnico from "@/app/pages/servicios/SeoTecnico";
+import PpcPaidSearch from "@/app/pages/servicios/PpcPaidSearch";
+import ContentMarketing from "@/app/pages/servicios/ContentMarketing";
+import Automatizaciones from "@/app/pages/servicios/Automatizaciones";
+import DesarrolloWeb from "@/app/pages/servicios/DesarrolloWeb";
+import ImagenDeMarca from "@/app/pages/servicios/ImagenDeMarca";
+import KitDigital from "@/app/pages/soluciones/KitDigital";
+import DisenoLandings from "@/app/pages/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "@/app/pages/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "@/app/pages/soluciones/ComoEstaOptimizadoMiWeb";
 
 const queryClient = new QueryClient();
 
