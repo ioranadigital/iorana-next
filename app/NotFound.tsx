@@ -2,38 +2,78 @@
 
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "@/components/Index"; // Ajusta la ruta si tu componente principal se llama distinto
-import Automatizaciones from "./servicios/automatizaciones/Automatizaciones";
-import ContentMarketing from "./servicios/content-marketing/ContentMarketing";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+
+// 1. Páginas en la carpeta 'app'
+import Index from "./Index"; 
 import NotFound from "./NotFound";
+import Privacidad from "./Privacidad";
+import Terminos from "./Terminos";
+
+// 2. Servicios (Estructura plana dentro de ../views/servicios/)
+import SeoTecnico from "../views/servicios/SeoTecnico";
+import PpcPaidSearch from "../views/servicios/PpcPaidSearch";
+import ContentMarketing from "../views/servicios/ContentMarketing";
+import Automatizaciones from "../views/servicios/Automatizaciones";
+import DesarrolloWeb from "../views/servicios/DesarrolloWeb";
+import ImagenDeMarca from "../views/servicios/ImagenDeMarca";
+
+// 3. Soluciones (Estructura plana dentro de ../views/soluciones/)
+import KitDigital from "../views/soluciones/KitDigital";
+import DisenoLandings from "../views/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "../views/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "../views/soluciones/ComoEstaOptimizadoMiWeb";
+
+const queryClient = new QueryClient();
 
 export default function Page() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Este useEffect solo se ejecuta en el navegador (Cliente)
+  // Solo activamos el renderizado cuando estamos en el navegador
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Si estamos en el servidor (durante el build de Vercel), 
-  // devolvemos null para que no intente usar el 'document' o 'window'
   if (!isMounted) {
     return null;
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Ruta principal */}
-        <Route path="/" element={<Index />} />
-
-        {/* Rutas de servicios (ajustadas a tu estructura plana) */}
-        <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
-        <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
-        
-        {/* Captura cualquier otra ruta para mostrar el 404 corregido */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Ruta Principal */}
+            <Route path="/" element={<Index />} />
+            
+            {/* Legales */}
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/terminos" element={<Terminos />} />
+            
+            {/* Rutas de Servicios corregidas */}
+            <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
+            <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
+            <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
+            <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
+            <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
+            <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
+            
+            {/* Rutas de Soluciones corregidas */}
+            <Route path="/soluciones/kit-digital" element={<KitDigital />} />
+            <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
+            <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
+            <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
+            
+            {/* Error 404 corregido */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 }
