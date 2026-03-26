@@ -1,42 +1,28 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+"use client"; // Muy importante para que funcionen los efectos visuales
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em 	#0a2b49);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em 	#0a2b49);
-}
+import React from 'react';
+// Aquí importarás tus componentes más tarde, ej:
+// import Navbar from '@/components/Navbar'; 
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default function Page() {
+  return (
+    <main>
+      {/* 1. Aquí va tu Navbar */}
+      {/* <Navbar /> */}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+      <div className="card">
+        <h1>Bienvenido a Iorana Agency</h1>
+        <p>Tu migración a Next.js está en marcha.</p>
+        
+        {/* Aquí es donde debes pegar el contenido de tu antiguo HERO o HOME */}
+        <button onClick={() => alert('¡Funciona!')}>
+          Haz clic aquí
+        </button>
+      </div>
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+      <footer className="read-the-docs">
+        © 2026 Iorana Digital
+      </footer>
+    </main>
+  );
 }
