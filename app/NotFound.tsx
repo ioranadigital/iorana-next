@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link"; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Home } from "lucide-react";
