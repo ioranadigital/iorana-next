@@ -7,22 +7,21 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-// Importación de Páginas
-// Nota: Si el build da error, verifica que la carpeta sea "pages" en minúscula
-import Index from "@/app/pages/Index";
-import NotFound from "@/app/pages/NotFound";
-import Privacidad from "@/app/pages/Privacidad";
-import Terminos from "@/app/pages/Terminos";
-import SeoTecnico from "@/app/pages/servicios/SeoTecnico";
-import PpcPaidSearch from "@/app/pages/servicios/PpcPaidSearch";
-import ContentMarketing from "@/app/pages/servicios/ContentMarketing";
-import Automatizaciones from "@/app/pages/servicios/Automatizaciones";
-import DesarrolloWeb from "@/app/pages/servicios/DesarrolloWeb";
-import ImagenDeMarca from "@/app/pages/servicios/ImagenDeMarca";
-import KitDigital from "@/app/pages/soluciones/KitDigital";
-import DisenoLandings from "@/app/pages/soluciones/DisenoLandings";
-import TodoParaTuNegocio from "@/app/pages/soluciones/TodoParaTuNegocio";
-import ComoEstaOptimizadoMiWeb from "@/app/pages/soluciones/ComoEstaOptimizadoMiWeb";
+// Importación de Páginas (Rutas corregidas para Next.js App Router)
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import Privacidad from "./pages/Privacidad";
+import Terminos from "./pages/Terminos";
+import SeoTecnico from "./pages/servicios/SeoTecnico";
+import PpcPaidSearch from "./pages/servicios/PpcPaidSearch";
+import ContentMarketing from "./pages/servicios/ContentMarketing";
+import Automatizaciones from "./pages/servicios/Automatizaciones";
+import DesarrolloWeb from "./pages/servicios/DesarrolloWeb";
+import ImagenDeMarca from "./pages/servicios/ImagenDeMarca";
+import KitDigital from "./pages/soluciones/KitDigital";
+import DisenoLandings from "./pages/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "./pages/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "./pages/soluciones/ComoEstaOptimizadoMiWeb";
 
 const queryClient = new QueryClient();
 
