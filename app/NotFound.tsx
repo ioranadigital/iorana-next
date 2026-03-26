@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link"; 
-import { usePathname } from "next/navigation"; // Usamos el hook de Next.js en vez de react-router
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,29 +11,39 @@ import Footer from "@/components/Footer";
 
 const NotFound = () => {
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
 
+  // 1. Nos aseguramos de que el código que usa 'document' solo se ejecute en el cliente
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", pathname);
-    document.title = "Página no encontrada | Iorana Digital";
+    setIsMounted(true);
     
-    const setMeta = (attr: string, key: string, content: string) => {
-      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta("name", "robots", "noindex, nofollow");
-    setMeta("name", "description", "La página que buscas no existe. Vuelve al inicio o explora nuestros servicios de marketing digital.");
+    // Solo ejecutamos esto si estamos en el navegador
+    if (typeof window !== "undefined") {
+      console.error("404 Error: User attempted to access non-existent route:", pathname);
+      document.title = "Página no encontrada | Iorana Digital";
+      
+      const setMeta = (attr: string, key: string, content: string) => {
+        let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+        if (!el) {
+          el = document.createElement("meta");
+          el.setAttribute(attr, key);
+          document.head.appendChild(el);
+        }
+        el.setAttribute("content", content);
+      };
+      
+      setMeta("name", "robots", "noindex, nofollow");
+      setMeta("name", "description", "La página que buscas no existe. Vuelve al inicio o explora nuestros servicios de marketing digital.");
+    }
   }, [pathname]);
+
+  // Si no ha montado todavía, devolvemos un div vacío o algo básico para evitar errores de hidratación
+  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       <main className="flex-1 flex items-center justify-center relative overflow-hidden pt-20">
-        {/* Decorative elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49] to-background opacity-50" />
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#ff8c00]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ebf2f7]/5 rounded-full blur-3xl" />
@@ -78,7 +88,6 @@ const NotFound = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            {/* BOTÓN INICIO: Corregido sin asChild para evitar errores de tipos */}
             <Link href="/" passHref>
               <Button size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90 w-full sm:w-auto">
                 <Home className="mr-2 h-4 w-4" />
@@ -86,7 +95,6 @@ const NotFound = () => {
               </Button>
             </Link>
 
-            {/* BOTÓN SERVICIOS: Corregido con href de Next.js */}
             <Link href="/#servicios" passHref>
               <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
                 Ver nuestros servicios
