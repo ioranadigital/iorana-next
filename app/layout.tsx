@@ -24,11 +24,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="es">
-      <body className={geist.className}>{children}</body>
+      <body className="antialiased min-h-screen bg-[#0a2b49]">
+        {/* Este div asegura que todo el contenido se comporte como un bloque centrado */}
+        <div className="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
