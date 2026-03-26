@@ -32,13 +32,15 @@ const queryClient = new QueryClient();
 export default function Page() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Solo activamos el renderizado cuando estamos en el navegador
+  // El "Escudo": Solo se activa en el cliente (navegador)
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  // Si Next.js intenta renderizar esto en el servidor (Vercel Build),
+  // devolvemos un div vacío para evitar el error de 'document is not defined'
   if (!isMounted) {
-    return null;
+    return <div className="min-h-screen bg-[#0a2b49]" />;
   }
 
   return (
@@ -48,14 +50,11 @@ export default function Page() {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Ruta Principal */}
             <Route path="/" element={<Index />} />
-            
-            {/* Legales */}
             <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/terminos" element={<Terminos />} />
             
-            {/* Rutas de Servicios corregidas */}
+            {/* Rutas de Servicios */}
             <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
             <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
             <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
@@ -63,13 +62,12 @@ export default function Page() {
             <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
             <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
             
-            {/* Rutas de Soluciones corregidas */}
+            {/* Rutas de Soluciones */}
             <Route path="/soluciones/kit-digital" element={<KitDigital />} />
             <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
             <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
             <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
             
-            {/* Error 404 corregido */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
