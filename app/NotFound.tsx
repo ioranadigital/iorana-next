@@ -76,7 +76,7 @@ const NotFound = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button asChild size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90">
-              <Link to="/">
+              <Link href="/">
                 <Home className="mr-2 h-4 w-4" />
                 Volver al inicio
               </Link>
