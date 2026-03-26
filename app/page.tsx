@@ -1,28 +1,62 @@
-"use client"; // Muy importante para que funcionen los efectos visuales
+"use client";
 
-import React from 'react';
-// Aquí importarás tus componentes más tarde, ej:
-// import Navbar from '@/components/Navbar'; 
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+
+// Importación de Páginas
+// Nota: Si el build da error, verifica que la carpeta sea "pages" en minúscula
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import Privacidad from "./pages/Privacidad";
+import Terminos from "./pages/Terminos";
+import SeoTecnico from "./pages/servicios/SeoTecnico";
+import PpcPaidSearch from "./pages/servicios/PpcPaidSearch";
+import ContentMarketing from "./pages/servicios/ContentMarketing";
+import Automatizaciones from "./pages/servicios/Automatizaciones";
+import DesarrolloWeb from "./pages/servicios/DesarrolloWeb";
+import ImagenDeMarca from "./pages/servicios/ImagenDeMarca";
+import KitDigital from "./pages/soluciones/KitDigital";
+import DisenoLandings from "./pages/soluciones/DisenoLandings";
+import TodoParaTuNegocio from "./pages/soluciones/TodoParaTuNegocio";
+import ComoEstaOptimizadoMiWeb from "./pages/soluciones/ComoEstaOptimizadoMiWeb";
+
+const queryClient = new QueryClient();
 
 export default function Page() {
   return (
-    <main>
-      {/* 1. Aquí va tu Navbar */}
-      {/* <Navbar /> */}
-
-      <div className="card">
-        <h1>Bienvenido a Iorana Agency</h1>
-        <p>Tu migración a Next.js está en marcha.</p>
-        
-        {/* Aquí es donde debes pegar el contenido de tu antiguo HERO o HOME */}
-        <button onClick={() => alert('¡Funciona!')}>
-          Haz clic aquí
-        </button>
-      </div>
-
-      <footer className="read-the-docs">
-        © 2026 Iorana Digital
-      </footer>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/terminos" element={<Terminos />} />
+            
+            {/* Rutas de Servicios */}
+            <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
+            <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
+            <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
+            <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
+            <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
+            <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
+            
+            {/* Rutas de Soluciones */}
+            <Route path="/soluciones/kit-digital" element={<KitDigital />} />
+            <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
+            <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
+            <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
+            
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 }
