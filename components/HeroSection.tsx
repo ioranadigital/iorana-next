@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -14,7 +13,7 @@ const HeroSection = () => {
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <Image src={heroBg} alt="IORANA Digital agencia marketing Asturias" fill className="object-cover opacity-40" priority />
+        <Image src={"/assets/hero-bg.jpg"} alt="IORANA Digital agencia marketing Asturias" fill className="object-cover opacity-40" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
       </div>
 
