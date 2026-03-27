@@ -4,34 +4,34 @@ import React from "react";
 import ServicePageTemplate from "../../components/ServicePageTemplate";
 
 const serviceData = {
-  title: "Content Marketing",
-  subtitle: "Historias que conectan y venden",
-  description: "Atraemos a tu público ideal mediante contenido de valor que resuelve sus dudas y los guía hacia la compra.",
+  title: "Imagen de Marca",
+  subtitle: "Identidad visual con propósito",
+  description: "Damos vida a tu marca a través de un diseño visual coherente que transmite confianza y profesionalidad desde el primer segundo.",
   benefits: [
-    "Estrategia de contenidos basada en búsqueda real",
-    "Redacción SEO optimizada para humanos y algoritmos",
-    "Lead magnets que disparan tu lista de correos",
-    "Calendario editorial coherente y constante",
-    "Distribución multicanal de impacto"
+    "Diseño de Logotipo versátil y memorable",
+    "Paleta de colores y tipografías corporativas",
+    "Manual de identidad para uso en redes y web",
+    "Papelería y elementos gráficos digitales",
+    "Rediseño de marca para empresas modernas"
   ],
   stats: [
-    { label: "Engagement", value: "+80%" },
-    { label: "Nuevos Leads", value: "+50%" },
-    { label: "Autoridad", value: "Top" },
-    { label: "Fidelización", value: "Alta" }
+    { label: "Reconocimiento", value: "+90%" },
+    { label: "Confianza", value: "Máxima" },
+    { label: "Diferenciación", value: "100%" },
+    { label: "Valor de Marca", value: "Alto" }
   ],
   process: [
-    { title: "Investigación", desc: "Entendemos qué busca y qué le duele a tu cliente ideal." },
-    { title: "Creación", desc: "Producimos contenido premium que marca la diferencia." },
-    { title: "Promoción", desc: "Hacemos que tu contenido llegue a donde está tu audiencia." },
-    { title: "Medición", desc: "Analizamos qué temas generan más negocio para potenciarlo." }
+    { title: "Concepto", desc: "Buscamos la esencia de tu negocio para plasmarla visualmente." },
+    { title: "Bocetado", desc: "Creamos las primeras propuestas gráficas de tu identidad." },
+    { title: "Refinamiento", desc: "Ajustamos cada detalle hasta que la marca sea perfecta." },
+    { title: "Entrega", desc: "Kit completo de archivos para que uses tu marca donde quieras." }
   ]
 };
 
-const ContentMarketing = () => (
+const ImagenDeMarca = () => (
   <div className="pt-24 bg-[#0a2b49] min-h-screen">
     <ServicePageTemplate {...serviceData} />
   </div>
 );
 
-export default ContentMarketing;
+export default ImagenDeMarca;
