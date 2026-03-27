@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { Link } from "react-router-dom"; 
+import { usePathname, useRouter } from "next/navigation";
 
 const serviceLinks = [
   { label: 'SEO Técnico & On-Page', href: '/servicios/seo-tecnico' },
@@ -22,44 +23,117 @@ const solutionLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  useEffect(() => {
+    if (isHome && typeof window !== "undefined" && window.location.hash) {
+      const timeout = setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [isHome]);
+
+  const navLinks = [
+    { label: 'Inicio', href: '#hero' },
+    { label: 'Nosotros', href: '#nosotros' },
+    { label: 'Casos de Éxito', href: '#casos' },
+    { label: 'FAQ', href: '#faq' },
+  ];
 
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      if (isHome) {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.location.href = '/' + href;
+      }
     }
     setOpen(false);
   };
 
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setMegaOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setMegaOpen(false);
+    }, 150);
+  };
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-[9999] bg-[#0a2b49]/95 backdrop-blur-md border-b border-white/10">
-      <div className="container mx-auto flex items-center justify-center gap-x-12 h-20 px-6">
-        <div className="flex items-center gap-3 shrink-0">
-          <img src="/iorana-marketing-digital.png" alt="Logo" className="h-9 w-auto object-contain" />
-          <a href="/" className="font-heading text-2xl font-bold tracking-tight text-[#ebf2f7]">
-            IORANA <span className="font-sans font-light text-[#ebf2f7]/70">Digital</span>
+ <nav className="fixed top-0 left-0 w-full z-[100] bg-[#0a2b49]/90 backdrop-blur-md border-b border-white/10">
+      <div className="container flex items-center justify-between h-16">
+        <div className="flex items-center gap-3">
+          <img src="/iorana-marketing-digital.png" alt="Logo" className="h-8 w-auto object-contain shrink-0" />
+          <a href="/" className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
+            IORANA <span className="text-[#ebf2f7]/80">Digital</span>
           </a>
         </div>
 
-        <div className="hidden md:flex items-center gap-8 font-sans">
-          <button onClick={() => handleNavClick('#hero')} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">Inicio</button>
-          
-          <div className="relative h-20 flex items-center" onMouseEnter={() => setMegaOpen(true)} onMouseLeave={() => setMegaOpen(false)}>
+        <div className="hidden md:flex items-center gap-6">
+          <button
+            onClick={() => handleNavClick('#hero')}
+            className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+          >
+            Inicio
+          </button>
+
+          <div
+            className="relative h-16 flex items-center"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <button className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
-              Soluciones <ChevronDown className="h-3.5 w-3.5" />
+              Soluciones de Marketing
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${megaOpen ? 'rotate-180' : ''}`} />
             </button>
+
             {megaOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[500px] pt-2">
-                <div className="bg-[#0a2b49] border border-white/10 rounded-xl shadow-2xl p-6">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[520px] pt-2">
+                <div className="bg-[#0a2b49] border border-[#ebf2f7]/15 rounded-xl shadow-2xl p-6 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="grid grid-cols-2 gap-8">
                     <div>
-                      <p className="text-[10px] font-bold text-[#ff8c00] uppercase mb-3">Servicios</p>
-                      {serviceLinks.map(s => <Link key={s.href} to={s.href} className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00]">{s.label}</Link>)}
+                      <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest mb-3">Servicios</div>
+                      <div className="space-y-1">
+                        {serviceLinks.map((s) => (
+                          <Link
+                            key={s.href}
+                            to={s.href}
+                            className="block px-3 py-2 text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-[#ebf2f7]/5 rounded-lg transition-colors"
+                            onClick={() => setMegaOpen(false)}
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-[#ff8c00] uppercase mb-3">Soluciones</p>
-                      {solutionLinks.map(s => <Link key={s.href} to={s.href} className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00]">{s.label}</Link>)}
+                      <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest mb-3">Soluciones</div>
+                      <div className="space-y-1">
+                        {solutionLinks.map((s) => (
+                          <Link
+                            key={s.href}
+                            to={s.href}
+                            className="block px-3 py-2 text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-[#ebf2f7]/5 rounded-lg transition-colors"
+                            onClick={() => setMegaOpen(false)}
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -67,14 +141,82 @@ const Navbar = () => {
             )}
           </div>
 
-          <button onClick={() => handleNavClick('#nosotros')} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">Nosotros</button>
-          <Button size="sm" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ff8c00] hover:text-white rounded-full px-6">Nuestros Servicios</Button>
+          {navLinks.slice(1).map((l) => (
+            <button
+              key={l.label}
+              onClick={() => handleNavClick(l.href)}
+              className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+            >
+              {l.label}
+            </button>
+          ))}
+
+          <Button
+            size="sm"
+            onClick={() => handleNavClick('#servicios')}
+            className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ff8c00] hover:text-white transition-all shadow-md"
+          >
+            Nuestros Servicios
+          </Button>
         </div>
-        
+
         <button className="md:hidden text-[#ebf2f7]" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      {open && (
+        <div className="md:hidden bg-[#0a2b49] border-b border-[#ebf2f7]/10 p-4 flex flex-col gap-2 max-h-[80vh] overflow-y-auto">
+          <button onClick={() => handleNavClick('#hero')} className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00]">
+            Inicio
+          </button>
+
+          <button
+            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+            className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00] flex items-center justify-between"
+          >
+            Soluciones de Marketing
+            <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {mobileServicesOpen && (
+            <div className="pl-4 space-y-1">
+              <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest py-2">Servicios</div>
+              {serviceLinks.map((s) => (
+                <Link
+                  key={s.href}
+                  to={s.href}
+                  className="block py-2 text-[#ebf2f7]/80 hover:text-[#ff8c00] text-sm"
+                  onClick={() => setOpen(false)}
+                >
+                  {s.label}
+                </Link>
+              ))}
+              <div className="text-xs font-bold text-[#ff8c00] uppercase tracking-widest py-2 mt-2">Soluciones</div>
+              {solutionLinks.map((s) => (
+                <Link
+                  key={s.href}
+                  to={s.href}
+                  className="block py-2 text-[#ebf2f7]/80 hover:text-[#ff8c00] text-sm"
+                  onClick={() => setOpen(false)}
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {navLinks.slice(1).map((l) => (
+            <button
+              key={l.label}
+              onClick={() => handleNavClick(l.href)}
+              className="text-left text-[#ebf2f7] py-2 text-lg hover:text-[#ff8c00]"
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
