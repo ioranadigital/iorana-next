@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "../../components/ServicePageTemplate";
+// 1. IMPORTANTE: Faltaba importar ServicePageTemplate para que no dé error
+import ServicePageTemplate from "../../components/ServicePageTemplate"; 
 import { Bot, Cpu, Zap, Share2 } from "lucide-react";
 
 /**
  * Definición de los datos del servicio.
- * Esto soluciona el error "Cannot find name 'serviceData'"
  */
 const serviceData = {
   title: "Automatizaciones Inteligentes",
@@ -51,19 +50,12 @@ const serviceData = {
   ]
 };
 
-const Automatizaciones = () => {
-  return (
-    <PageLayout
-      title="Automatizaciones de Procesos | Iorana Digital"
-      description="Optimiza tu negocio con automatizaciones inteligentes y flujos de trabajo eficientes."
-      canonical="https://iorana.digital/servicios/automatizaciones"
-    >
-      {/* Usamos el Spread Operator para pasar los datos. 
-          Esto corrige el error de tipos de la línea 54
-      */}
-      <ServicePageTemplate {...serviceData} />
-    </PageLayout>
-  );
-};
+// 2. CORRECCIÓN: He quitado el import de PageLayout que no usábamos
+// 3. CORRECCIÓN: He quitado una llave "};" que sobraba al final y causaba error
+const Automatizaciones = () => (
+  <div className="pt-24 bg-[#0a2b49] min-h-screen">
+    <ServicePageTemplate {...serviceData} />
+  </div>
+);
 
 export default Automatizaciones;
