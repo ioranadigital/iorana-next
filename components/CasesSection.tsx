@@ -10,7 +10,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 // Componentes globales
 import Navbar from "@/components/Navbar";
 
-// Vistas base
+// Vistas base - AJUSTA ESTAS RUTAS SI TUS ARCHIVOS ESTÁN EN OTRA CARPETA
 import Index from "./Index"; 
 import NotFound from "./NotFound";
 import Privacidad from "./Privacidad";
@@ -83,7 +83,6 @@ export default function Page() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
-            {/* 🏁 Footer eliminado de aquí para evitar el duplicado visual */}
           </div>
         </BrowserRouter>
       </TooltipProvider>
