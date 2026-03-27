@@ -1,57 +1,66 @@
 "use client";
+
+import React from "react";
 import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
+// Importación corregida hacia el archivo ServicePageTemplate.tsx
+import ServicePageTemplate from "../../components/ServicePageTemplate";
 import { Award } from "lucide-react";
 
-const data = {
-  icon: Award,
-  title: "Kit Digital",
-  subtitle: "Digitaliza tu negocio con ayudas de hasta 12.000€ del Gobierno de España. Como Agente Digitalizador homologado, gestionamos todo el proceso por ti.",
-  includes: [
-    "Gestión de redes sociales y comunidad online",
-    "Diseño y desarrollo de sitio web con SEO básico",
-    "Presencia en internet y posicionamiento local",
-    "Comercio electrónico",
-    "Publicidad digital segmentada",
-    "Elegibilidad para ayudas del Gobierno de España (hasta 12.000€)",
+/**
+ * Reestructuramos el objeto de datos para que sea compatible 
+ * con las propiedades individuales del template.
+ */
+const serviceData = {
+  title: "Kit Digital: Agente Digitalizador",
+  subtitle: "Ayudas de hasta 12.000€ para digitalizar tu negocio",
+  description: 
+    "Como Agente Digitalizador homologado, te ayudamos a acceder a las subvenciones del Gobierno de España. Gestionamos todo el proceso técnico y administrativo para que transformes tu pyme sin costes iniciales.",
+  benefits: [
+    "Gestión profesional de redes sociales y comunidad online",
+    "Diseño y desarrollo de sitio web con optimización SEO básica",
+    "Presencia avanzada en internet y posicionamiento local",
+    "Implementación de soluciones de comercio electrónico (e-commerce)",
+    "Campañas de publicidad digital altamente segmentadas",
+    "Tramitación completa de ayudas oficiales (hasta 12.000€)"
   ],
-  whyMatters: {
-    title: "¿Por qué solicitar el Kit Digital?",
-    desc: "",
-    points: [
-      "Subvención oficial del programa Kit Digital para pymes y autónomos",
-      "Sin coste inicial: la ayuda cubre el 100% del servicio",
-      "Iorana Digital es Agente Digitalizador homologado",
-    ],
-  },
-  process: [
-    { step: "1", title: "Diagnóstico", desc: "Evaluamos tu nivel de madurez digital y determinamos qué soluciones del Kit Digital se adaptan mejor a tu negocio." },
-    { step: "2", title: "Solicitud de Bono", desc: "Te guiamos paso a paso en la solicitud del bono digital en Acelera Pyme, gestionando toda la documentación necesaria." },
-    { step: "3", title: "Selección de Soluciones", desc: "Definimos juntos qué categorías de solución implementar para maximizar el impacto en tu negocio." },
-    { step: "4", title: "Implementación", desc: "Desarrollamos e implementamos las soluciones seleccionadas con los estándares de calidad exigidos por el programa." },
-    { step: "5", title: "Seguimiento", desc: "Monitorizamos el rendimiento y te acompañamos durante todo el periodo de prestación del servicio." },
-  ],
-  metrics: [
-    { value: "500+", label: "Empresas beneficiadas" },
-    { value: "12.000€", label: "Ahorro máximo" },
+  stats: [
+    { value: "500+", label: "Pymes Beneficiadas" },
+    { value: "12.000€", label: "Ahorro Máximo" },
     { value: "100%", label: "Subvencionado" },
-    { value: "<30 días", label: "Tiempo de implementación" },
+    { value: "<30 días", label: "Tiempo de Respuesta" }
   ],
-  faqs: [
-    { q: "¿Quién puede solicitar el Kit Digital?", a: "Pueden solicitarlo pymes (de 0 a 49 empleados) y autónomos con domicilio fiscal en España, que estén dados de alta y cumplan los requisitos de antigüedad mínima." },
-    { q: "¿Cuánto tarda el proceso de solicitud?", a: "La solicitud del bono puede resolverse en 1-2 semanas. Una vez aprobado, comenzamos la implementación inmediatamente." },
-    { q: "¿Qué cubre exactamente la ayuda?", a: "Dependiendo del segmento de tu empresa (por número de empleados), la ayuda puede cubrir desde 2.000€ hasta 12.000€ en soluciones de digitalización como web, SEO, redes sociales, e-commerce y publicidad digital." },
-    { q: "¿Hay algún coste para mi empresa?", a: "No. La subvención del Kit Digital cubre el 100% del coste de las soluciones contratadas dentro de los importes máximos establecidos por categoría." },
-  ],
+  process: [
+    { 
+      title: "Diagnóstico Digital", 
+      desc: "Evaluamos tu madurez digital para elegir las soluciones con mayor impacto." 
+    },
+    { 
+      title: "Solicitud del Bono", 
+      desc: "Gestionamos toda la documentación en Acelera Pyme por ti." 
+    },
+    { 
+      title: "Plan de Soluciones", 
+      desc: "Definimos las categorías a implementar para maximizar el bono digital." 
+    },
+    { 
+      title: "Implementación Técnica", 
+      desc: "Desarrollamos las soluciones bajo los estándares oficiales del programa." 
+    },
+    { 
+      title: "Soporte y Seguimiento", 
+      desc: "Te acompañamos durante todo el periodo de prestación del servicio." 
+    }
+  ]
 };
 
 const KitDigital = () => (
   <PageLayout
     title="Kit Digital – Agente Digitalizador | Iorana Digital"
-    description="Agente Digitalizador homologado del Kit Digital en Asturias. Digitaliza tu pyme o negocio con ayudas de hasta 12.000€ del Gobierno de España."
+    description="Agente Digitalizador homologado del Kit Digital. Digitaliza tu pyme con ayudas de hasta 12.000€ del Gobierno de España."
     canonical="https://iorana.digital/soluciones/kit-digital"
   >
-    <ServicePageTemplate data={data} />
+    {/* ✅ SOLUCIÓN AL ERROR DE BUILD: Pasamos las props desglosadas con el spread operator */}
+    <ServicePageTemplate {...serviceData} />
   </PageLayout>
 );
 
