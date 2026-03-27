@@ -6,7 +6,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 import { Bot, Cpu, Zap, Share2 } from "lucide-react";
 
 /**
- * Definición de los datos del servicio.
+ * Definición de los datos del servicio. 
  */
 const serviceData = {
   title: "Automatizaciones Inteligentes",
