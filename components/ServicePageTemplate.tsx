@@ -108,9 +108,8 @@ const ServicePageTemplate3 = ({
 
       {/* Componentes de cierre - Sin Footer para evitar el doble */}
       <FAQSection />
-      <ContactSection />
-      
-      {/* 🏁 Footer eliminado de aquí. Se controla desde Page.tsx */}
+      <ContactSection />     
+
     </div>
   );
 };
