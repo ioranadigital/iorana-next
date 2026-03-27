@@ -2,25 +2,22 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
-      {/* Background image - Forzada a llenar el 100% */}
-     <div className="absolute inset-0 w-full h-full">
-        <Image 
-          src="/assets/hero-bg.jpg" 
-          alt="IORANA Digital agencia marketing Asturias" 
-          fill 
-          sizes="100vw"
-          className="object-cover opacity-30" // Mantenemos object-cover
-          priority 
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a2b49]/50 to-[#0a2b49]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49]/40 via-[#0a2b49]/70 to-[#0a2b49]" />
-      </div>
-
+    <section 
+      id="hero" 
+      className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]"
+      /* 🛠️ SOLUCIÓN DEFINITIVA: Usamos estilo en línea para asegurar el background 
+         Esto ignora los límites de la imagen y la obliga a cubrir el 100% de la pantalla.
+      */
+      style={{
+        backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.6), rgba(10, 43, 73, 0.9)), url("/assets/hero-bg.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="container relative z-10 pt-20 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
