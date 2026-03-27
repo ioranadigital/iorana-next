@@ -7,19 +7,16 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
-      {/* Contenedor de imagen al 100% */}
+      {/* Background image - Forzada a llenar el 100% */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 w-full h-full">
         <Image 
           src="/assets/hero-bg.jpg" 
           alt="IORANA Digital agencia marketing Asturias" 
           fill 
           sizes="100vw"
-          {/* 🛠️ CAMBIO AQUÍ: Cambiamos object-cover por object-fill para forzar el estirado */}
           className="object-fill opacity-30" 
           priority 
         />
-        {/* Gradiente suavizado para que la imagen sea visible en todo el contenedor */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49]/40 via-[#0a2b49]/70 to-[#0a2b49]" />
       </div>
 
