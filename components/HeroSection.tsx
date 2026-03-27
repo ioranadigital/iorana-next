@@ -9,12 +9,14 @@ const HeroSection = () => {
     <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
       {/* Contenedor de imagen al 100% */}
       <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full">
         <Image 
           src="/assets/hero-bg.jpg" 
           alt="IORANA Digital agencia marketing Asturias" 
           fill 
           sizes="100vw"
-          className="object-cover object-center opacity-30" 
+          {/* 🛠️ CAMBIO AQUÍ: Cambiamos object-cover por object-fill para forzar el estirado */}
+          className="object-fill opacity-30" 
           priority 
         />
         {/* Gradiente suavizado para que la imagen sea visible en todo el contenedor */}
