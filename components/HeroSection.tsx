@@ -8,15 +8,16 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
       {/* Background image - Forzada a llenar el 100% */}
-      <div className="absolute inset-0 w-full h-full">
+     <div className="absolute inset-0 w-full h-full">
         <Image 
           src="/assets/hero-bg.jpg" 
           alt="IORANA Digital agencia marketing Asturias" 
           fill 
           sizes="100vw"
-          className="object-fill opacity-30" 
+          className="object-cover opacity-30" // Mantenemos object-cover
           priority 
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a2b49]/50 to-[#0a2b49]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49]/40 via-[#0a2b49]/70 to-[#0a2b49]" />
       </div>
 
