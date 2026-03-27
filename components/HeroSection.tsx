@@ -7,13 +7,9 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      /* Reducimos el z-index de la sección para que el Navbar (z-50) quede siempre por encima */
+      /* 🛠️ CAMBIO CLAVE: Añadimos z-0 explícito para que no flote sobre el Nav */
       className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49] z-0"
     >
-      
-      {/* 🖼️ CAPA DE FONDO DINÁMICA
-          Usamos 100vw y left-50% para ignorar cualquier contenedor padre que esté cortando la imagen.
-      */}
       <div 
         className="absolute inset-0 h-full pointer-events-none"
         style={{
@@ -24,7 +20,8 @@ const HeroSection = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          zIndex: -1
+          /* 🛠️ CAMBIO CLAVE: Forzamos el fondo al nivel más bajo posible */
+          zIndex: -10 
         }}
       />
 
