@@ -4,6 +4,15 @@ import { Button } from "./ui/button";
 
 const services = [
   {
+    title: "SEO Técnico & On-Page",
+    icon: <Repeat className="w-6 h-6" />,
+    description: "Optimizamos cada rincón de tu sitio para que Google te encuentre primero y tus visitantes conviertan más.",
+    features:",
+    link: "/servicios/seo-tecnico",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
+  },
+   {
     title: "Automatizaciones",
     icon: <Repeat className="w-6 h-6" />,
     description: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
@@ -11,7 +20,6 @@ const services = [
     color: "bg-blue-500/10",
     border: "border-blue-500/20"
   },
-  // ... añade el resto de tus servicios aquí
 ];
 
 export default function ServicesSection() {
