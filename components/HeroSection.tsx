@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative w-full min-h-screen flex items-center bg-[#0a2b49] overflow-visible pt-20">
       
-      {/* 🖼️ FONDO FORZADO A ANCHO DE VENTANA (Soluciona el corte lateral) */}
+      {/* 🖼️ FONDO: Forzado a ocupar el 100% del ancho del navegador */}
       <div 
         className="absolute inset-y-0 pointer-events-none blur-sm scale-105"
         style={{
@@ -22,7 +22,7 @@ const HeroSection = () => {
         }}
       />
 
-      {/* CONTENIDO (Centrado en el container estándar) */}
+      {/* CONTENIDO: Centrado y con tipografías corregidas */}
       <div className="container relative z-10 mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,7 +30,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          {/* Badge con tipografía sans corregida */}
+          {/* Badge con Inter (font-sans) */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8">
             <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             <span className="text-[10px] font-bold text-[#ebf2f7]/60 uppercase tracking-widest font-sans">
@@ -38,27 +38,28 @@ const HeroSection = () => {
             </span>
           </div>
 
+          {/* Título con Montserrat (font-heading) */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black leading-[1.1] mb-8 text-[#ebf2f7]">
             <span className="text-[#ff8c00]">Posiciona tu negocio</span><br />
             donde tus clientes te buscan.
           </h1>
 
           <p className="text-lg md:text-xl text-[#ebf2f7]/70 max-w-2xl mb-12 leading-relaxed font-sans">
-            Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO basadas en datos, PPC de alto rendimiento y contenido que posiciona de verdad.
+            Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO basadas en datos y PPC de alto rendimiento.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 items-start">
-            <Button className="bg-[#ff8c00] hover:bg-[#e67e00] text-white px-10 py-8 text-xl rounded-2xl font-bold shadow-2xl shadow-orange-500/20 transition-all hover:scale-105">
+            <Button className="bg-[#ff8c00] hover:bg-[#e67e00] text-white px-10 py-8 text-xl rounded-2xl font-bold shadow-2xl shadow-orange-500/20 transition-all hover:scale-105 font-sans">
               Impulsar mi negocio ahora
             </Button>
 
-            <Button variant="outline" className="border-white/20 text-[#ebf2f7] hover:bg-white/5 px-10 py-8 text-xl rounded-2xl bg-transparent backdrop-blur-sm">
+            <Button variant="outline" className="border-white/20 text-[#ebf2f7] hover:bg-white/5 px-10 py-8 text-xl rounded-2xl bg-transparent backdrop-blur-sm font-sans">
               ¿Cómo está mi sitio web?
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
           </div>
 
-          {/* Stats con números Naranjas resaltados */}
+          {/* Stats con números Naranjas resaltados (font-heading) */}
           <div className="flex flex-wrap gap-12 mt-20 pt-10 border-t border-white/10">
             {[
               { value: "+250%", label: "Tráfico orgánico" },
