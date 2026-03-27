@@ -96,14 +96,15 @@ export default function ServicesSection() {
                 {service.description}
               </p>
               
-              <Button 
-                variant="ghost" 
-                className="group/btn p-0 text-orange-500 hover:bg-transparent hover:text-orange-400 font-semibold"
-                onClick={() => window.location.href = service.link}
-              >
-                Saber más 
-                <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
-              </Button>
+  <Button 
+  variant="ghost" 
+  className="group/btn p-0 text-orange-500 hover:bg-transparent hover:text-orange-400 font-semibold h-auto"
+  onClick={() => window.location.href = service.link}
+>
+  {/* Aquí mostramos el texto personalizado de cada servicio */}
+  {service.ctaText}
+  <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
+</Button>
             </div>
           ))}
         </div>
