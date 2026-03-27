@@ -75,7 +75,9 @@ const PageLayout = ({
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">{children}</main>
+      <main className="flex-grow pt-0"> {/* Cambia pt-20 por pt-0 si el Template ya tiene su propio espacio */}
+  {children}
+</main>
     </div>
   );
 };
