@@ -31,41 +31,54 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <section id="faq" className="section-padding">
-    <div className="container max-w-3xl">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-sm font-medium text-primary tracking-widest uppercase">FAQ</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mt-3 text-[#ebf2f7]"> Preguntas  <span className="gradient-text">frecuentes</span></h2>
+  /* 1. SECCIÓN: Fondo completo y overflow-visible para las sombras del acordeón */
+  <section id="faq" className="w-full py-24 bg-[#0a2b49] overflow-visible">
+    
+    {/* 2. CONTENEDOR DE CENTRADO: Máximo 7xl para alineación global */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+      
+      {/* 3. CONTENEDOR DE LECTURA: Un poco más estrecho para el FAQ (max-w-4xl) */}
+      <div className="max-w-4xl mx-auto overflow-visible">
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-sm font-bold text-orange-500 tracking-widest uppercase">FAQ</span>
+          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
+            Preguntas <span className="text-orange-500">frecuentes</span>
+          </h2>
+        </motion.div>
 
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              className="glass-card px-6 border border-border rounded-xl data-[state=open]:neon-border transition-all duration-300"
-            >
-<AccordionTrigger className="text-left font-heading font-semibold text-[#ebf2f7] hover:no-underline hover:text-[#ebf2f7]/80 transition-colors py-5"> 
-              {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="overflow-visible"
+        >
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                /* Estilo de tarjeta consistente con Services y About */
+                className="bg-[#08223a] px-6 border border-[#ebf2f7]/10 rounded-2xl 
+                           data-[state=open]:border-orange-500/40 transition-all duration-300 
+                           shadow-lg hover:border-[#ebf2f7]/20"
+              >
+                <AccordionTrigger className="text-left font-bold text-lg text-[#ebf2f7] hover:no-underline hover:text-orange-500 transition-colors py-6">  
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#ebf2f7]/70 text-base leading-relaxed pb-6 border-t border-[#ebf2f7]/5 pt-4">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </div>
     </div>
   </section>
 );
