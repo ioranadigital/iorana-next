@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google"; // Usamos las fuentes de tu marca
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"] });
+// Configuramos Montserrat para títulos e Inter para textos
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: {
     default: "IORANA Digital | Agencia de Marketing Digital en Asturias",
     template: "%s | IORANA Digital"
   },
-  description: "Agencia de marketing digital en Asturias especializada en SEO, SEM y diseño web. Aumentamos la visibilidad online de tu negocio.",
+  description: "Agencia de marketing digital en Asturias especializada en SEO, SEM y diseño web.",
   metadataBase: new URL("https://www.iorana.digital"),
   alternates: {
     canonical: "/"
@@ -27,8 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className={geist.className}>{children}</body>
+    <html lang="es" className={`${montserrat.variable} ${inter.variable}`}>
+      <body className={`${inter.className} antialiased bg-[#0a2b49] text-[#ebf2f7] min-h-screen`}>
+        {/* Este div es el "escudo" que evita que el contenido se pegue a los bordes */}
+        <div className="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
