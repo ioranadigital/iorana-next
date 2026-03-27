@@ -1,86 +1,60 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "./ui/accordion";
+import { Plus } from "lucide-react";
 
 const faqs = [
-  {
-    q: "¿Cuánto tiempo tarda en verse resultados con SEO?",
-    a: "Los primeros resultados tangibles suelen aparecer entre 2 y 4 meses. Sin embargo, desde el primer mes implementamos quick wins (optimización técnica, mejoras on-page) que pueden generar incrementos inmediatos. El SEO es una inversión a medio-largo plazo que genera retornos compuestos — cuanto antes empieces, antes verás el impacto.",
-  },
-  {
-    q: "¿Cuánto cuesta trabajar con Orbital SEO?",
-    a: "Nuestros planes comienzan desde $3,000 USD/mes y se adaptan al tamaño de tu startup y tus objetivos. Ofrecemos una consultoría gratuita donde analizamos tu situación actual y proponemos un plan con ROI proyectado. No hay contratos de permanencia — nos ganamos tu confianza cada mes con resultados.",
-  },
-  {
-    q: "¿Puedo hacer SEO internamente en vez de contratar una agencia?",
-    a: "Podrías, pero construir un equipo SEO interno competente (SEO técnico + content + link building) cuesta fácilmente $15,000+/mes en salarios. Con Orbital obtienes un equipo completo y especializado en SaaS por una fracción del costo, y sin el riesgo de contratar perfiles equivocados.",
-  },
-  {
-    q: "¿Trabajáis con startups en etapa temprana (pre-seed/seed)?",
-    a: "Absolutamente. De hecho, es el mejor momento para empezar. Construir autoridad de dominio desde cero es más fácil que competir cuando tu mercado ya está saturado. Tenemos planes específicos para startups en etapa temprana con presupuestos ajustados.",
-  },
-  {
-    q: "¿Cómo medís el éxito de vuestras campañas?",
-    a: "No nos enfocamos en métricas vanidosas. Medimos lo que importa: tráfico orgánico cualificado, leads generados, MQLs, pipeline influenciado y, en última instancia, revenue atribuible a SEO. Cada cliente tiene un dashboard en tiempo real con KPIs acordados desde el día 1.",
-  },
+  { question: "¿Cuánto tardan en verse los resultados?", answer: "En PPC es inmediato (días); en SEO Técnico/Contenidos suele tardar entre 3 y 6 meses dependiendo de la autoridad de partida y competencia del sector." },
+  { question: "¿Tienen permanencia mínima?", answer: "No creemos en atar a nadie. Trabajamos mes a mes, aunque recomendamos compromisos trimestrales para dar tiempo a que las estrategias maduren." },
+  { question: "¿Solo trabajan con startups SaaS?", answer: "Es nuestra especialidad, pero también trabajamos con empresas tecnológicas B2B y servicios premium que necesitan leads cualificados." },
+  { question: "¿Cómo se comunican con nosotros?", answer: "Tendrás un canal directo en Slack con tu consultor y reportes mensuales detallados en Data Studio enfocados en MRR, MQLs y LTV." },
 ];
 
-const FAQSection = () => (
-  /* 1. SECCIÓN: Fondo completo y overflow-visible para las sombras del acordeón */
-  <section id="faq" className="w-full py-24 bg-[#0a2b49] overflow-visible">
-    
-    {/* 2. CONTENEDOR DE CENTRADO: Máximo 7xl para alineación global */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
-      
-      {/* 3. CONTENEDOR DE LECTURA: Un poco más estrecho para el FAQ (max-w-4xl) */}
-      <div className="max-w-4xl mx-auto overflow-visible">
+const FAQSection = () => {
+  return (
+    <section id="faq" className="w-full py-24 bg-[#0a2b49] border-t border-white/5">
+      <div className="max-w-4xl mx-auto px-6">
         
+        {/* Cabecera */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-bold text-orange-500 tracking-widest uppercase">FAQ</span>
+          <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase">
+            Preguntas Frecuentes
+          </span>
           <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
-            Preguntas <span className="text-orange-500">frecuentes</span>
+            Resolviendo Dudas
           </h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="overflow-visible"
-        >
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                /* Estilo de tarjeta consistente con Services y About */
-                className="bg-[#08223a] px-6 border border-[#ebf2f7]/10 rounded-2xl 
-                           data-[state=open]:border-orange-500/40 transition-all duration-300 
-                           shadow-lg hover:border-[#ebf2f7]/20"
-              >
-                <AccordionTrigger className="text-left font-bold text-lg text-[#ebf2f7] hover:no-underline hover:text-orange-500 transition-colors py-6">  
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-[#ebf2f7]/70 text-base leading-relaxed pb-6 border-t border-[#ebf2f7]/5 pt-4">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+        {/* ACORDEÓN CON NARANJA EXACTO EN ESTADO ABIERTO */}
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {faqs.map((faq, i) => (
+            <AccordionItem key={i} value={`item-${i}`} className="bg-[#08223a] p-6 rounded-2xl border border-[#ebf2f7]/5 shadow-xl transition-all hover:border-[#ff8c00]/20 data-[state=open]:border-[#ff8c00]/40">
+              <AccordionTrigger className="text-left font-bold text-[#ebf2f7] text-lg py-0 group data-[state=open]:text-[#ff8c00] transition-colors hover:no-underline">
+                {faq.question}
+                {/* Icono personalizado con color exacto */}
+                <Plus className="h-5 w-5 text-[#ebf2f7]/50 group-data-[state=open]:text-[#ff8c00] transition-transform duration-300 group-data-[state=open]:rotate-45" />
+              </AccordionTrigger>
+              <AccordionContent className="text-[#ebf2f7]/70 text-base leading-relaxed pt-6 pb-0">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default FAQSection;
