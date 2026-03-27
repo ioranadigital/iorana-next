@@ -48,16 +48,27 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    /* USAMOS w-full Y overflow-visible PARA QUE LAS ANIMACIONES DE TODAS 
+       LAS SECCIONES NO SE CORTEN AL ENTRAR
+    */
+    <div className="w-full min-h-screen bg-[#0a2b49] overflow-visible">
       <Navbar />
-      <HeroSection />
-      <USPSection />
-      <ServicesSection />
-      <AboutSection />
-      <CasesSection />
-      <CertificationsSection />
-      <FAQSection />
-      <ContactSection />
+      
+      {/* CADA SECCIÓN INTERNA (Hero, USP, Services...) DEBE TENER SU PROPIO 
+          'max-w-7xl mx-auto' PARA MANTENER EL TEXTO CENTRADO 
+          MIENTRAS EL FONDO ES 100%
+      */}
+      <main className="w-full overflow-visible">
+        <HeroSection />
+        <USPSection />
+        <ServicesSection />
+        <AboutSection />
+        <CasesSection />
+        <CertificationsSection />
+        <FAQSection />
+        <ContactSection />
+      </main>
+
       <Footer />
     </div>
   );
