@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import ContactSection from "@/components/ContactSection";
 import FAQSection from "@/components/FAQSection";
 
-// Definimos la interfaz para que TypeScript no de error
 export interface ServicePageProps {
   title: string;
   subtitle: string;
@@ -18,10 +17,6 @@ export interface ServicePageProps {
   stats: Array<{ label: string; value: string }>;
 }
 
-/**
- * Cambiamos el nombre a ServicePageTemplate para que coincida con 
- * las importaciones de tus archivos de servicios y soluciones.
- */
 const ServicePageTemplate = ({
   title,
   subtitle,
@@ -31,11 +26,10 @@ const ServicePageTemplate = ({
   stats
 }: ServicePageProps) => {
   return (
-    /* Contenedor principal - Aseguramos que no haya rellenos extraños al final */
     <div className="bg-[#0a2b49] min-h-screen">
       
-      {/* HERO SECTION */}
-      <section className="pt-32 pb-20 px-4">
+      {/* HERO SECTION - pt-40 para dar aire bajo el Navbar fijo */}
+      <section className="pt-40 pb-20 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -113,10 +107,9 @@ const ServicePageTemplate = ({
 
       {/* SECCIONES FINALES */}
       <FAQSection />
-      <ContactSection />     
+      <ContactSection />      
 
-      {/* ⚠️ NOTA: El Footer NO se incluye aquí. 
-          Se renderiza únicamente desde PageLayout para evitar duplicados. */}
+      {/* El Footer NO se incluye aquí. Se renderiza automáticamente desde el layout global de Next.js */}
     </div>
   );
 };
