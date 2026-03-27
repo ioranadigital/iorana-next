@@ -35,15 +35,12 @@ const cases = [
     resultSub: "en 4 meses · 8x ROI en contenido",
     ctaText: "Ver caso de ROI en contenidos",
     link: "/casos/hirebot"
-  },
+  }
 ];
 
 const CasesSection = () => {
   return (
-    /* 1. SECCIÓN: w-full y overflow-visible para que las tarjetas no se corten al animar */
     <section id="casos" className="w-full py-24 bg-[#0a2b49] relative overflow-visible">
-      
-      {/* 2. CONTENEDOR DE CENTRADO: max-w-7xl para alinear con el resto de la web */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         
         <motion.div
@@ -60,5 +57,65 @@ const CasesSection = () => {
           </h2>
         </motion.div>
 
-        {/* 3. GRID: gap-8 para dar 'aire' entre tarjetas */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-visible
+        {/* CORRECCIÓN LÍNEA 64: Se cerraron correctamente todas las comillas de className */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-visible">
+          {cases.map((c, i) => (
+            <motion.div
+              key={c.company}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className="flex flex-col rounded-3xl overflow-visible border border-[#ebf2f7]/10 bg-[#08223a] shadow-2xl group transition-all duration-500 hover:border-orange-500/30 hover:scale-[1.02]"
+            >
+              <div className="bg-[#ebf2f7]/5 p-8 border-b border-[#ebf2f7]/10 rounded-t-3xl">
+                <div className="text-3xl font-bold text-[#ebf2f7] mb-1">{c.result}</div>
+                <div className="text-xs text-orange-500/80 font-bold tracking-wide uppercase">{c.resultSub}</div>
+              </div>
+
+              <div className="p-8 flex-grow space-y-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 font-bold border border-orange-500/20">
+                    {c.company[0]}
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#ebf2f7]">{c.company}</div>
+                    <div className="text-[10px] text-[#ebf2f7]/50 uppercase tracking-widest">{c.industry}</div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-orange-500 font-bold mb-2">Contexto</div>
+                    <p className="text-[14px] text-[#ebf2f7]/70 leading-relaxed font-light">{c.context}</p>
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-orange-500 font-bold mb-2">Desafío</div>
+                    <p className="text-[14px] text-[#ebf2f7]/70 leading-relaxed font-light">{c.challenge}</p>
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-orange-500 font-bold mb-2">Solución</div>
+                    <p className="text-[14px] text-[#ebf2f7]/70 leading-relaxed font-light">{c.solution}</p>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Button 
+                    variant="ghost" 
+                    className="p-0 text-orange-500 hover:bg-transparent hover:text-orange-400 font-bold group/btn h-auto text-left"
+                    onClick={() => window.location.href = c.link}
+                  >
+                    {c.ctaText}
+                    <span className="ml-2 transition-transform group-hover/btn:translate-x-1 inline-block">→</span>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CasesSection;
