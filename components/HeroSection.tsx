@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      /* 🛠️ CAMBIO CLAVE: Añadimos z-0 explícito para que no flote sobre el Nav */
+      /* IMPORTANTE: z-0 para que se quede atrás del Nav */
       className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49] z-0"
     >
       <div 
@@ -20,8 +20,8 @@ const HeroSection = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          /* 🛠️ CAMBIO CLAVE: Forzamos el fondo al nivel más bajo posible */
-          zIndex: -10 
+          /* MUY IMPORTANTE: zIndex negativo para el fondo */
+          zIndex: -1 
         }}
       />
 
