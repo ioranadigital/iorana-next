@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from "next/link";
 
-const serviceLinks = [
+const serviceLinks = [ 
   { label: 'SEO Técnico & On-Page', href: '/servicios/seo-tecnico' },
   { label: 'PPC & Paid Search', href: '/servicios/ppc-paid-search' },
   { label: 'Content Marketing', href: '/servicios/content-marketing' },
