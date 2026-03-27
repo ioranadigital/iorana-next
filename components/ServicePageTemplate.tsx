@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Star } from "lucide-react";
@@ -17,7 +18,11 @@ export interface ServicePageProps {
   stats: Array<{ label: string; value: string }>;
 }
 
-const ServicePageTemplate3 = ({
+/**
+ * Cambiamos el nombre a ServicePageTemplate para que coincida con 
+ * las importaciones de tus archivos de servicios y soluciones.
+ */
+const ServicePageTemplate = ({
   title,
   subtitle,
   description,
@@ -26,10 +31,10 @@ const ServicePageTemplate3 = ({
   stats
 }: ServicePageProps) => {
   return (
-    /* Contenedor con el mismo azul que el resto de la web */
-    <div className="bg-[#0a2b49] min-h-screen overflow-visible">
+    /* Contenedor principal - Aseguramos que no haya rellenos extraños al final */
+    <div className="bg-[#0a2b49] min-h-screen">
       
-      {/* HERO SECTION - Ajustado con max-w-7xl para alineación perfecta */}
+      {/* HERO SECTION */}
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
@@ -72,7 +77,7 @@ const ServicePageTemplate3 = ({
         </div>
       </section>
 
-      {/* STATS SECTION - Diseño limpio y centrado */}
+      {/* STATS SECTION */}
       <section className="py-16 border-y border-[#ebf2f7]/5 bg-[#08223a]/50">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
@@ -84,15 +89,15 @@ const ServicePageTemplate3 = ({
         </div>
       </section>
 
-      {/* PROCESS SECTION - Estilo tarjetas como 'Nosotros' */}
-      <section className="py-24 px-4 bg-[#0a2b49] overflow-visible">
-        <div className="max-w-7xl mx-auto overflow-visible">
+      {/* PROCESS SECTION */}
+      <section className="py-24 px-4 bg-[#0a2b49]">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#ebf2f7]">
               Nuestro <span className="text-orange-500">proceso</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 overflow-visible">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {process.map((p, i) => (
               <div key={i} className="bg-[#08223a] p-6 rounded-2xl border border-[#ebf2f7]/10 relative group hover:border-orange-500/30 transition-all">
                 <span className="text-4xl font-black text-orange-500/20 absolute top-4 right-4">
@@ -106,12 +111,14 @@ const ServicePageTemplate3 = ({
         </div>
       </section>
 
-      {/* Componentes de cierre - Sin Footer para evitar el doble */}
+      {/* SECCIONES FINALES */}
       <FAQSection />
       <ContactSection />     
 
+      {/* ⚠️ NOTA: El Footer NO se incluye aquí. 
+          Se renderiza únicamente desde PageLayout para evitar duplicados. */}
     </div>
   );
 };
 
-export default ServicePageTemplate3;
+export default ServicePageTemplate;
