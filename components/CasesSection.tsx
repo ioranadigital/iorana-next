@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 
 const cases = [
   {
@@ -10,6 +11,8 @@ const cases = [
     solution: "Implementamos una estrategia de topic clusters con +60 artículos optimizados, rediseño de la arquitectura web y link building estratégico.",
     result: "+320% Tráfico Orgánico",
     resultSub: "en 5 meses · CAC reducido a $45",
+    ctaText: "Ver estrategia SEO para SaaS",
+    link: "/casos/streamflow"
   },
   {
     company: "DataPulse",
@@ -19,6 +22,8 @@ const cases = [
     solution: "Auditoría técnica profunda, optimización de Core Web Vitals, estrategia de contenido comparativo y PPC complementario.",
     result: "+540% Conversiones",
     resultSub: "en 6 meses · 15 keywords en top 3",
+    ctaText: "Ver optimización de conversiones",
+    link: "/casos/datapulse"
   },
   {
     company: "HireBot",
@@ -28,88 +33,32 @@ const cases = [
     solution: "Reconstrucción de arquitectura SEO, creación de hub de contenido educativo y campaña de digital PR.",
     result: "De 0 a 12K visitas/mes",
     resultSub: "en 4 meses · 8x ROI en contenido",
+    ctaText: "Ver caso de ROI en contenidos",
+    link: "/casos/hirebot"
   },
 ];
 
 const CasesSection = () => {
   return (
-    <section id="casos" className="section-padding bg-[#24496b] relative overflow-hidden">
-      <div className="container">
+    /* 1. SECCIÓN: w-full y overflow-visible para que las tarjetas no se corten al animar */
+    <section id="casos" className="w-full py-24 bg-[#0a2b49] relative overflow-visible">
+      
+      {/* 2. CONTENEDOR DE CENTRADO: max-w-7xl para alinear con el resto de la web */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-[#ebf2f7] tracking-widest uppercase opacity-80"> Casos de Éxito </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mt-3 text-[#ebf2f7]">Resultados que hablan <span className="text-[#ff8c00]">por sí solos</span></h2>
-      </motion.div>
+          <span className="text-sm font-semibold text-orange-500 tracking-widest uppercase">
+            Casos de Éxito
+          </span>
+          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
+            Resultados que hablan <span className="text-orange-500">por sí solos</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {cases.map((c, i) => (
-            <motion.div
-              key={c.company}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="flex flex-col rounded-3xl overflow-hidden border border-[#ebf2f7]/10 bg-[#0a2b49] shadow-2xl group transition-all duration-500 hover:border-[#ebf2f7]/30"
-            >
-              {/* Encabezado de Resultados */}
-              <div className="bg-[#ebf2f7]/5 p-8 border-b border-[#ebf2f7]/10">
-                <div className="text-2xl font-bold text-[#ebf2f7] mb-1">{c.result}</div>
-                <div className="text-xs text-[#ebf2f7]/60 tracking-wide uppercase">{c.resultSub}</div>
-              </div>
-
-              {/* Cuerpo de la Tarjeta */}
-              <div className="p-8 flex-grow space-y-8">
-                {/* Info Cliente */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#ebf2f7]/10 flex items-center justify-center text-[#ebf2f7] font-bold border border-[#ebf2f7]/10">
-                    {c.company[0]}
-                  </div>
-                  <div>
-                    <div className="font-bold text-[#ebf2f7]">{c.company}</div>
-                    <div className="text-[10px] text-[#ebf2f7]/50 uppercase tracking-widest">{c.industry}</div>
-                  </div>
-                </div>
-
-                {/* Detalles (CORREGIDOS: Ahora apuntan a context, challenge y solution) */}
-                <div className="space-y-6">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-[#ebf2f7] font-bold mb-2">
-                      Contexto
-                    </div>
-                    <p className="text-[13px] text-[#ebf2f7]/80 leading-relaxed font-light">
-                      {c.context}
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-[#ebf2f7] font-bold mb-2">
-                      Desafío
-                    </div>
-                    <p className="text-[13px] text-[#ebf2f7]/80 leading-relaxed font-light">
-                      {c.challenge}
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-[#ebf2f7] font-bold mb-2">
-                      Solución
-                    </div>
-                    <p className="text-[13px] text-[#ebf2f7]/80 leading-relaxed font-light">
-                      {c.solution}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default CasesSection;
+        {/* 3. GRID: gap-8 para dar 'aire' entre tarjetas */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-visible
