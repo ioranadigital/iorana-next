@@ -4,14 +4,6 @@ import { Button } from "./ui/button";
 
 const services = [
   {
-    title: "Automatizaciones",
-    icon: <Repeat className="w-6 h-6" />,
-    description: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
-    link: "/servicios/automatizaciones",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
     title: "SEO Técnico",
     icon: <ShieldCheck className="w-6 h-6" />,
     description: "Optimizamos cada rincón de tu sitio para que Google te encuentre primero y tus usuarios disfruten la mejor experiencia.",
@@ -20,10 +12,42 @@ const services = [
     border: "border-blue-500/20"
   },
   {
+    title: "PPC & Paid Search",
+    icon: <BarChart3 className="w-6 h-6" />,
+    description: "Campañas de pago que generan leads cualificados desde el día 1. Maximizamos tu ROAS con gestión experta en Google Ads y Meta Ads.",
+    link: "/servicios/ppc-paid-search",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
+  },
+  {
     title: "Content Marketing",
     icon: <PenTool className="w-6 h-6" />,
     description: "Contenido estratégico que educa, posiciona y convierte. Creamos un motor de contenido que atrae a tu buyer persona.",
     link: "/servicios/content-marketing",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
+  },
+  {
+    title: "Automatizaciones",
+    icon: <Repeat className="w-6 h-6" />,
+    description: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
+    link: "/servicios/automatizaciones",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
+  },
+  {
+    title: "Desarrollo Web",
+    icon: <Code className="w-6 h-6" />,
+    description: "Diseñamos y desarrollamos sitios web de alto rendimiento enfocados en la experiencia de usuario y la conversión.",
+    link: "/servicios/desarrollo-web",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
+  },
+  {
+    title: "Imagen de Marca",
+    icon: <Layout className="w-6 h-6" />,
+    description: "Construimos identidades visuales sólidas que transmiten los valores de tu empresa y conectan con tu audiencia.",
+    link: "/servicios/imagen-de-marca",
     color: "bg-blue-500/10",
     border: "border-blue-500/20"
   }
