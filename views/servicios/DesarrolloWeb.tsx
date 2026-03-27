@@ -1,67 +1,37 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
-// Importación corregida usando ruta relativa al archivo existente
 import ServicePageTemplate from "../../components/ServicePageTemplate";
-import { CodeXml } from "lucide-react";
 
-/**
- * Adaptación de datos para el template unificado.
- * Resolvemos el error de la propiedad 'data' que no existe.
- */
 const serviceData = {
-  title: "Desarrollo Web de Alto Rendimiento",
-  subtitle: "Sitios diseñados para convertir",
-  description: 
-    "Combinamos diseño UI/UX de vanguardia con ingeniería web robusta para crear sitios web rápidos, seguros y optimizados que se convierten en tu mejor activo de ventas.",
+  title: "Desarrollo Web High-End",
+  subtitle: "Tu escaparate digital de alto rendimiento",
+  description: "Creamos sitios web que no solo son bonitos, sino que están diseñados para vender. Usamos tecnologías modernas como Next.js para una velocidad imbatible.",
   benefits: [
-    "Diseño y desarrollo de landing pages de alta conversión",
-    "Webs corporativas responsive y totalmente optimizadas",
-    "Optimización de Conversión (CRO) basada en datos reales",
-    "Desarrollo con tecnologías modernas (React, Next.js, Tailwind)",
-    "Optimización extrema de velocidad y Core Web Vitals",
-    "Integración nativa con CRM, analytics y herramientas externas"
+    "Diseño 100% personalizado y responsive",
+    "Velocidad de carga ultrarrápida (A+ Performance)",
+    "Panel de gestión intuitivo y autogestionable",
+    "Seguridad avanzada y certificados SSL",
+    "Integración total con herramientas de marketing"
   ],
   stats: [
-    { value: "95+", label: "PageSpeed Score" },
-    { value: "+120%", label: "Tasa de Conversión" },
-    { value: "<2s", label: "Tiempo de Carga" },
-    { value: "100%", label: "Mobile Responsive" }
+    { label: "Conversión Web", value: "+35%" },
+    { label: "Bounce Rate", value: "-20%" },
+    { label: "Uptime", value: "99.9%" },
+    { label: "Tech Stack", value: "Modern" }
   ],
   process: [
-    { 
-      title: "Discovery y Estrategia", 
-      desc: "Definimos la arquitectura y wireframes basados en tu customer journey." 
-    },
-    { 
-      title: "Diseño UI/UX", 
-      desc: "Prototipos de alta fidelidad con foco en usabilidad y coherencia visual." 
-    },
-    { 
-      title: "Desarrollo Frontend", 
-      desc: "Implementación con código limpio y responsive usando las últimas tecnologías." 
-    },
-    { 
-      title: "Optimización y Testing", 
-      desc: "Validación de rendimiento en PageSpeed y testing cross-browser riguroso." 
-    },
-    { 
-      title: "Lanzamiento y Soporte", 
-      desc: "Despliegue monitorizado con configuración de analítica y soporte post-lanzamiento." 
-    }
+    { title: "Wireframing", desc: "Dibujamos la estructura enfocada en la experiencia de usuario." },
+    { title: "Diseño UI", desc: "Creamos una interfaz visual impactante y profesional." },
+    { title: "Desarrollo", desc: "Programamos con código limpio y optimizado para SEO." },
+    { title: "Lanzamiento", desc: "Migración segura y puesta en marcha sin errores." }
   ]
 };
 
 const DesarrolloWeb = () => (
-  <PageLayout
-    title="Desarrollo Web | Iorana Digital"
-    description="Diseño y desarrollo web profesional. Landing pages, webs corporativas, CRO y optimización de velocidad para empresas."
-    canonical="https://iorana.digital/servicios/desarrollo-web"
-  >
-    {/* ✅ CORRECCIÓN: Usamos {...serviceData} para pasar las props correctamente */}
+  <div className="pt-24 bg-[#0a2b49] min-h-screen">
     <ServicePageTemplate {...serviceData} />
-  </PageLayout>
+  </div>
 );
 
 export default DesarrolloWeb;
