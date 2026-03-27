@@ -1,12 +1,11 @@
 import { Metadata } from "next";
-// Cambia "SeoTecnico" por el nombre del componente de la vista
-import SeoTecnico from "@/views/servicios/SeoTecnico"; 
+import Automatizaciones from "@/views/servicios/Automatizaciones";
 
 export const metadata: Metadata = {
-  title: "SEO Técnico & On-Page | IORANA Digital",
-  description: "Optimizamos la estructura de tu web para maximizar la visibilidad en buscadores.",
+  title: "Automatización de Procesos y CRM | Eficiencia Digital | IORANA",
+  description: "Ahorra tiempo y dinero automatizando tus flujos de trabajo, captación de leads y gestión de clientes.",
 };
 
 export default function Page() {
-  return <SeoTecnico />;
+  return <Automatizaciones />;
 }
