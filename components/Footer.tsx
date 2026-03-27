@@ -28,8 +28,8 @@ const Footer = () => (
         {/* Branding & Bio (Ocupa 2 columnas en desktop) */}
         <div className="lg:col-span-2 space-y-6">
           <div className="font-heading text-2xl font-black tracking-tighter">
-            <span className="text-orange-500">ORBITAL</span>
-            <span className="text-[#ebf2f7]"> SEO</span>
+            <span className="text-orange-500">Iorana</span>
+            <span className="text-[#ebf2f7]"> Digital</span>
           </div>
           <p className="text-[#ebf2f7]/50 text-base leading-relaxed max-w-xs">
             Ingeniería y Growth Marketing estratégico para empresas SaaS que buscan dominar su mercado orgánico.
@@ -100,7 +100,7 @@ const Footer = () => (
 
       {/* 3. COPYRIGHT: Línea final limpia */}
       <div className="border-t border-[#ebf2f7]/5 pt-8 flex flex-col md:row justify-between items-center gap-4 text-xs text-[#ebf2f7]/30">
-        <p>© {new Date().getFullYear()} Orbital SEO. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} Iorana Digital. Todos los derechos reservados.</p>
         <p className="italic">Built with Engineering & Passion</p>
       </div>
     </div>
