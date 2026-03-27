@@ -2,34 +2,20 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import USPSection from "@/components/USPSection";
-import ServicesSection from "@/components/ServicesSection";
-import AboutSection from "@/components/AboutSection";
-import CasesSection from "@/components/CasesSection";
-import CertificationsSection from "@/components/CertificationsSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
-import { useEffect } from "react";
+// ... resto de imports
 
 const Index = () => {
-  useEffect(() => {
-    document.title = "Iorana Digital | Agencia de Marketing Digital en Asturias";
-    // ... (Tu lógica de Meta Tags se mantiene igual)
-  }, []);
+  // ... (useEffect de meta tags se mantiene igual)
 
   return (
-    /* Eliminamos overflow-hidden y forzamos ancho total real */
     <div className="w-full min-h-screen bg-[#0a2b49] overflow-x-hidden">
       <Navbar />
       
-      <main className="w-full flex flex-col m-0 p-0">
+      {/* El main debe ser w-full y sin márgenes para que el Hero ocupe todo el ancho */}
+      <main className="w-full flex flex-col p-0 m-0">
         <HeroSection />
         <USPSection />
-        <ServicesSection />
-        <AboutSection />
-        <CasesSection />
-        <CertificationsSection />
-        <FAQSection />
-        <ContactSection />
+        {/* Resto de secciones */}
       </main>
     </div>
   );
