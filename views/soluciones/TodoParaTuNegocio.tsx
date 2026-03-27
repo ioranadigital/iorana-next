@@ -1,67 +1,37 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
-// Importación corregida hacia el archivo ServicePageTemplate.tsx
 import ServicePageTemplate from "../../components/ServicePageTemplate";
-import { Sparkles } from "lucide-react";
 
-/**
- * Reestructuramos el objeto para cumplir con la interfaz de ServicePageTemplate.
- * Esto elimina el error: Property 'data' does not exist.
- */
 const serviceData = {
-  title: "Todo para tu Negocio",
-  subtitle: "Tu departamento de marketing externo",
-  description: 
-    "Olvídate de coordinar a múltiples proveedores. Nos convertimos en tu socio estratégico, encargándonos de toda tu presencia digital con una visión 360° orientada a resultados.",
+  title: "Todo Para Tu Negocio",
+  subtitle: "Tu departamento digital externo",
+  description: "Una solución integral 360º para empresas que quieren delegar toda su estrategia digital en un equipo experto. Desde el código hasta las ventas.",
   benefits: [
-    "Estrategia integral de marketing digital personalizada",
-    "Gestión experta de campañas de captación (PPC y SEO)",
-    "Mantenimiento y optimización continua de tu sitio web",
-    "Creación de contenido estratégico y gestión de marca",
-    "Automatización de procesos para ahorrar tiempo y costes",
-    "Reporting unificado con KPIs clave para tu negocio"
+    "Mantenimiento técnico y actualizaciones constantes",
+    "Estrategia de marketing digital mensual",
+    "Soporte prioritario y consultoría estratégica",
+    "Optimización continua de procesos internos",
+    "Análisis de competencia y mercado recurrente"
   ],
   stats: [
-    { value: "360°", label: "Visión Integral" },
-    { value: "1", label: "Único Interlocutor" },
-    { value: "+150%", label: "Eficiencia Operativa" },
-    { value: "24/7", label: "Soporte Estratégico" }
+    { label: "Soporte", value: "24/7" },
+    { label: "Equipo", value: "Senior" },
+    { label: "Servicios", value: "360º" },
+    { label: "Crecimiento", value: "Sostenido" }
   ],
   process: [
-    { 
-      title: "Auditoría 360°", 
-      desc: "Analizamos tu situación actual, competencia y puntos de mejora en todos los canales." 
-    },
-    { 
-      title: "Estrategia Unificada", 
-      desc: "Diseñamos un plan de acción integrado que alinea SEO, PPC, contenido y desarrollo." 
-    },
-    { 
-      title: "Implementación Multicanal", 
-      desc: "Ejecutamos las tácticas coordinadas para generar un impacto sinérgico en tu negocio." 
-    },
-    { 
-      title: "Optimización Basada en Datos", 
-      desc: "Analizamos el rendimiento global y ajustamos la estrategia para maximizar el ROI." 
-    },
-    { 
-      title: "Escalado Estratégico", 
-      desc: "Crecemos contigo, activando nuevas palancas de crecimiento según evoluciona tu empresa." 
-    }
+    { title: "Inmersión", desc: "Nos convertimos en un brazo más de tu equipo para entender tus metas." },
+    { title: "Plan Maestro", desc: "Diseñamos una hoja de ruta con hitos trimestrales claros." },
+    { title: "Ejecución", desc: "Desarrollamos, optimizamos y lanzamos campañas de forma coordinada." },
+    { title: "Evolución", desc: "Ajustamos la estrategia según los datos de negocio reales." }
   ]
 };
 
 const TodoParaTuNegocio = () => (
-  <PageLayout
-    title="Todo para tu Negocio | Iorana Digital"
-    description="Solución integral de marketing y tecnología. Tu departamento de marketing externo para escalar tu negocio con una estrategia 360°."
-    canonical="https://iorana.digital/soluciones/todo-para-tu-negocio"
-  >
-    {/* ✅ CORRECCIÓN: Usamos el spread operator para pasar las props individuales */}
+  <div className="pt-24 bg-[#0a2b49] min-h-screen">
     <ServicePageTemplate {...serviceData} />
-  </PageLayout>
+  </div>
 );
 
 export default TodoParaTuNegocio;
