@@ -7,7 +7,6 @@ import CasesSection from "@/components/CasesSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -68,8 +67,6 @@ const Index = () => {
         <FAQSection />
         <ContactSection />
       </main>
-
-      <Footer />
     </div>
   );
 };
