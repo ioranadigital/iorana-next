@@ -74,7 +74,7 @@ const Navbar = () => {
   };
 
   return (
-   <nav className="fixed top-0 left-0 w-full z-[100] bg-[#0a2b49]/90 backdrop-blur-md border-b border-white/10">
+  <nav className="fixed top-0 left-0 w-full z-[9999] bg-[#0a2b49]/95 backdrop-blur-md border-b border-white/10">
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
           <img src="/iorana-marketing-digital.png" alt="Logo" className="h-8 w-auto object-contain shrink-0" />
