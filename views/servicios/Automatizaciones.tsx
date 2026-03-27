@@ -1,58 +1,69 @@
 "use client";
-import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
-import { Repeat } from "lucide-react";
 
-const data = {
-  icon: Repeat,
-  title: "Automatizaciones",
-  subtitle: "Elimina tareas manuales y escala tus operaciones de marketing y ventas. Conectamos tus herramientas para que tu equipo se enfoque en lo que realmente importa.",
-  includes: [
-    "Automatización de flujos de marketing (email sequences, nurturing)",
-    "Integración y configuración de CRM (HubSpot, Salesforce, Pipedrive)",
-    "Workflows personalizados con Make, Zapier o n8n",
-    "Automatización de reporting y dashboards",
-    "Sincronización de datos entre plataformas",
-    "Chatbots y respuestas automáticas inteligentes",
+import React from "react";
+import PageLayout from "@/components/PageLayout";
+import ServicePageTemplate3 from "@/components/ServicePageTemplate3";
+import { Bot, Cpu, Zap, Share2 } from "lucide-react";
+
+/**
+ * Definición de los datos del servicio.
+ * Esto soluciona el error "Cannot find name 'serviceData'"
+ */
+const serviceData = {
+  title: "Automatizaciones Inteligentes",
+  subtitle: "Eficiencia Operativa con IA",
+  description: 
+    "Liberamos a tu equipo de las tareas repetitivas. Diseñamos e implementamos flujos de trabajo automatizados que conectan tus herramientas favoritas y optimizan cada proceso de tu negocio.",
+  benefits: [
+    "Ahorro directo de +20 horas semanales por empleado",
+    "Eliminación total de errores por entrada manual de datos",
+    "Sincronización en tiempo real entre CRM, ERP y Marketing",
+    "Escalabilidad operativa sin aumentar la plantilla",
+    "Notificaciones inteligentes y reportes automatizados"
   ],
-  whyMatters: {
-    title: "¿Por qué automatizar?",
-    desc: "",
-    points: [
-      "Las empresas que automatizan experimentan un aumento del 451% en leads cualificados",
-      "Elimina errores humanos y garantiza seguimiento consistente de cada lead",
-      "Un workflow bien diseñado trabaja 24/7, incluso cuando tu equipo descansa",
-    ],
-  },
+  stats: [
+    { label: "Horas Ahorradas", value: "85%" },
+    { label: "Reducción de Errores", value: "99%" },
+    { label: "ROI Proyectado", value: "4x" },
+    { label: "Procesos Activos", value: "+100" }
+  ],
   process: [
-    { step: "1", title: "Auditoría de Procesos", desc: "Mapeamos todos tus procesos actuales de marketing y ventas para identificar cuellos de botella y oportunidades de automatización." },
-    { step: "2", title: "Diseño de Workflows", desc: "Diseñamos los flujos automatizados con lógica condicional, triggers y acciones alineados con tu customer journey." },
-    { step: "3", title: "Integración de Herramientas", desc: "Conectamos tu CRM, email marketing, analytics y todas las herramientas necesarias en un ecosistema unificado." },
-    { step: "4", title: "Implementación y Testing", desc: "Construimos cada automatización, la testamos exhaustivamente y la ponemos en producción con monitorización activa." },
-    { step: "5", title: "Optimización Continua", desc: "Analizamos el rendimiento de cada workflow y lo optimizamos para mejorar tasas de conversión y eficiencia operativa." },
-  ],
-  metrics: [
-    { value: "80%", label: "Menos tareas manuales" },
-    { value: "+451%", label: "Leads cualificados" },
-    { value: "24/7", label: "Operación continua" },
-    { value: "15h", label: "Ahorro semanal" },
-  ],
-  faqs: [
-    { q: "¿Con qué herramientas trabajáis?", a: "Trabajamos con Make (Integromat), Zapier, n8n, HubSpot, ActiveCampaign, Mailchimp, Salesforce y prácticamente cualquier herramienta que tenga API." },
-    { q: "¿Necesito cambiar mi CRM actual?", a: "No necesariamente. Nos adaptamos a tu stack actual. Si detectamos que tu CRM actual tiene limitaciones, te asesoraremos sobre alternativas." },
-    { q: "¿Cuánto tiempo lleva implementar las automatizaciones?", a: "Depende de la complejidad. Automatizaciones simples pueden estar listas en 1-2 semanas. Proyectos más complejos con múltiples integraciones pueden llevar 4-8 semanas." },
-    { q: "¿Qué pasa si algo falla en la automatización?", a: "Configuramos alertas y monitorizamos cada workflow. Si algo falla, lo detectamos rápidamente y lo solucionamos. También incluimos lógica de error handling para evitar pérdida de datos." },
-  ],
+    { 
+      title: "Auditoría de Flujos", 
+      desc: "Identificamos las tareas manuales que consumen más tiempo en tu día a día." 
+    },
+    { 
+      title: "Diseño de Arquitectura", 
+      desc: "Creamos el mapa de conexiones entre tus herramientas (Make, Zapier, APIs)." 
+    },
+    { 
+      title: "Desarrollo y Conexión", 
+      desc: "Configuramos los triggers y acciones para que la información fluya sola." 
+    },
+    { 
+      title: "Testing Riguroso", 
+      desc: "Validamos cada escenario para asegurar que la automatización sea infalible." 
+    },
+    { 
+      title: "Despliegue y Soporte", 
+      desc: "Monitorizamos el rendimiento y optimizamos los flujos continuamente." 
+    }
+  ]
 };
 
-const Automatizaciones = () => (
-  <PageLayout
-    title="Automatizaciones de Marketing | Iorana Digital"
-    description="Automatización de marketing y ventas en Asturias. Workflows con Make, Zapier, integración CRM y email flows para escalar tu negocio."
-    canonical="https://iorana.digital/servicios/automatizaciones"
-  >
-  <ServicePageTemplate {...serviceData} />
-  </PageLayout>
-);
+const Automatizaciones = () => {
+  return (
+    <PageLayout
+      title="Automatizaciones de Procesos | Iorana Digital"
+      description="Optimiza tu negocio con automatizaciones inteligentes y flujos de trabajo eficientes."
+      canonical="https://iorana.digital/servicios/automatizaciones"
+    >
+      {/* Usamos el Spread Operator para pasar los datos. 
+          Esto corrige el error de tipos de la línea 54
+      */}
+      <ServicePageTemplate3 {...serviceData} />
+    </PageLayout>
+  );
+};
 
 export default Automatizaciones;
