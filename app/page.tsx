@@ -61,8 +61,8 @@ export default function Page() {
           <div className="flex flex-col min-h-screen bg-[#0a2b49]">
             <Navbar />
             
-            {/* Ancho 100% (w-full) y overflow-visible para que 
-                las animaciones entren desde los laterales sin cortes.
+            {/* Mantenemos w-full y overflow-visible para que las tarjetas 
+                y animaciones de About y Cases no se corten al entrar.
             */}
             <main className="flex-1 w-full overflow-visible pt-16">
               <Routes>
@@ -88,6 +88,9 @@ export default function Page() {
               </Routes>
             </main>
 
+            {/* SI EL FOOTER SIGUE SALIENDO DUPLICADO:
+               Comenta la línea de abajo y deja que lo maneje el layout.tsx global.
+            */}
             <Footer />
           </div>
         </BrowserRouter>
