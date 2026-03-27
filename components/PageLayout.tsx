@@ -73,12 +73,15 @@ const PageLayout = ({
   }, [title, description, canonical, robots, ogTitle, ogDescription, ogImage]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main className="flex-grow pt-0"> {/* Cambia pt-20 por pt-0 si el Template ya tiene su propio espacio */}
-  {children}
-</main>
-    </div>
+    <div className="flex flex-col min-h-screen bg-[#0a2b49]">
+  {/* 🛠️ ENVOLVEMOS EL NAV PARA DARLE PRIORIDAD */}
+  <header className="relative z-[9999]"> 
+    <Navbar />
+  </header>  
+  <main className="flex-1 w-full overflow-visible pt-16">
+    {/* Rutas ... */}
+  </main>
+</div>
   );
 };
 
