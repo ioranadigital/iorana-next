@@ -5,23 +5,22 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-[90vh] w-full flex items-center overflow-hidden bg-[#0a2b49]"
-    >
-      {/* 🖼️ FONDO ABSOLUTO: Esto garantiza que cubra el 100% sin importar el container */}
+    /* 1. La sección padre debe ser w-full (ancho total) y sin paddings laterales que limiten */
+    <section id="hero" className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
+      
+      {/* 2. CAPA DE FONDO: Esta capa ignora el container y se expande a toda la pantalla */}
       <div 
-        className="absolute inset-0 z-0 w-full h-full"
+        className="absolute inset-0 w-full h-full z-0"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.4), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
+          backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.5), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
       />
 
-      {/* 📦 CONTENEDOR DE TEXTO: Mantiene el alineado pero no limita al fondo */}
-      <div className="container relative z-10 mx-auto px-4 pt-20 pb-16">
+      {/* 3. CAPA DE CONTENIDO: Aquí sí usamos el container para que el texto no toque los bordes */}
+      <div className="container relative z-10 mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
