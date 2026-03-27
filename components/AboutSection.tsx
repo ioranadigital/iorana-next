@@ -10,26 +10,23 @@ const values = [
 ];
 
 const AboutSection = () => (
-  /* 1. SECCIÓN: w-full y bg directo para evitar cortes visuales */
   <section id="nosotros" className="w-full py-24 bg-[#0a2b49] overflow-visible">
-    
-    {/* 2. CONTENEDOR DE CENTRADO: Alineado con el resto de la web */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
-      
       <div className="grid lg:grid-cols-2 gap-16 items-center overflow-visible">
         
-        {/* BLOQUE IZQUIERDO: Textos y Valores */}
+        {/* BLOQUE IZQUIERDO */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           className="overflow-visible"
         >
-          <span className="text-sm font-bold text-orange-500 tracking-widest uppercase">
+          {/* ✅ Color exacto aplicado */}
+          <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase">
             Nosotros
           </span>
           <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] leading-tight tracking-tight">
-            Obsesionados con el crecimiento de <span className="text-orange-500">tu empresa</span>
+            Obsesionados con el crecimiento de <span className="text-[#ff8c00]">tu empresa</span>
           </h2>
 
           <div className="mt-8 space-y-4">
@@ -51,13 +48,16 @@ const AboutSection = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-[#08223a] border border-[#ebf2f7]/10 shadow-xl transition-all duration-300 hover:border-orange-500/30 hover:-translate-y-1 group"
+                // ✅ Hover con color exacto
+                className="flex items-start gap-4 p-6 rounded-2xl bg-[#08223a] border border-[#ebf2f7]/10 shadow-xl transition-all duration-300 hover:border-[#ff8c00]/30 hover:-translate-y-1 group"
               >
                 <div className="flex items-center justify-center p-2 rounded-lg bg-[#0a2b49] group-hover:scale-110 transition-transform">
-                  <v.icon className="h-6 w-6 text-orange-500" />
+                  {/* ✅ Icono con color exacto */}
+                  <v.icon className="h-6 w-6 text-[#ff8c00]" />
                 </div>
                 <div>
-                  <div className="font-bold text-[#ebf2f7] mb-1 group-hover:text-orange-500 transition-colors">
+                  {/* ✅ Texto hover con color exacto */}
+                  <div className="font-bold text-[#ebf2f7] mb-1 group-hover:text-[#ff8c00] transition-colors">
                     {v.label}
                   </div>
                   <div className="text-[#ebf2f7]/60 text-sm leading-snug">
@@ -69,7 +69,7 @@ const AboutSection = () => (
           </div>
         </motion.div>
 
-        {/* BLOQUE DERECHO: Estadísticas (Card Neon) */}
+        {/* BLOQUE DERECHO: Estadísticas */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -77,24 +77,24 @@ const AboutSection = () => (
           className="relative overflow-visible"
         >
           <div className="bg-[#08223a] p-10 rounded-3xl border border-[#ebf2f7]/10 shadow-2xl relative">
-            {/* Decoración sutil de fondo */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-500/10 blur-3xl rounded-full" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#ff8c00]/10 blur-3xl rounded-full" />
             
-            <div className="text-6xl font-black text-orange-500 mb-2">50+</div>
+            {/* ✅ Número grande con efecto Glow */}
+            <div className="text-6xl font-black text-[#ff8c00] mb-2 drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">50+</div>
             <div className="text-xl font-bold text-[#ebf2f7] mb-8">Startups SaaS escaladas</div>
             
             <div className="space-y-8">
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-[#ebf2f7]/80">Renovación tras primer trimestre</span>
-                  <span className="text-orange-500 font-bold text-lg">92%</span>
+                  <span className="text-[#ff8c00] font-bold text-lg">92%</span>
                 </div>
                 <div className="w-full bg-[#0a2b49] rounded-full h-2.5 overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     whileInView={{ width: "92%" }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="bg-orange-500 h-full rounded-full" 
+                    className="bg-[#ff8c00] h-full rounded-full" 
                   />
                 </div>
               </div>
@@ -102,14 +102,14 @@ const AboutSection = () => (
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-[#ebf2f7]/80">Page 1 en keywords objetivo</span>
-                  <span className="text-orange-500 font-bold text-lg">85%</span>
+                  <span className="text-[#ff8c00] font-bold text-lg">85%</span>
                 </div>
                 <div className="w-full bg-[#0a2b49] rounded-full h-2.5 overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     whileInView={{ width: "85%" }}
                     transition={{ duration: 1, delay: 0.7 }}
-                    className="bg-orange-500 h-full rounded-full" 
+                    className="bg-[#ff8c00] h-full rounded-full shadow-[0_0_10px_rgba(255,140,0,0.5)]" 
                   />
                 </div>
                 <p className="text-xs text-[#ebf2f7]/40 italic pt-2">
