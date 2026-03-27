@@ -34,9 +34,6 @@ const Index = () => {
         <FAQSection />
         <ContactSection />
       </main>
-
-      {/* El Footer cierra la estructura de la página */}
-      <Footer />
     </div>
   );
 };
