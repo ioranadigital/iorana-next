@@ -91,7 +91,6 @@ export default function Page() {
             {/* SI EL FOOTER SIGUE SALIENDO DUPLICADO:
                Comenta la línea de abajo y deja que lo maneje el layout.tsx global.
             */}
-            <Footer />
           </div>
         </BrowserRouter>
       </TooltipProvider>
