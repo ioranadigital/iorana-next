@@ -2,7 +2,7 @@
 
 import React from "react";
 import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
+import ServicePageTemplate from "../../components/ServicePageTemplate";
 import { Bot, Cpu, Zap, Share2 } from "lucide-react";
 
 /**
