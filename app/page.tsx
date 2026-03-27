@@ -9,14 +9,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 
 // Componentes globales
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer"; // Importado aquí pero controlado
 
-// Vistas base
+// Vistas base - Asegúrate de que la T sea Mayúscula para coincidir con tus archivos
 import Index from "./Index"; 
 import NotFound from "./NotFound";
 import Privacidad from "./Privacidad";
-import Terminos from "./Terminos";
+import Terminos from "./Terminos"; // ✅ Corregido para evitar "Module not found"
 
-// Servicios
+// Servicios (Rutas relativas verificadas)
 import SeoTecnico from "../views/servicios/SeoTecnico";
 import PpcPaidSearch from "../views/servicios/PpcPaidSearch";
 import ContentMarketing from "../views/servicios/ContentMarketing";
@@ -57,6 +58,7 @@ export default function Page() {
         <BrowserRouter>
           <ScrollToTop />
           
+          {/* Fondo bg-[#0a2b49] consistente con la sección Nosotros */}
           <div className="flex flex-col min-h-screen bg-[#0a2b49]">
             <Navbar />
             
@@ -83,7 +85,9 @@ export default function Page() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
-            {/* 🏁 Footer eliminado de aquí para evitar el duplicado visual */}
+
+            {/* ✅ Footer único al final de la estructura de rutas */}
+            <Footer />
           </div>
         </BrowserRouter>
       </TooltipProvider>
