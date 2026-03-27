@@ -1,67 +1,37 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
-// Importación corregida hacia el archivo existente
 import ServicePageTemplate from "../../components/ServicePageTemplate";
-import { PenTool } from "lucide-react";
 
-/**
- * Adaptamos el objeto 'data' para que coincida exactamente 
- * con las propiedades que espera ServicePageTemplate.
- */
 const serviceData = {
-  title: "Content Marketing Estratégico",
-  subtitle: "Contenido que educa, posiciona y convierte",
-  description: 
-    "Creamos un motor de contenido que atrae a tu buyer persona, construye autoridad y lo guía a través de tu funnel de ventas con piezas estratégicas y optimizadas.",
+  title: "Content Marketing",
+  subtitle: "Historias que conectan y venden",
+  description: "Atraemos a tu público ideal mediante contenido de valor que resuelve sus dudas y los guía hacia la compra.",
   benefits: [
-    "Estrategia de contenidos basada en topic clusters y buyer journey",
-    "Creación de artículos de blog con optimización SEO avanzada",
-    "Copywriting persuasivo para landing pages y correos",
-    "Diseño de funnel de contenido (TOFU, MOFU, BOFU)",
-    "Creación de lead magnets: ebooks, guías y whitepapers",
-    "Calendario editorial y gestión integral de publicaciones"
+    "Estrategia de contenidos basada en búsqueda real",
+    "Redacción SEO optimizada para humanos y algoritmos",
+    "Lead magnets que disparan tu lista de correos",
+    "Calendario editorial coherente y constante",
+    "Distribución multicanal de impacto"
   ],
   stats: [
-    { value: "+320%", label: "Tráfico en Blog" },
-    { value: "3x", label: "Leads Generados" },
-    { value: "+85%", label: "Tiempo en Página" },
-    { value: "62%", label: "Ahorro en Coste/Lead" }
+    { label: "Engagement", value: "+80%" },
+    { label: "Nuevos Leads", value: "+50%" },
+    { label: "Autoridad", value: "Top" },
+    { label: "Fidelización", value: "Alta" }
   ],
   process: [
-    { 
-      title: "Investigación y Estrategia", 
-      desc: "Analizamos tu ICP y keywords para definir pilares de contenido alineados con tus objetivos." 
-    },
-    { 
-      title: "Calendario Editorial", 
-      desc: "Planificamos temas, formatos y canales de distribución para los próximos 3-6 meses." 
-    },
-    { 
-      title: "Producción de Calidad", 
-      desc: "Redactores especializados crean contenido optimizado para SEO y conversión." 
-    },
-    { 
-      title: "Distribución Activa", 
-      desc: "Publicamos y promocionamos cada pieza para maximizar su alcance e impacto orgánico." 
-    },
-    { 
-      title: "Análisis de Datos", 
-      desc: "Medimos el rendimiento y optimizamos la estrategia basándonos en conversiones reales." 
-    }
+    { title: "Investigación", desc: "Entendemos qué busca y qué le duele a tu cliente ideal." },
+    { title: "Creación", desc: "Producimos contenido premium que marca la diferencia." },
+    { title: "Promoción", desc: "Hacemos que tu contenido llegue a donde está tu audiencia." },
+    { title: "Medición", desc: "Analizamos qué temas generan más negocio para potenciarlo." }
   ]
 };
 
 const ContentMarketing = () => (
-  <PageLayout
-    title="Content Marketing | Iorana Digital"
-    description="Servicios de content marketing estratégico. Blog, copywriting SEO, lead magnets y estrategia de contenidos para tu empresa."
-    canonical="https://iorana.digital/servicios/content-marketing"
-  >
-
+  <div className="pt-24 bg-[#0a2b49] min-h-screen">
     <ServicePageTemplate {...serviceData} />
-  </PageLayout>
+  </div>
 );
 
 export default ContentMarketing;
