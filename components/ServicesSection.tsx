@@ -1,164 +1,68 @@
-"use client";
-import { motion } from "framer-motion";
-import { 
-  Search, 
-  MousePointerClick, 
-  PenTool, 
-  CheckCircle2, 
-  Repeat, 
-  CodeXml, 
-  Layers3,
-  ArrowRight 
-} from "lucide-react";
+import React from "react";
+import { Repeat, Code, Layout, BarChart3, PenTool, ShieldCheck } from "lucide-react";
+import { Button } from "./ui/button";
 
 const services = [
   {
-    icon: Search,
-    title: "SEO Técnico & On-Page",
-    benefit: "Posiciona donde tu ICP busca soluciones",
-    desc: "Optimizamos cada rincón de tu sitio para que Google te encuentre primero y tus visitantes conviertan más.",
-    features: [
-      "Auditoría técnica completa y roadmap de mejoras",
-      "Keyword research con intent mapping para SaaS",
-      "Optimización de landing pages y arquitectura web",
-    ],
-    // CONFIGURACIÓN INDEPENDIENTE DE ENLACE
-    href: "/servicios/seo-tecnico",
-    linkText: "Ver estrategia SEO"
-  },
-  {
-    icon: MousePointerClick,
-    title: "PPC & Paid Search",
-    benefit: "Tráfico de alta intención desde el día 1",
-    desc: "Campañas en Google Ads diseñadas para captar leads cualificados mientras tu SEO crece orgánicamente.",
-    features: [
-      "Campañas de Search, Display y YouTube Ads",
-      "Optimización de CPA y ROAS en tiempo real",
-      "A/B testing de copies y landing pages",
-    ],
-    href: "/servicios/ppc-paid-search",
-    linkText: "Escalar mis campañas"
-  },
-  {
-    icon: PenTool,
-    title: "Content Marketing",
-    benefit: "Contenido que educa, posiciona y vende",
-    desc: "Creamos contenido estratégico que atrae a tu buyer persona y lo guía a través de tu funnel de conversión.",
-    features: [
-      "Estrategia de contenido basada en topic clusters",
-      "Artículos, guías y whitepapers optimizados",
-      "Link building con outreach personalizado",
-    ],
-    href: "/servicios/content-marketing",
-    linkText: "Solicitar Plan de Contenidos"
-  },
-  {
-    icon: Repeat,
     title: "Automatizaciones",
-    benefit: "Eficiencia operativa sin fricciones",
-    desc: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
-    features: [
-      "Workflows personalizados (Zapier, Make, n8n)",
-      "Sincronización de datos entre CRM y Marketing",
-      "Automatización de reporting y dashboards",
-    ],
-    href: "/servicios/automatizaciones",
-    linkText: "Optimizar mis procesos"
+    icon: <Repeat className="w-6 h-6" />,
+    description: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
+    link: "/servicios/automatizaciones",
+    color: "bg-blue-500/10",
+    border: "border-blue-500/20"
   },
-  {
-    icon: CodeXml,
-    title: "Desarrollo Web",
-    benefit: "Tu mejor activo de ventas 24/7",
-    desc: "Diseñamos y desarrollamos sitios web de alto rendimiento enfocados en la experiencia de usuario y la conversión.",
-    features: [
-      "Desarrollo con Next.js y Tailwind CSS",
-      "Optimización extrema de Core Web Vitals",
-      "Diseño UI/UX orientado a producto SaaS",
-    ],
-    href: "/servicios/desarrollo-web",
-    linkText: "Mejorar mi rendimiento web"
-  },
-  {
-    icon: Layers3,
-    title: "Jira Service Management",
-    benefit: "Escalabilidad en soporte y procesos",
-    desc: "Configuramos tu centro de servicios para gestionar solicitudes internas y externas con estándares profesionales.",
-    features: [
-      "Configuración de portales de autoservicio",
-      "Gestión de colas, SLAs y automatizaciones",
-      "Integración con Confluence y Opsgenie",
-    ],
-    href: "/servicios/jira-service",
-    linkText: "Configurar mi Service Desk"
-  },
+  // ... añade el resto de tus servicios aquí
 ];
 
-const ServicesSection = () => (
-  <section id="servicios" className="section-padding bg-[#24496b] relative overflow-hidden scroll-mt-20">
-    <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-sm font-medium text-[#ebf2f7] tracking-widest uppercase opacity-80">
-          Servicios
-        </span>
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mt-3 text-[#ebf2f7]">
-          Todo lo que necesitas para <span className="text-[#ff8c00]">dominar los rankings</span>
-        </h2>
-      </motion.div>
+export default function ServicesSection() {
+  return (
+    /* 1. SECCIÓN: w-full y overflow-visible para que las tarjetas no se corten al animar */
+    <section className="w-full py-24 bg-[#0a2b49] overflow-visible">
+      
+      {/* 2. CONTENEDOR DE CENTRADO: Máximo 1280px (max-w-7xl) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-orange-500 mb-3">
+            Nuestros Servicios
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-extrabold text-[#ebf2f7] tracking-tight">
+            Soluciones digitales para <span className="text-orange-500">escalar tu negocio</span>
+          </h3>
+        </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
-          className="group flex flex-col p-8 rounded-2xl transition-all duration-500 border border-[#ebf2f7]/10 bg-[#1a3b59] hover:bg-[#0a2b49] hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
-          >
-            <div className="w-12 h-12 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
-              <s.icon className="h-8 w-8 text-[#ebf2f7]" />
-            </div>
-
-            <div className="text-[10px] font-bold text-[#ebf2f7]/60 uppercase tracking-widest mb-2 group-hover:text-[#ebf2f7]/70">
-              {s.benefit}
-            </div>
-            
-          <h3 className="text-xl text-[#ebf2f7] font-heading font-bold mb-3 transition-colors duration-300 group-hover:text-[#ff8c00]">
-            {s.title}
-         </h3>            
-            <p className="text-[#ebf2f7]/80 mb-6 leading-relaxed text-sm group-hover:text-[#ebf2f7] transition-colors">
-              {s.desc}
-            </p>
-            
-            <ul className="space-y-3 mb-8">
-              {s.features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-[13px] text-[#ebf2f7]/90 group-hover:text-[#ebf2f7] transition-colors">
-                  <CheckCircle2 className="h-4 w-4 text-[#ff8c00] mt-0.5 shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            {/* ENLACE CONFIGURABLE E INDEPENDIENTE POR TARJETA */}
-            <div className="mt-auto pt-4 flex justify-end">
-              <a 
-                href={s.href}
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#ff8c00] hover:text-[#ebf2f7] transition-all duration-300 group/link"
+        {/* 3. GRID DE TARJETAS: 
+            Aprovechamos el espacio con gap-8 para que no se vean amontonadas 
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-visible">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className={`group p-8 rounded-3xl border ${service.border} ${service.color} 
+                         backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] 
+                         hover:shadow-2xl hover:shadow-blue-900/20 overflow-visible`}
+            >
+              <div className="mb-6 inline-flex p-3 rounded-2xl bg-[#0a2b49] border border-[#ebf2f7]/10 text-[#ebf2f7]">
+                {service.icon}
+              </div>
+              
+              <h4 className="text-2xl font-bold text-[#ebf2f7] mb-4">{service.title}</h4>
+              <p className="text-[#ebf2f7]/70 leading-relaxed mb-8">
+                {service.description}
+              </p>
+              
+              <Button 
+                variant="ghost" 
+                className="group/btn p-0 text-orange-500 hover:bg-transparent hover:text-orange-400 font-semibold"
+                onClick={() => window.location.href = service.link}
               >
-                {s.linkText}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </a>
+                Saber más 
+                <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
+              </Button>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
-
-export default ServicesSection;
+    </section>
+  );
+}
