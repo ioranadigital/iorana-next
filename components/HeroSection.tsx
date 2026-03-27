@@ -7,16 +7,18 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
-      {/* Background image */}
-      <div className="absolute inset-0">
+      {/* Contenedor de imagen al 100% */}
+      <div className="absolute inset-0 w-full h-full">
         <Image 
           src="/assets/hero-bg.jpg" 
           alt="IORANA Digital agencia marketing Asturias" 
           fill 
-          className="object-cover opacity-20" 
+          sizes="100vw"
+          className="object-cover object-center opacity-30" 
           priority 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49]/60 via-[#0a2b49] to-[#0a2b49]" />
+        {/* Gradiente suavizado para que la imagen sea visible en todo el contenedor */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49]/40 via-[#0a2b49]/70 to-[#0a2b49]" />
       </div>
 
       <div className="container relative z-10 pt-20 pb-16">
@@ -41,7 +43,6 @@ const HeroSection = () => {
             Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO basadas en datos, PPC de alto rendimiento y contenido que posiciona de verdad.
           </p>
 
-          {/* Botones corregidos y alineados - COMILLA CERRADA AQUÍ */}
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <Button 
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-7 text-lg rounded-2xl font-bold shadow-lg shadow-orange-500/20"
