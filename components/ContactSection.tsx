@@ -92,10 +92,9 @@ const ContactSection = () => {
     className="bg-[#0a2b49] border-[#ebf2f7]/20 text-[#ebf2f7] placeholder:text-[#ebf2f7]/40 focus:border-[#ebf2f7]/50 resize-none" 
   />
 
-  <Button className="w-full bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90 transition-all shadow-lg">
-    Agendar Consultoría Gratuita
-    <Send className="ml-2 h-4 w-4" />
-  </Button>
+<Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl">
+  Solicitar auditoría de marketing gratuita
+</Button>
 </motion.form>
         </div>
       </div>
