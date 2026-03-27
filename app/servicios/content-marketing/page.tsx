@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import ContentMarketing from "@/views/servicios/ContentMarketing";
 
+// SEO Metadata para esta página
 export const metadata: Metadata = {
-  title: "Estrategia de Content Marketing | Contenido que Convierte | IORANA",
-  description: "Creamos contenido estratégico que atrae a tu audiencia ideal y posiciona tu marca como autoridad en el sector.",
+  title: "Content Marketing & Estrategia Digital | IORANA",
+  description: "Creamos contenido que atrae, educa y convierte a tu audiencia en clientes leales.",
 };
 
 export default function Page() {
