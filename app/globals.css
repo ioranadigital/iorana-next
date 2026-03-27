@@ -122,9 +122,20 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* Quitamos 'bg-background' que es blanco/negro por defecto */
+    @apply bg-[#0a2b49] text-[#ebf2f7] font-sans; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Fuerza el centrado horizontal global */
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  
+  /* Añade esto para que los títulos usen Montserrat automáticamente */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 }
