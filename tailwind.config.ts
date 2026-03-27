@@ -20,12 +20,12 @@ export default {
         serif: ['Lora', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
       },
-      colors: {
-        // ✅ Tu naranja corporativo centralizado
-        orange: {
-          500: '#ff8c00', // Clase: text-orange-500 o bg-orange-500
-          600: '#e67e00', // Versión un poco más oscura para hovers
-        },
+     colors: {
+  // ✅ Usamos 'brand' en lugar de 'orange' para evitar conflictos con Tailwind
+  brand: {
+    orange: '#ff8c00',
+    dark: '#e67e00',
+  },
         // Mantenemos el resto de tu configuración de Shadcn UI
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
