@@ -1,71 +1,37 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
-/** * Importación corregida con ruta relativa al archivo real.
- * Esto soluciona el error "Module not found".
- */
 import ServicePageTemplate from "../../components/ServicePageTemplate";
-import { Palette } from "lucide-react";
 
-/**
- * Reestructuramos el objeto de datos para que sea compatible 
- * con las propiedades individuales del template.
- */
 const serviceData = {
-  title: "Imagen de Marca y Branding",
-  subtitle: "Identidades visuales que conectan y diferencian",
-  description: 
-    "Creamos identidades memorables que reflejan la esencia de tu negocio. Tu marca es tu activo más valioso; la diseñamos estratégicamente para que genere confianza y autoridad.",
+  title: "Content Marketing",
+  subtitle: "Historias que conectan y venden",
+  description: "Atraemos a tu público ideal mediante contenido de valor que resuelve sus dudas y los guía hacia la compra.",
   benefits: [
-    "Diseño de logotipo principal y variantes adaptativas",
-    "Manual de identidad visual completo (colores, fuentes e iconos)",
-    "Diseño de papelería corporativa y activos digitales",
-    "Plantillas personalizadas para redes sociales",
-    "Guía estratégica de tono y voz de marca",
-    "Estrategia integral de posicionamiento en el mercado"
+    "Estrategia de contenidos basada en búsqueda real",
+    "Redacción SEO optimizada para humanos y algoritmos",
+    "Lead magnets que disparan tu lista de correos",
+    "Calendario editorial coherente y constante",
+    "Distribución multicanal de impacto"
   ],
   stats: [
-    { value: "+33%", label: "Más Ingresos" },
-    { value: "80%", label: "Reconocimiento" },
-    { value: "100%", label: "Consistencia Visual" },
-    { value: "+50%", label: "Engagement Social" }
+    { label: "Engagement", value: "+80%" },
+    { label: "Nuevos Leads", value: "+50%" },
+    { label: "Autoridad", value: "Top" },
+    { label: "Fidelización", value: "Alta" }
   ],
   process: [
-    { 
-      title: "Investigación Estratégica", 
-      desc: "Analizamos audiencia y competencia para definir tu lugar único en el mercado." 
-    },
-    { 
-      title: "Conceptualización Creativa", 
-      desc: "Desarrollamos moodboards que capturan la personalidad de tu futura marca." 
-    },
-    { 
-      title: "Diseño y Creación", 
-      desc: "Damos vida al logo, paletas y elementos visuales de tu nueva identidad." 
-    },
-    { 
-      title: "Refinamiento Colaborativo", 
-      desc: "Iteramos basándonos en tu feedback hasta alcanzar la perfección visual." 
-    },
-    { 
-      title: "Entrega y Guías", 
-      desc: "Recibes el manual de marca y todos los archivos listos para su implementación." 
-    }
+    { title: "Investigación", desc: "Entendemos qué busca y qué le duele a tu cliente ideal." },
+    { title: "Creación", desc: "Producimos contenido premium que marca la diferencia." },
+    { title: "Promoción", desc: "Hacemos que tu contenido llegue a donde está tu audiencia." },
+    { title: "Medición", desc: "Analizamos qué temas generan más negocio para potenciarlo." }
   ]
 };
 
-const ImagenDeMarca = () => (
-  <PageLayout
-    title="Imagen de Marca | Iorana Digital"
-    description="Diseño de identidad visual y branding profesional. Logotipos, manual de marca y estrategia de posicionamiento para empresas."
-    canonical="https://iorana.digital/servicios/imagen-de-marca"
-  >
-    {/** * ✅ SOLUCIÓN AL ERROR DE BUILD: 
-     * Pasamos las propiedades desglosadas con el operador spread.
-     */}
+const ContentMarketing = () => (
+  <div className="pt-24 bg-[#0a2b49] min-h-screen">
     <ServicePageTemplate {...serviceData} />
-  </PageLayout>
+  </div>
 );
 
-export default ImagenDeMarca;
+export default ContentMarketing;
