@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   return (
     /* 1. EL PADRE: w-full y overflow-visible 
-       La sección principal debe permitir que su contenido se desborde para que la imagen toque los bordes
+       La sección principal debe permitir que su contenido se desborde para que la imagen toque los bordes.
     */
     <section 
       id="hero" 
