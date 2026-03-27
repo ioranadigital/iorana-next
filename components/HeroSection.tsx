@@ -5,24 +5,31 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]">
+    <section 
+      id="hero" 
+      /* Reducimos el z-index de la sección para que el Navbar (z-50) quede siempre por encima */
+      className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49] z-0"
+    >
       
-      {/* 🖼️ CAPA DE FONDO DEFINITIVA: 
-          'w-screen' y 'left-1/2 -translate-x-1/2' aseguran que la imagen siempre toque los bordes 
-          del navegador, ignorando cualquier contenedor padre.
+      {/* 🖼️ CAPA DE FONDO DINÁMICA
+          Usamos 100vw y left-50% para ignorar cualquier contenedor padre que esté cortando la imagen.
       */}
       <div 
-        className="absolute inset-0 w-full h-full z-0"
+        className="absolute inset-0 h-full pointer-events-none"
         style={{
+          width: '100vw',
+          left: '50%',
+          transform: 'translateX(-50%)',
           backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.5), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1
         }}
       />
 
-      {/* 📦 CONTENEDOR DE TEXTO: 
-          Solo envuelve al texto para mantenerlo alineado, pero no afecta al fondo.
+      {/* 📦 CONTENEDOR DE CONTENIDO
+          Mantenemos el texto alineado al sistema de rejilla (container).
       */}
       <div className="relative z-10 w-full">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
@@ -49,7 +56,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Button 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-7 text-lg rounded-2xl font-bold shadow-lg shadow-orange-500/20"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-7 text-lg rounded-2xl font-bold shadow-lg shadow-orange-500/20 transition-all hover:scale-105"
                 onClick={() => window.location.href = "/contacto"}
               >
                 Impulsar mi negocio ahora
@@ -57,7 +64,7 @@ const HeroSection = () => {
 
               <Button 
                 variant="outline"
-                className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/5 px-8 py-7 text-lg rounded-2xl bg-transparent"
+                className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 px-8 py-7 text-lg rounded-2xl bg-transparent transition-all"
                 onClick={() => window.location.href = "/soluciones/como-esta-optimizado-mi-web"}
               >
                 ¿Cómo está mi sitio web?
@@ -72,9 +79,13 @@ const HeroSection = () => {
                 { value: "3x", label: "ROI promedio" },
                 { value: "50+", label: "Casos de éxito" },
               ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl md:text-3xl font-heading font-black text-orange-500">{stat.value}</div>
-                  <div className="text-sm text-[#ebf2f7]/50 mt-1 uppercase tracking-wider font-medium">{stat.label}</div>
+                <div key={stat.label} className="group">
+                  <div className="text-2xl md:text-3xl font-heading font-black text-orange-500 group-hover:scale-110 transition-transform duration-300">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-[#ebf2f7]/50 mt-1 uppercase tracking-wider font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
