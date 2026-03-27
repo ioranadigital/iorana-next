@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google"; // Usamos las fuentes de tu marca
+// Importamos Montserrat e Inter (asegúrate de que estas sean tus fuentes)
+import { Montserrat, Inter } from "next/font/google"; 
 import "./globals.css";
 
-// Configuramos Montserrat para títulos e Inter para textos
 const montserrat = Montserrat({ 
   subsets: ["latin"],
   variable: "--font-heading",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "IORANA Digital | Agencia de Marketing Digital en Asturias",
     template: "%s | IORANA Digital"
   },
-  description: "Agencia de marketing digital en Asturias especializada en SEO, SEM y diseño web.",
+  description: "Agencia de marketing digital especializada en SEO, SEM y diseño web.",
   metadataBase: new URL("https://www.iorana.digital"),
   alternates: {
     canonical: "/"
@@ -37,9 +37,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${montserrat.variable} ${inter.variable}`}>
-      <body className={`${inter.className} antialiased bg-[#0a2b49] text-[#ebf2f7] min-h-screen`}>
-        {/* Este div es el "escudo" que evita que el contenido se pegue a los bordes */}
-        <div className="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+      {/* CAMBIO CLAVE: Añadimos 'flex', 'flex-col', y 'items-center' al body.
+        Esto obliga a que CUALQUIER hijo del body (como el Navbar, Footer y el children)
+        se comporte como un elemento flex centrado horizontalmente.
+      */}
+      <body className={`${inter.className} antialiased flex flex-col items-center bg-[#0a2b49] text-[#ebf2f7] min-h-screen w-full`}>
+        {/* Este div envuelve todo tu contenido. Tiene 'w-full' para ocupar 
+          todo el ancho disponible del body (que está centrado).
+        */}
+        <div className="relative flex flex-col w-full overflow-x-hidden">
           {children}
         </div>
       </body>
