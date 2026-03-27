@@ -1,71 +1,79 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
-import { Button } from "./ui/button";
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="w-full pt-32 pb-24 bg-[#0a2b49] overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        
-        {/* Etiqueta superior */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff8c00]/10 border border-[#ff8c00]/20 mb-6"
-        >
-          <Star className="h-4 w-4 text-[#ff8c00]" />
-          <span className="text-xs font-bold text-[#ebf2f7] uppercase tracking-widest">
-            Agencia de Growth Marketing para SaaS
-          </span>
-        </motion.div>
-
-        {/* TÍTULO PRINCIPAL CON RESPLANDOR */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-heading font-black text-[#ebf2f7] leading-tight tracking-tighter"
-        >
-          Soluciones digitales para <br />
-          <span className="text-[#ff8c00] drop-shadow-[0_0_15px_rgba(255,140,0,0.5)]">
-            escalar tu negocio
-          </span>
-        </motion.h1>
-
-        {/* Subtítulo */}
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-2xl mx-auto mt-8 text-xl text-[#ebf2f7]/70 leading-relaxed"
-        >
-          Ayudamos a startups SaaS y empresas tecnológicas a dominar Google, captar leads cualificados y disparar su MRR con estrategias validadas.
-        </motion.p>
-
-        {/* BOTÓN PRINCIPAL CON NARANJA EXACTO Y EFECTO GLOW */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Link href="/contacto">
-            <Button size="lg" className="bg-[#ff8c00] text-white font-bold rounded-full px-10 py-7 text-lg hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(255,140,0,0.3)] hover:shadow-[0_15px_40px_rgba(255,140,0,0.4)]">
-              Quiero Escalar Mi SaaS <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-          <button className="text-[#ebf2f7]/70 hover:text-white transition-colors p-4 text-sm font-medium">
-            Ver Casos de Éxito
-          </button>
-        </motion.div>
-
-      </div>
+    <section id="hero" className="relative w-full min-h-[90vh] flex items-center bg-[#0a2b49]">
       
-      {/* Decoración de fondo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-[#ff8c00]/10 blur-[150px] rounded-full -z-10" />
+      {/* 🖼️ FONDO: Usamos left-[-50vw] right-[-50vw] para asegurar que cubra TODO */}
+      <div 
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.5), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0 // Se mantiene en la base de la sección
+        }}
+      />
+
+      {/* CONTENIDO: z-10 para estar sobre el fondo, pero z-0 respecto al Nav */}
+      <div className="container relative z-10 mx-auto px-6 pt-20 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 mb-8">
+            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            <span className="text-xs font-medium text-[#ebf2f7]">Agencia de Marketing en Asturias</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black leading-[1.1] mb-6 text-[#ebf2f7]">
+            <span className="text-orange-500">Posiciona tu negocio</span><br />
+            donde tus clientes te buscan.
+          </h1>
+
+          <p className="text-lg md:text-xl text-[#ebf2f7]/70 max-w-2xl mb-10 leading-relaxed">
+            Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO basadas en datos, PPC de alto rendimiento y contenido que posiciona de verdad.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <Button 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-7 text-lg rounded-2xl font-bold shadow-lg shadow-orange-500/20"
+              onClick={() => window.location.href = "/contacto"}
+            >
+              Impulsar mi negocio ahora
+            </Button>
+
+            <Button 
+              variant="outline"
+              className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/5 px-8 py-7 text-lg rounded-2xl bg-transparent"
+              onClick={() => window.location.href = "/soluciones/como-esta-optimizado-mi-web"}
+            >
+              ¿Cómo está mi sitio web?
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Stats */}
+          <div className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-[#ebf2f7]/10">
+            {[
+              { value: "+250%", label: "Tráfico orgánico" },
+              { value: "3x", label: "ROI promedio" },
+              { value: "50+", label: "Casos de éxito" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-2xl md:text-3xl font-heading font-black text-orange-500">{stat.value}</div>
+                <div className="text-sm text-[#ebf2f7]/50 mt-1 uppercase tracking-wider font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
