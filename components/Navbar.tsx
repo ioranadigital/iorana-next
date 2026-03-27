@@ -17,7 +17,7 @@ const solutionLinks = [
   { label: 'Diseño de Landings', href: '/soluciones/diseno-de-landings' },
   { label: 'Todo para Tu Negocio', href: '/soluciones/todo-para-tu-negocio' },
   { label: 'Informe Gratuito', href: '/soluciones/como-esta-optimizado-mi-web' },
-];
+]; 
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
