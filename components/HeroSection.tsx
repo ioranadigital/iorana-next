@@ -46,15 +46,21 @@ const HeroSection = () => {
     <ArrowRight className="ml-2 h-4 w-4" />
   </a>
 </div>         
-           
-        <Button
-  size="lg"
-  variant="outline"
-  onClick={() => document.querySelector("#casos")?.scrollIntoView({ behavior: "smooth" })}
-  className="text-base px-8 border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ff8c00] hover:text-[#0a2b49] hover:border-[#ff8c00] transition-all duration-300 shadow-lg"
->
-  Ver Casos de Éxito
-</Button>
+<div className="flex flex-col sm:row gap-4">
+  <Button 
+    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg rounded-2xl"
+    onClick={() => window.location.href = "/contacto"}
+  >
+    Impulsar mi negocio ahora
+  </Button>
+  <Button 
+    variant="outline"
+    className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/5 px-8 py-6 text-lg rounded-2xl"
+    onClick={() => window.location.href = "/servicios/seo-tecnico"}
+  >
+    Ver servicios de Growth Marketing
+  </Button>
+</div>
           </div>
 
           {/* Stats */}
