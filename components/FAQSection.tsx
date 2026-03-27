@@ -32,7 +32,7 @@ const FAQSection = () => {
             Preguntas Frecuentes
           </span>
           <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
-            Resolviendo Dudas
+           Prueba de sincronización exitosa
           </h2>
         </motion.div>
 
