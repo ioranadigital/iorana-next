@@ -1,17 +1,18 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, Star } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactSection from "@/components/ContactSection";
 import FAQSection from "@/components/FAQSection";
 
-interface ServicePageProps {
+// Definimos la interfaz para que TypeScript no de error
+export interface ServicePageProps {
   title: string;
   subtitle: string;
   description: string;
   benefits: string[];
-  features: Array<{ title: string; desc: string }>;
+  features?: Array<{ title: string; desc: string }>;
   process: Array<{ title: string; desc: string }>;
   stats: Array<{ label: string; value: string }>;
 }
@@ -21,15 +22,14 @@ const ServicePageTemplate3 = ({
   subtitle,
   description,
   benefits,
-  features,
   process,
   stats
 }: ServicePageProps) => {
   return (
-    /* 1. CONTENEDOR PRINCIPAL: Sin Footer interno para evitar duplicados */
-    <div className="bg-[#0a2b49] min-h-screen">
+    /* Contenedor con el mismo azul que el resto de la web */
+    <div className="bg-[#0a2b49] min-h-screen overflow-visible">
       
-      {/* HERO SECCIÓN SERVICIO */}
+      {/* HERO SECTION - Ajustado con max-w-7xl para alineación perfecta */}
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
@@ -47,7 +47,7 @@ const ServicePageTemplate3 = ({
               {description}
             </p>
             <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 rounded-full text-lg font-bold transition-all shadow-lg shadow-orange-500/20">
-              Solicitar Auditoría Gratis
+              Solicitar Información
             </Button>
           </motion.div>
 
@@ -72,7 +72,7 @@ const ServicePageTemplate3 = ({
         </div>
       </section>
 
-      {/* SECCIÓN STATS: Resultados Reales */}
+      {/* STATS SECTION - Diseño limpio y centrado */}
       <section className="py-16 border-y border-[#ebf2f7]/5 bg-[#08223a]/50">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
@@ -84,33 +84,33 @@ const ServicePageTemplate3 = ({
         </div>
       </section>
 
-      {/* SECCIÓN PROCESO: Nuestro Metodo */}
-      <section className="py-24 px-4 bg-[#0a2b49]">
-        <div className="max-w-7xl mx-auto">
+      {/* PROCESS SECTION - Estilo tarjetas como 'Nosotros' */}
+      <section className="py-24 px-4 bg-[#0a2b49] overflow-visible">
+        <div className="max-w-7xl mx-auto overflow-visible">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#ebf2f7]">
-              Nuestro <span className="text-orange-500">Proceso</span>
+              Nuestro <span className="text-orange-500">proceso</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 overflow-visible">
             {process.map((p, i) => (
               <div key={i} className="bg-[#08223a] p-6 rounded-2xl border border-[#ebf2f7]/10 relative group hover:border-orange-500/30 transition-all">
-                <span className="text-4xl font-black text-orange-500/20 absolute top-4 right-4 group-hover:text-orange-500/40 transition-colors">
+                <span className="text-4xl font-black text-orange-500/20 absolute top-4 right-4">
                   {i + 1}
                 </span>
-                <h4 className="font-bold text-[#ebf2f7] mb-2 pr-8">{p.title}</h4>
-                <p className="text-sm text-[#ebf2f7]/50">{p.desc}</p>
+                <h4 className="font-bold text-[#ebf2f7] mb-2 pr-8 leading-tight">{p.title}</h4>
+                <p className="text-xs text-[#ebf2f7]/50 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* COMPONENTES COMPARTIDOS: Sin duplicar el Footer */}
+      {/* Componentes de cierre - Sin Footer para evitar el doble */}
       <FAQSection />
       <ContactSection />
       
-      {/* 🛑 AQUÍ NO VA EL FOOTER. Ya se encarga Page.tsx */}
+      {/* 🏁 Footer eliminado de aquí. Se controla desde Page.tsx */}
     </div>
   );
 };
