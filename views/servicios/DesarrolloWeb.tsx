@@ -1,57 +1,66 @@
 "use client";
+
+import React from "react";
 import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
+// Importación corregida usando ruta relativa al archivo existente
+import ServicePageTemplate from "../../components/ServicePageTemplate";
 import { CodeXml } from "lucide-react";
 
-const data = {
-  icon: CodeXml,
-  title: "Desarrollo Web",
-  subtitle: "Sitios web de alto rendimiento diseñados para convertir. Combinamos diseño UI/UX con ingeniería web para crear tu mejor activo de ventas.",
-  includes: [
+/**
+ * Adaptación de datos para el template unificado.
+ * Resolvemos el error de la propiedad 'data' que no existe.
+ */
+const serviceData = {
+  title: "Desarrollo Web de Alto Rendimiento",
+  subtitle: "Sitios diseñados para convertir",
+  description: 
+    "Combinamos diseño UI/UX de vanguardia con ingeniería web robusta para crear sitios web rápidos, seguros y optimizados que se convierten en tu mejor activo de ventas.",
+  benefits: [
     "Diseño y desarrollo de landing pages de alta conversión",
-    "Webs corporativas responsive y optimizadas",
-    "Optimización de Conversión (CRO) basada en datos",
+    "Webs corporativas responsive y totalmente optimizadas",
+    "Optimización de Conversión (CRO) basada en datos reales",
     "Desarrollo con tecnologías modernas (React, Next.js, Tailwind)",
-    "Optimización de velocidad y Core Web Vitals",
-    "Integración con CRM, analytics y herramientas de terceros",
+    "Optimización extrema de velocidad y Core Web Vitals",
+    "Integración nativa con CRM, analytics y herramientas externas"
   ],
-  whyMatters: {
-    title: "¿Por qué importa tu sitio web?",
-    desc: "",
-    points: [
-      "Tu sitio web es tu mejor vendedor — trabaja 24/7 y es la primera impresión para el 75% de clientes",
-      "Un sitio lento pierde el 53% de visitantes mobile",
-      "Un diseño poco profesional destruye la confianza en 0.05 segundos",
-    ],
-  },
-  process: [
-    { step: "1", title: "Discovery y Estrategia", desc: "Entendemos tus objetivos, buyer persona y customer journey para definir la arquitectura de información y wireframes." },
-    { step: "2", title: "Diseño UI/UX", desc: "Creamos prototipos de alta fidelidad con foco en usabilidad, conversión y coherencia visual con tu marca." },
-    { step: "3", title: "Desarrollo Frontend", desc: "Implementamos el diseño con código limpio, optimizado y responsive usando las últimas tecnologías web." },
-    { step: "4", title: "Optimización y Testing", desc: "Testing cross-browser, optimización de velocidad, accesibilidad y validación de rendimiento en PageSpeed." },
-    { step: "5", title: "Lanzamiento y Soporte", desc: "Despliegue con monitorización, configuración de analytics y soporte técnico continuo post-lanzamiento." },
-  ],
-  metrics: [
+  stats: [
     { value: "95+", label: "PageSpeed Score" },
-    { value: "+120%", label: "Tasa de conversión" },
-    { value: "<2s", label: "Tiempo de carga" },
-    { value: "100%", label: "Mobile responsive" },
+    { value: "+120%", label: "Tasa de Conversión" },
+    { value: "<2s", label: "Tiempo de Carga" },
+    { value: "100%", label: "Mobile Responsive" }
   ],
-  faqs: [
-    { q: "¿Cuánto cuesta desarrollar un sitio web?", a: "Depende del alcance. Una landing page puede costar desde 2.000€. Un sitio corporativo completo entre 5.000€ y 15.000€. Cada proyecto recibe un presupuesto personalizado." },
-    { q: "¿Cuánto tiempo lleva el desarrollo?", a: "Una landing page puede estar lista en 2-3 semanas. Un sitio corporativo completo entre 6-10 semanas. Los plazos exactos dependen de la complejidad y el proceso de feedback." },
-    { q: "¿Puedo editar el contenido yo mismo después?", a: "Sí, podemos integrarlo con un CMS headless o tradicional para que gestiones el contenido sin necesidad de tocar código." },
-    { q: "¿Incluye hosting y mantenimiento?", a: "Ofrecemos planes de hosting gestionado y mantenimiento mensual que incluyen actualizaciones, backups, monitorización y soporte técnico." },
-  ],
+  process: [
+    { 
+      title: "Discovery y Estrategia", 
+      desc: "Definimos la arquitectura y wireframes basados en tu customer journey." 
+    },
+    { 
+      title: "Diseño UI/UX", 
+      desc: "Prototipos de alta fidelidad con foco en usabilidad y coherencia visual." 
+    },
+    { 
+      title: "Desarrollo Frontend", 
+      desc: "Implementación con código limpio y responsive usando las últimas tecnologías." 
+    },
+    { 
+      title: "Optimización y Testing", 
+      desc: "Validación de rendimiento en PageSpeed y testing cross-browser riguroso." 
+    },
+    { 
+      title: "Lanzamiento y Soporte", 
+      desc: "Despliegue monitorizado con configuración de analítica y soporte post-lanzamiento." 
+    }
+  ]
 };
 
 const DesarrolloWeb = () => (
   <PageLayout
     title="Desarrollo Web | Iorana Digital"
-    description="Diseño y desarrollo web profesional en Asturias. Landing pages, webs corporativas, CRO y optimización de velocidad para empresas."
+    description="Diseño y desarrollo web profesional. Landing pages, webs corporativas, CRO y optimización de velocidad para empresas."
     canonical="https://iorana.digital/servicios/desarrollo-web"
   >
-    <ServicePageTemplate data={data} />
+    {/* ✅ CORRECCIÓN: Usamos {...serviceData} para pasar las props correctamente */}
+    <ServicePageTemplate {...serviceData} />
   </PageLayout>
 );
 
