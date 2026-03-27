@@ -9,7 +9,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 
 // Componentes globales
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 // Vistas base
 import Index from "./Index"; 
@@ -61,9 +60,6 @@ export default function Page() {
           <div className="flex flex-col min-h-screen bg-[#0a2b49]">
             <Navbar />
             
-            {/* Mantenemos w-full y overflow-visible para que las tarjetas 
-                y animaciones de About y Cases no se corten al entrar.
-            */}
             <main className="flex-1 w-full overflow-visible pt-16">
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -87,10 +83,7 @@ export default function Page() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
-
-            {/* SI EL FOOTER SIGUE SALIENDO DUPLICADO:
-               Comenta la línea de abajo y deja que lo maneje el layout.tsx global.
-            */}
+            {/* 🏁 Footer eliminado de aquí para evitar el duplicado visual */}
           </div>
         </BrowserRouter>
       </TooltipProvider>
