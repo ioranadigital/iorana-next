@@ -1,91 +1,94 @@
 "use client";
+import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+const cases = [
+  {
+    company: "StreamFlow",
+    industry: "SaaS de Productividad",
+    challenge: "CAC elevado ($180) y cero tráfico orgánico.",
+    solution: "Estrategia de topic clusters con +60 artículos.",
+    result: "+320% Tráfico Orgánico",
+    resultSub: "en 5 meses",
+    link: "/casos/streamflow"
+  },
+  {
+    company: "DataPulse",
+    industry: "SaaS de Analytics",
+    challenge: "Ranking en posiciones 30+. Tasa de conversión del 0.3%.",
+    solution: "Auditoría técnica y optimización de Core Web Vitals.",
+    result: "+540% Conversiones",
+    resultSub: "en 6 meses",
+    link: "/casos/datapulse"
+  },
+  {
+    company: "HireBot",
+    industry: "SaaS de HR Tech",
+    challenge: "Sin blog ni estrategia técnica.",
+    solution: "Reconstrucción de arquitectura SEO y hub educativo.",
+    result: "12K visitas/mes",
+    resultSub: "desde cero",
+    link: "/casos/hirebot"
+  }
+];
 
-// Componentes globales
-import Navbar from "@/components/Navbar";
-
-// Vistas base - AJUSTA ESTAS RUTAS SI TUS ARCHIVOS ESTÁN EN OTRA CARPETA
-import Index from "./Index"; 
-import NotFound from "./NotFound";
-import Privacidad from "./Privacidad";
-import Terminos from "./Terminos";
-
-// Servicios
-import SeoTecnico from "../views/servicios/SeoTecnico";
-import PpcPaidSearch from "../views/servicios/PpcPaidSearch";
-import ContentMarketing from "../views/servicios/ContentMarketing";
-import Automatizaciones from "../views/servicios/Automatizaciones";
-import DesarrolloWeb from "../views/servicios/DesarrolloWeb";
-import ImagenDeMarca from "../views/servicios/ImagenDeMarca";
-
-// Soluciones
-import KitDigital from "../views/soluciones/KitDigital";
-import DisenoLandings from "../views/soluciones/DisenoLandings";
-import TodoParaTuNegocio from "../views/soluciones/TodoParaTuNegocio";
-import ComoEstaOptimizadoMiWeb from "../views/soluciones/ComoEstaOptimizadoMiWeb";
-
-const queryClient = new QueryClient();
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
-
-export default function Page() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
-
+const CasesSection = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          
-          <div className="flex flex-col min-h-screen bg-[#0a2b49]">
-            <Navbar />
-            
-            <main className="flex-1 w-full overflow-visible pt-16">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/privacidad" element={<Privacidad />} />
-                <Route path="/terminos" element={<Terminos />} />
-                
-                {/* Servicios */}
-                <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
-                <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
-                <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
-                <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
-                <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
-                <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
-                
-                {/* Soluciones */}
-                <Route path="/soluciones/kit-digital" element={<KitDigital />} />
-                <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
-                <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
-                <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
-                
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <section id="casos" className="w-full py-24 bg-[#0a2b49] overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-sm font-bold text-orange-500 tracking-widest uppercase">
+            Casos de Éxito
+          </span>
+          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
+            Resultados <span className="text-orange-500">Reales</span>
+          </h2>
+        </motion.div>
+
+        {/* ✅ LÍNEA 64 CORREGIDA: Comillas cerradas correctamente */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-visible">
+          {cases.map((c, i) => (
+            <motion.div
+              key={c.company}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              /* Estilo consistente con la sección Nosotros */
+              className="flex flex-col rounded-3xl border border-[#ebf2f7]/10 bg-[#08223a] shadow-2xl p-8 hover:border-orange-500/30 transition-all duration-300"
+            >
+              <div className="text-2xl font-bold text-[#ebf2f7] mb-1">{c.result}</div>
+              <div className="text-xs text-orange-500 font-bold uppercase mb-6">{c.resultSub}</div>
+              
+              <div className="space-y-4 flex-grow">
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-orange-500 font-bold">Desafío</div>
+                  <p className="text-sm text-[#ebf2f7]/70">{c.challenge}</p>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-orange-500 font-bold">Solución</div>
+                  <p className="text-sm text-[#ebf2f7]/70">{c.solution}</p>
+                </div>
+              </div>
+
+              <Button 
+                variant="link" 
+                className="mt-6 p-0 text-orange-500 w-fit hover:text-orange-400"
+              >
+                Ver caso →
+              </Button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
-}
+};
+
+export default CasesSection;
