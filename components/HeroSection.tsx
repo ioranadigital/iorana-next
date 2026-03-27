@@ -7,18 +7,21 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a2b49]"
-      /* 🛠️ SOLUCIÓN DEFINITIVA: Usamos estilo en línea para asegurar el background 
-         Esto ignora los límites de la imagen y la obliga a cubrir el 100% de la pantalla.
-      */
-      style={{
-        backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.6), rgba(10, 43, 73, 0.9)), url("/assets/hero-bg.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="relative min-h-[90vh] w-full flex items-center overflow-hidden bg-[#0a2b49]"
     >
-      <div className="container relative z-10 pt-20 pb-16">
+      {/* 🖼️ FONDO ABSOLUTO: Esto garantiza que cubra el 100% sin importar el container */}
+      <div 
+        className="absolute inset-0 z-0 w-full h-full"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.4), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+
+      {/* 📦 CONTENEDOR DE TEXTO: Mantiene el alineado pero no limita al fondo */}
+      <div className="container relative z-10 mx-auto px-4 pt-20 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
