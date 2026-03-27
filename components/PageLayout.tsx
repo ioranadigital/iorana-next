@@ -1,6 +1,5 @@
 "use client";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
 interface PageLayoutProps {
@@ -77,7 +76,6 @@ const PageLayout = ({
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-20">{children}</main>
-      <Footer />
     </div>
   );
 };
