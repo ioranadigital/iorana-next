@@ -1,114 +1,74 @@
+"use client";
 import React from "react";
-import { Repeat, Code, Layout, BarChart3, PenTool, ShieldCheck } from "lucide-react";
-import { Button } from "./ui/button";
+import { motion } from "framer-motion";
+import { Search, BarChart3, PenTool, Zap, MousePointer2, Palette, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const services = [
-  {
-    title: "SEO Técnico",
-    icon: <ShieldCheck className="w-6 h-6" />,
-    description: "Optimizamos cada rincón de tu sitio para que Google te encuentre primero y tus usuarios disfruten la mejor experiencia.",
-    link: "/servicios/seo-tecnico",
-    ctaText: "Optimizar mi posicionamiento SEO", // SEO Friendly
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
-    title: "PPC & Paid Search",
-    icon: <BarChart3 className="w-6 h-6" />,
-    description: "Campañas de pago que generan leads cualificados desde el día 1. Maximizamos tu ROAS con gestión experta en Google Ads y Meta Ads.",
-    link: "/servicios/ppc-paid-search",
-    ctaText: "Escalar mis ventas con Ads",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
-    title: "Content Marketing",
-    icon: <PenTool className="w-6 h-6" />,
-    description: "Contenido estratégico que educa, posiciona y convierte. Creamos un motor de contenido que atrae a tu buyer persona.",
-    link: "/servicios/content-marketing",
-    ctaText: "Crear mi estrategia de contenidos",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
-    title: "Automatizaciones",
-    icon: <Repeat className="w-6 h-6" />,
-    description: "Conectamos tus herramientas para eliminar tareas manuales y dejar que tu equipo se enfoque en lo que importa.",
-    link: "/servicios/automatizaciones",
-    ctaText: "Automatizar mis procesos",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
-    title: "Desarrollo Web",
-    icon: <Code className="w-6 h-6" />,
-    description: "Diseñamos y desarrollamos sitios web de alto rendimiento enfocados en la experiencia de usuario y la conversión.",
-    link: "/servicios/desarrollo-web",
-    ctaText: "Desarrollar mi web de alto rendimiento",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  },
-  {
-    title: "Imagen de Marca",
-    icon: <Layout className="w-6 h-6" />,
-    description: "Construimos identidades visuales sólidas que transmiten los valores de tu empresa y conectan con tu audiencia.",
-    link: "/servicios/imagen-de-marca",
-    ctaText: "Mejorar mi identidad de marca",
-    color: "bg-blue-500/10",
-    border: "border-blue-500/20"
-  }
+  { icon: Search, title: "SEO Técnico & On-Page", desc: "Optimizamos tu arquitectura web para que Google te ame y tus usuarios te encuentren.", href: "/servicios/seo-tecnico" },
+  { icon: BarChart3, title: "PPC & Paid Search", desc: "Campañas de Google Ads y LinkedIn Ads enfocadas 100% en conversión y ROAS positivo.", href: "/servicios/ppc-paid-search" },
+  { icon: PenTool, title: "Content Marketing", desc: "Creamos contenido estratégico que educa, atrae y convierte tráfico frío en MQLs.", href: "/servicios/content-marketing" },
+  { icon: Zap, title: "Automatizaciones", desc: "Integramos tus herramientas (CRM, Email) para ahorrar tiempo y personalizar tu outreach.", href: "/servicios/automatizaciones" },
+  { icon: MousePointer2, title: "Desarrollo Web (CRO)", desc: "Diseñamos Landings Pages y sitios web SaaS optimizados para maximizar la conversión.", href: "/servicios/desarrollo-web" },
+  { icon: Palette, title: "Imagen de Marca", desc: "Construimos identidades visuales sólidas y coherentes que generan confianza instantánea.", href: "/servicios/imagen-de-marca" },
 ];
 
-export default function ServicesSection() {
-  return (
-    /* 1. SECCIÓN: w-full y overflow-visible para que las tarjetas no se corten al animar */
-    <section className="w-full py-24 bg-[#0a2b49] overflow-visible">
+const ServicesSection = () => (
+  <section id="servicios" className="w-full py-24 bg-[#0a2b49] overflow-visible">
+    <div className="max-w-7xl mx-auto px-6 overflow-visible">
       
-      {/* 2. CONTENEDOR DE CENTRADO: Máximo 1280px (max-w-7xl) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
-        
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-orange-500 mb-3">
-            Nuestros Servicios
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-extrabold text-[#ebf2f7] tracking-tight">
-            Soluciones digitales para <span className="text-orange-500">escalar tu negocio</span>
-          </h3>
-        </div>
+      {/* Cabecera de la sección */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mx-auto mb-16"
+      >
+        <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase">
+          Qué hacemos
+        </span>
+        <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight lead-tight">
+          Nuestros Servicios
+        </h2>
+        <p className="mt-6 text-lg text-[#ebf2f7]/70">
+          Un enfoque integral y data-driven para dominar tu nicho y escalar la adquisición de clientes.
+        </p>
+      </motion.div>
 
-        {/* 3. GRID DE TARJETAS: 
-            Aprovechamos el espacio con gap-8 para que no se vean amontonadas 
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-visible">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className={`group p-8 rounded-3xl border ${service.border} ${service.color} 
-                         backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] 
-                         hover:shadow-2xl hover:shadow-blue-900/20 overflow-visible`}
-            >
-              <div className="mb-6 inline-flex p-3 rounded-2xl bg-[#0a2b49] border border-[#ebf2f7]/10 text-[#ebf2f7]">
-                {service.icon}
+      {/* Grid de Servicios */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-visible">
+        {services.map((s, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            // ✅ Hover con borde naranja exacto
+            className="group flex flex-col justify-between p-8 rounded-2xl bg-[#08223a] border border-[#ebf2f7]/10 transition-all duration-300 hover:border-[#ff8c00]/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#ff8c00]/10"
+          >
+            <div>
+              {/* Icono con color exacto */}
+              <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#0a2b49] border border-[#ebf2f7]/5 mb-6 group-hover:bg-[#ff8c00]/10 transition-colors">
+                <s.icon className="h-6 w-6 text-[#ff8c00]" />
               </div>
-              
-              <h4 className="text-2xl font-bold text-[#ebf2f7] mb-4">{service.title}</h4>
-              <p className="text-[#ebf2f7]/70 leading-relaxed mb-8">
-                {service.description}
+              <h3 className="text-xl font-bold text-[#ebf2f7] mb-3 group-hover:text-white transition-colors">
+                {s.title}
+              </h3>
+              <p className="text-sm text-[#ebf2f7]/60 leading-relaxed mb-6 flex-grow">
+                {s.desc}
               </p>
-              
-  <Button 
-  variant="ghost" 
-  className="group/btn p-0 text-orange-500 hover:bg-transparent hover:text-orange-400 font-semibold h-auto"
-  onClick={() => window.location.href = service.link}
->
-  {/* Aquí mostramos el texto personalizado de cada servicio */}
-  {service.ctaText}
-  <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
-</Button>
             </div>
-          ))}
-        </div>
+            
+            {/* Enlace con color exacto */}
+            <Link href={s.href} className="text-sm font-bold text-[#ff8c00] flex items-center gap-1.5 pt-4 group-hover:gap-2 transition-all">
+              Saber más <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-}
+    </div>
+  </section>
+);
+
+export default ServicesSection;
