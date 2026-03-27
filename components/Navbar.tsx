@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
-import Link from "next/link"; // ✅ Usando el Link de Next.js
+import Link from "next/link";
 
 const serviceLinks = [
   { label: 'SEO Técnico & On-Page', href: '/servicios/seo-tecnico' },
@@ -59,3 +59,56 @@ const Navbar = () => {
             {megaOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-[500px] pt-2">
                 <div className="bg-[#0a2b49] border border-white/10 rounded-xl shadow-2xl p-6">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div>
+                      <p className="text-[10px] font-bold text-[#ff8c00] uppercase mb-3 tracking-widest">Servicios</p>
+                      {serviceLinks.map(s => (
+                        <Link key={s.href} href={s.href} className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors">
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-[#ff8c00] uppercase mb-3 tracking-widest">Soluciones</p>
+                      {solutionLinks.map(s => (
+                        <Link key={s.href} href={s.href} className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors">
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <button onClick={() => handleScroll('#nosotros')} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">Nosotros</button>
+          
+          <Link href="/contacto">
+            <Button size="sm" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ff8c00] hover:text-white rounded-full px-6 transition-all duration-300">
+              Nuestros Servicios
+            </Button>
+          </Link>
+        </div>
+        
+        {/* Toggle Mobile */}
+        <button className="md:hidden text-[#ebf2f7]" onClick={() => setOpen(!open)}>
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Menú Mobile */}
+      {open && (
+        <div className="md:hidden bg-[#0a2b49] border-t border-white/10 p-6 space-y-4">
+          <button onClick={() => handleScroll('#hero')} className="block text-[#ebf2f7] font-medium">Inicio</button>
+          <button onClick={() => handleScroll('#nosotros')} className="block text-[#ebf2f7] font-medium">Nosotros</button>
+          <Link href="/contacto" className="block" onClick={() => setOpen(false)}>
+             <Button className="w-full bg-[#ebf2f7] text-[#0a2b49]">Nuestros Servicios</Button>
+          </Link>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
