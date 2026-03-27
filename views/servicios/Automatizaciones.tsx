@@ -2,7 +2,7 @@
 
 import React from "react";
 import PageLayout from "@/components/PageLayout";
-import ServicePageTemplate3 from "@/components/ServicePageTemplate3";
+import ServicePageTemplate from "@/components/ServicePageTemplate";
 import { Bot, Cpu, Zap, Share2 } from "lucide-react";
 
 /**
@@ -61,7 +61,7 @@ const Automatizaciones = () => {
       {/* Usamos el Spread Operator para pasar los datos. 
           Esto corrige el error de tipos de la línea 54
       */}
-      <ServicePageTemplate3 {...serviceData} />
+      <ServicePageTemplate {...serviceData} />
     </PageLayout>
   );
 };
