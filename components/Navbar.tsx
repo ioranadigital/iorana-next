@@ -67,7 +67,7 @@ const Navbar = () => {
                       {serviceLinks.map(s => (
                         <Link 
                           key={s.href} 
-                          href={s.href} // ✅ CORREGIDO: 'href' en lugar de 'to'
+                          href={s.href} 
                           className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors"
                         >
                           {s.label}
@@ -79,7 +79,7 @@ const Navbar = () => {
                       {solutionLinks.map(s => (
                         <Link 
                           key={s.href} 
-                          href={s.href} // ✅ CORREGIDO: 'href' en lugar de 'to'
+                          href={s.href} 
                           className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors"
                         >
                           {s.label}
