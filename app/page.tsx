@@ -36,11 +36,16 @@ import DisenoLandings from "../views/soluciones/DisenoLandings";
 import TodoParaTuNegocio from "../views/soluciones/TodoParaTuNegocio";
 import ComoEstaOptimizadoMiWeb from "../views/soluciones/ComoEstaOptimizadoMiWeb";
 
+// Importamos Navbar y Footer (Asegúrate de que las rutas sean correctas)
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
 const queryClient = new QueryClient();
 
 export default function Page() {
   const [isMounted, setIsMounted] = useState(false);
 
+  // Evita errores de hidratación en Next.js
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -54,41 +59,9 @@ export default function Page() {
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          {/* CONFIGURACIÓN DE CENTRADO:
-              - flex-col min-h-screen: Empuja el footer abajo si hay poco contenido.
-              - items-center: Asegura que el contenido interno no se pegue a la izquierda.
-          */}
+          
           <div className="flex flex-col min-h-screen bg-[#0a2b49]">
-            <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <Routes>
-                {/* Ruta Principal */}
-                <Route path="/" element={<Index />} />
-                
-                {/* Legales */}
-                <Route path="/privacidad" element={<Privacidad />} />
-                <Route path="/terminos" element={<Terminos />} />
-                
-                {/* Servicios - Ahora aparecerán centrados */}
-                <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
-                <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
-                <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
-                <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
-                <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
-                <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
-                
-                {/* Soluciones */}
-                <Route path="/soluciones/kit-digital" element={<KitDigital />} />
-                <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
-                <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
-                <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
-                
-                {/* 404 */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-}
+            <Navbar />
+            
+            {/* CENTRALIZACIÓN Y FLUIDEZ:
+                - max-w-7xl y mx-auto: Centran
