@@ -47,42 +47,49 @@ export default function Page() {
   if (!isMounted) return null;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <ScrollToTop />
+        
+        <div className="flex flex-col min-h-screen bg-[#0a2b49]">
+          <Navbar />
           
-          <div className="flex flex-col min-h-screen bg-[#0a2b49]">
-            <Navbar />
-            
-            <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible py-20">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/privacidad" element={<Privacidad />} />
-                <Route path="/terminos" element={<Terminos />} />
-                
-                <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
-                <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
-                <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
-                <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
-                <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
-                <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
-                
-                <Route path="/soluciones/kit-digital" element={<KitDigital />} />
-                <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
-                <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
-                <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
-                
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
+          {/* CAMBIO CLAVE: 
+              1. Quitamos 'max-w-7xl' del main para que el margen sea del 100% (w-full).
+              2. Usamos 'overflow-visible' para que nada se corte.
+          */}
+          <main className="flex-1 w-full overflow-visible py-20">
+            <Routes>
+              {/* IMPORTANTE: 
+                  Ahora el centrado (max-w-7xl mx-auto) debe estar dentro de 
+                  cada página o componente para que el 'aire' lateral sea del 100%.
+              */}
+              <Route path="/" element={<Index />} />
+              <Route path="/privacidad" element={<Privacidad />} />
+              <Route path="/terminos" element={<Terminos />} />
+              
+              <Route path="/servicios/seo-tecnico" element={<SeoTecnico />} />
+              <Route path="/servicios/ppc-paid-search" element={<PpcPaidSearch />} />
+              <Route path="/servicios/content-marketing" element={<ContentMarketing />} />
+              <Route path="/servicios/automatizaciones" element={<Automatizaciones />} />
+              <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
+              <Route path="/servicios/imagen-de-marca" element={<ImagenDeMarca />} />
+              
+              <Route path="/soluciones/kit-digital" element={<KitDigital />} />
+              <Route path="/soluciones/diseno-landings" element={<DisenoLandings />} />
+              <Route path="/soluciones/todo-para-tu-negocio" element={<TodoParaTuNegocio />} />
+              <Route path="/soluciones/como-esta-optimizado-mi-web" element={<ComoEstaOptimizadoMiWeb />} />
+              
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-}
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
