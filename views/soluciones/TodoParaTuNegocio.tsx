@@ -1,37 +1,52 @@
-"use client";
+// app/soluciones/todo-para-tu-negocio/page.tsx
+import ServicePageTemplate, { buildMetadata, type ServicePageData } from "@/components/ServicePageTemplate";
 
-import React from "react";
-import ServicePageTemplate from "../../components/ServicePageTemplate";
-
-const serviceData = {
-  title: "Todo Para Tu Negocio",
-  subtitle: "Tu departamento digital externo",
-  description: "Una solución integral 360º para empresas que quieren delegar toda su estrategia digital en un equipo experto. Desde el código hasta las ventas.",
-  benefits: [
-    "Mantenimiento técnico y actualizaciones constantes",
-    "Estrategia de marketing digital mensual",
-    "Soporte prioritario y consultoría estratégica",
-    "Optimización continua de procesos internos",
-    "Análisis de competencia y mercado recurrente"
-  ],
-  stats: [
-    { label: "Soporte", value: "24/7" },
-    { label: "Equipo", value: "Senior" },
-    { label: "Servicios", value: "360º" },
-    { label: "Crecimiento", value: "Sostenido" }
+const data: ServicePageData = {
+  meta: {
+    title: "Todo para Tu Negocio",
+    description: "Una estrategia digital 360° con un único partner. Integramos todos los canales y herramientas para escalar tu negocio de forma consistente y medible.",
+    ogImage: "/og/todo-para-tu-negocio.jpg",
+  },
+  hero: {
+    title: "Todo para Tu Negocio",
+    subtitle: "Una estrategia digital 360° con un único partner. Integramos todos los canales y herramientas para escalar tu negocio de forma consistente y medible.",
+    whyPoints: [
+      "Una estrategia integrada genera 3x más leads que canales aislados",
+      "Las empresas con marketing automatizado aumentan su revenue un 10% en 6 meses",
+      "Tener un solo partner digital elimina fricciones y acelera resultados",
+    ],
+    ctaLabel: "Solicítanos Más Información",
+    ctaHref: "#contacto",
+  },
+  includes: [
+    { text: "Estrategia digital 360°" },
+    { text: "SEO + PPC + Contenidos + Redes Sociales" },
+    { text: "Automatización de marketing y CRM" },
+    { text: "Diseño web y landing pages" },
+    { text: "Imagen de marca completa" },
+    { text: "Reporting mensual y consultoría estratégica" },
   ],
   process: [
-    { title: "Inmersión", desc: "Nos convertimos en un brazo más de tu equipo para entender tus metas." },
-    { title: "Plan Maestro", desc: "Diseñamos una hoja de ruta con hitos trimestrales claros." },
-    { title: "Ejecución", desc: "Desarrollamos, optimizamos y lanzamos campañas de forma coordinada." },
-    { title: "Evolución", desc: "Ajustamos la estrategia según los datos de negocio reales." }
-  ]
+    { title: "Auditoría", description: "Analizamos tu presencia digital actual, competidores y oportunidades de mercado para definir el punto de partida." },
+    { title: "Estrategia", description: "Diseñamos un plan integral con objetivos, KPIs, canales y presupuesto alineados con tus metas de negocio." },
+    { title: "Implementación", description: "Ejecutamos la estrategia de forma coordinada en todos los canales, asegurando coherencia y sinergia." },
+    { title: "Optimización", description: "Analizamos datos en tiempo real para optimizar cada canal y maximizar el retorno de inversión global." },
+    { title: "Escala", description: "Identificamos los canales más rentables y escalamos la inversión para acelerar el crecimiento." },
+  ],
+  results: [
+    { value: "3x", label: "ROI global" },
+    { value: "+200%", label: "Leads generados" },
+    { value: "+150%", label: "Crecimiento tráfico" },
+    { value: "-35%", label: "Coste por adquisición" },
+  ],
+  faq: [
+    { q: "¿Qué incluye exactamente el servicio 360°?", a: "Incluye estrategia digital, SEO, PPC, content marketing, redes sociales, automatizaciones, diseño web, branding y reporting mensual con consultoría estratégica." },
+    { q: "¿Hay permanencia o compromiso mínimo?", a: "Recomendamos un compromiso mínimo de 6 meses para ver resultados sólidos, pero no exigimos permanencia. Nuestros clientes se quedan por resultados, no por contratos." },
+    { q: "¿Cómo se reportan los resultados?", a: "Recibes un dashboard en tiempo real con las métricas clave y un informe mensual detallado con análisis, insights y recomendaciones estratégicas." },
+    { q: "¿Puedo empezar con algunos servicios y escalar después?", a: "Absolutamente. Podemos comenzar con los servicios más prioritarios e ir incorporando canales conforme vemos resultados y tu presupuesto lo permite." },
+  ],
+  form: { endpoint: "/api/contact" },
 };
 
-const TodoParaTuNegocio = () => (
-  <div className="pt-24 bg-[#0a2b49] min-h-screen">
-    <ServicePageTemplate {...serviceData} />
-  </div>
-);
-
-export default TodoParaTuNegocio;
+export const metadata = buildMetadata(data);
+export default function Page() { return <ServicePageTemplate data={data} />; }

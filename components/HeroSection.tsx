@@ -1,77 +1,116 @@
+// components/HeroSection.tsx
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+const stats = [
+  { value: "+250%", label: "Tráfico orgánico promedio" },
+  { value: "3x",    label: "ROI en 6 meses" },
+  { value: "50+",   label: "SaaS escalados" },
+];
 
 const HeroSection = () => {
+  const router = useRouter();
+
+  const scrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="hero" className="relative w-full min-h-[90vh] flex items-center bg-[#0a2b49]">
-      
-      {/* 🖼️ FONDO: Usamos left-[-50vw] right-[-50vw] para asegurar que cubra TODO */}
-      <div 
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none"
+    <section
+      id="hero"
+      className="relative w-full min-h-screen flex items-center overflow-hidden"
+    >
+      {/* ── FONDO COMPLETO ──
+          - position: fixed NO, porque el scroll lo dejaría estático
+          - Usamos inset-0 + w-screen centrado para romper el align-items:center del body
+          - La imagen cubre todo con object-cover vía background-size: cover
+      */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(10, 43, 73, 0.5), rgba(10, 43, 73, 0.8)), url("/assets/hero-bg.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          zIndex: 0 // Se mantiene en la base de la sección
+          backgroundImage: 'url("/assets/hero-bg.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
         }}
       />
 
-      {/* CONTENIDO: z-10 para estar sobre el fondo, pero z-0 respecto al Nav */}
-      <div className="container relative z-10 mx-auto px-6 pt-20 pb-16">
+      {/* Overlay degradado: oscurece más abajo para que el contenido sea legible */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,43,73,0.93) 0%, rgba(10,43,73,0.78) 45%, rgba(10,43,73,0.28) 100%), linear-gradient(to bottom, rgba(10,43,73,0.20) 0%, rgba(10,43,73,0.55) 65%, rgba(10,43,73,0.95) 100%)",
+        }}
+      />
+
+      {/* ── CONTENIDO ── */}
+   <div className="relative z-10 w-full" style={{ paddingLeft: 'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))', paddingTop: '8rem', paddingBottom: '5rem' }}>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          className="max-w-3xl text-left"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 mb-8">
-            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-            <span className="text-xs font-medium text-[#ebf2f7]">Agencia de Marketing en Asturias</span>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff8c00]/30 bg-[#ff8c00]/10 mb-8">
+            <span className="w-2 h-2 rounded-full bg-[#ff8c00] animate-pulse" aria-hidden="true" />
+            <span className="text-xs font-medium text-[#ebf2f7]">
+              Agencia de Marketing en Asturias
+            </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black leading-[1.1] mb-6 text-[#ebf2f7]">
-            <span className="text-orange-500">Posiciona tu negocio</span><br />
+          {/* H1 */}
+          <h1 className="font-heading font-black leading-[1.1] text-5xl sm:text-6xl md:text-7xl mb-6 text-[#ebf2f7]">
+            <span className="text-[#ff8c00]">Posiciona tu negocio</span>
+            <br />
             donde tus clientes te buscan.
           </h1>
 
-          <p className="text-lg md:text-xl text-[#ebf2f7]/70 max-w-2xl mb-10 leading-relaxed">
-            Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO basadas en datos, PPC de alto rendimiento y contenido que posiciona de verdad.
+          <p className="text-lg md:text-xl text-[#ebf2f7]/75 max-w-2xl mb-10 leading-relaxed">
+            Ayudamos a las empresas a multiplicar sus ventas con estrategias SEO
+            basadas en datos, PPC de alto rendimiento y contenido que posiciona de verdad.
           </p>
 
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            <Button 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-7 text-lg rounded-2xl font-bold shadow-lg shadow-orange-500/20"
-              onClick={() => window.location.href = "/contacto"}
+            <Link
+              href="/soluciones/como-esta-optimizado-mi-web"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#ebf2f7] text-[#0a2b49] font-bold text-base hover:bg-white transition-colors"
             >
-              Impulsar mi negocio ahora
-            </Button>
+              ¿Cómo está mi sitio web? <ArrowRight className="h-4 w-4" />
+            </Link>
 
-            <Button 
-              variant="outline"
-              className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/5 px-8 py-7 text-lg rounded-2xl bg-transparent"
-              onClick={() => window.location.href = "/soluciones/como-esta-optimizado-mi-web"}
+            <button
+              onClick={() => scrollTo("#casos")}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-[#ebf2f7]/25 text-[#ebf2f7] font-bold text-base hover:bg-[#ebf2f7]/10 transition-colors bg-transparent"
             >
-              ¿Cómo está mi sitio web?
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              Ver Casos de Éxito
+            </button>
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-[#ebf2f7]/10">
-            {[
-              { value: "+250%", label: "Tráfico orgánico" },
-              { value: "3x", label: "ROI promedio" },
-              { value: "50+", label: "Casos de éxito" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-2xl md:text-3xl font-heading font-black text-orange-500">{stat.value}</div>
-                <div className="text-sm text-[#ebf2f7]/50 mt-1 uppercase tracking-wider font-medium">{stat.label}</div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="flex flex-wrap gap-10 mt-16 pt-8 border-t border-[#ebf2f7]/10"
+          >
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="text-2xl md:text-3xl font-heading font-black text-[#ff8c00]">
+                  {s.value}
+                </div>
+                <div className="text-sm text-[#ebf2f7]/55 mt-1">{s.label}</div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

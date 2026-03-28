@@ -1,3 +1,4 @@
+// app/Index.tsx
 "use client";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -8,25 +9,22 @@ import CasesSection from "@/components/CasesSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer"; // Importamos el Footer
+import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
     document.title = "Iorana Digital | Agencia de Marketing Digital en Asturias";
-    // ... (Tu lógica de Meta Tags se mantiene igual)
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#0a2b49] overflow-x-hidden">
+    <>
       <Navbar />
-      
-      <main className="w-full flex flex-col m-0 p-0">
+      <main
+        style={{ width: "100vw", maxWidth: "100vw", overflowX: "hidden" }}
+      >
         <HeroSection />
-        
-        {/* Esta sección es la que debe quedar oculta bajo el pliegue inicial */}
-        <USPSection /> 
-        
+        <USPSection />
         <ServicesSection />
         <AboutSection />
         <CasesSection />
@@ -34,8 +32,9 @@ const Index = () => {
         <FAQSection />
         <ContactSection />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default Index; 
+export default Index;

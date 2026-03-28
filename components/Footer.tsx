@@ -1,3 +1,4 @@
+// components/Footer.tsx
 "use client";
 import Link from "next/link";
 
@@ -17,39 +18,34 @@ const solutionLinks = [
 ];
 
 const Footer = () => (
-  /* 1. ESTRUCTURA: Fondo oscuro consistente y borde sutil */
-  <footer className="w-full bg-[#0a2b49] border-t border-[#ebf2f7]/10 py-16">
-    
-    {/* 2. CONTENEDOR: Alineación max-w-7xl */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-        
-        {/* Branding & Bio (Ocupa 2 columnas en desktop) */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="font-heading text-2xl font-black tracking-tighter">
-            <span className="text-orange-500">Iorana</span>
+  <footer className="w-full bg-[#0a2b49] border-t border-[#ebf2f7]/10 pt-16 pb-8">
+    <div className="max-w-6xl mx-auto px-6">
+
+      {/* ── GRID 4 COLUMNAS ── */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        {/* Branding */}
+        <div className="space-y-4">
+          <Link href="/" className="inline-block font-heading text-xl font-black tracking-tight">
+            <span className="text-[#ff8c00]">IORANA</span>
             <span className="text-[#ebf2f7]"> Digital</span>
-          </div>
-          <p className="text-[#ebf2f7]/50 text-base leading-relaxed max-w-xs">
-            Ingeniería y Growth Marketing estratégico para empresas SaaS que buscan dominar su mercado orgánico.
+          </Link>
+          <p className="text-sm text-[#ebf2f7]/50 leading-relaxed max-w-[200px]">
+            Marketing digital estratégico para empresas que quieren crecer.
           </p>
-          <div className="flex gap-4">
-            {/* Espacio para redes sociales en el futuro */}
-            <div className="w-8 h-8 rounded-full bg-[#ebf2f7]/5 border border-[#ebf2f7]/10" />
-            <div className="w-8 h-8 rounded-full bg-[#ebf2f7]/5 border border-[#ebf2f7]/10" />
-          </div>
         </div>
 
-        {/* Servicios: Enlaces SEO Friendly */}
+        {/* Servicios */}
         <div>
-          <div className="text-xs font-bold text-orange-500 uppercase tracking-[0.2em] mb-6">Servicios</div>
-          <ul className="space-y-4">
+          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
+            Servicios
+          </p>
+          <ul className="space-y-3">
             {serviceLinks.map((l) => (
               <li key={l.href}>
-                <Link 
-                  href={l.href} 
-                  className="text-sm text-[#ebf2f7]/60 hover:text-orange-500 transition-colors duration-300"
+                <Link
+                  href={l.href}
+                  className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200"
                 >
                   {l.label}
                 </Link>
@@ -60,13 +56,15 @@ const Footer = () => (
 
         {/* Soluciones */}
         <div>
-          <div className="text-xs font-bold text-orange-500 uppercase tracking-[0.2em] mb-6">Soluciones</div>
-          <ul className="space-y-4">
+          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
+            Soluciones
+          </p>
+          <ul className="space-y-3">
             {solutionLinks.map((l) => (
               <li key={l.href}>
-                <Link 
-                  href={l.href} 
-                  className="text-sm text-[#ebf2f7]/60 hover:text-orange-500 transition-colors duration-300"
+                <Link
+                  href={l.href}
+                  className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200"
                 >
                   {l.label}
                 </Link>
@@ -77,32 +75,29 @@ const Footer = () => (
 
         {/* Legal */}
         <div>
-          <div className="text-xs font-bold text-orange-500 uppercase tracking-[0.2em] mb-6">Legal</div>
-          <ul className="space-y-4">
+          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
+            Legal
+          </p>
+          <ul className="space-y-3">
             <li>
-              <Link href="/privacidad" className="text-sm text-[#ebf2f7]/60 hover:text-orange-500 transition-colors">
+              <Link href="/privacidad" className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200">
                 Privacidad
               </Link>
             </li>
             <li>
-              <Link href="/terminos" className="text-sm text-[#ebf2f7]/60 hover:text-orange-500 transition-colors">
+              <Link href="/terminos" className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200">
                 Términos
-              </Link>
-            </li>
-            <li>
-              <Link href="/cookies" className="text-sm text-[#ebf2f7]/60 hover:text-orange-500 transition-colors">
-                Cookies
               </Link>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* 3. COPYRIGHT: Línea final limpia */}
-      <div className="border-t border-[#ebf2f7]/5 pt-8 flex flex-col md:row justify-between items-center gap-4 text-xs text-[#ebf2f7]/30">
-        <p>© {new Date().getFullYear()} Iorana Digital. Todos los derechos reservados.</p>
-        <p className="italic">Built with Engineering & Passion</p>
+      {/* ── COPYRIGHT ── */}
+      <div className="border-t border-[#ebf2f7]/5 pt-8 text-center text-xs text-[#ebf2f7]/30">
+        © {new Date().getFullYear()} IORANA Digital. Todos los derechos reservados.
       </div>
+
     </div>
   </footer>
 );

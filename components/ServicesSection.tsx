@@ -24,10 +24,11 @@ const ServicesSection = () => (
         viewport={{ once: true }}
         className="text-center max-w-2xl mx-auto mb-16"
       >
+        {/* ✅ Naranja exacto en el tag superior */}
         <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase">
           Qué hacemos
         </span>
-        <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight lead-tight">
+        <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight leading-tight">
           Nuestros Servicios
         </h2>
         <p className="mt-6 text-lg text-[#ebf2f7]/70">
@@ -44,13 +45,13 @@ const ServicesSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            // ✅ Hover con borde naranja exacto
+            // ✅ Hover con borde naranja exacto y sombra glow sutil
             className="group flex flex-col justify-between p-8 rounded-2xl bg-[#08223a] border border-[#ebf2f7]/10 transition-all duration-300 hover:border-[#ff8c00]/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#ff8c00]/10"
           >
             <div>
-              {/* Icono con color exacto */}
+              {/* Icono con color exacto y fondo adaptativo */}
               <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#0a2b49] border border-[#ebf2f7]/5 mb-6 group-hover:bg-[#ff8c00]/10 transition-colors">
-                <s.icon className="h-6 w-6 text-[#ff8c00]" />
+                <s.icon className="h-6 w-6 text-[#ff8c00] drop-shadow-[0_0_5px_rgba(255,140,0,0.3)]" />
               </div>
               <h3 className="text-xl font-bold text-[#ebf2f7] mb-3 group-hover:text-white transition-colors">
                 {s.title}
@@ -60,8 +61,11 @@ const ServicesSection = () => (
               </p>
             </div>
             
-            {/* Enlace con color exacto */}
-            <Link href={s.href} className="text-sm font-bold text-[#ff8c00] flex items-center gap-1.5 pt-4 group-hover:gap-2 transition-all">
+            {/* Enlace "Saber más" con color exacto */}
+            <Link 
+              href={s.href} 
+              className="text-sm font-bold text-[#ff8c00] flex items-center gap-1.5 pt-4 group-hover:gap-2 transition-all"
+            >
               Saber más <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>

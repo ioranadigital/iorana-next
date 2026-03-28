@@ -1,37 +1,52 @@
-"use client";
+// app/servicios/ppc-paid-search/page.tsx
+import ServicePageTemplate, { buildMetadata, type ServicePageData } from "@/components/ServicePageTemplate";
 
-import React from "react";
-import ServicePageTemplate from "../../components/ServicePageTemplate";
-
-const serviceData = {
-  title: "PPC & Paid Search",
-  subtitle: "Publicidad rentable y escalable",
-  description: "Captamos clientes en el momento exacto en que buscan tus servicios mediante campañas en Google Ads y redes sociales.",
-  benefits: [
-    "Gestión experta de Google Ads (Search y Display)",
-    "Campañas de Meta Ads enfocadas a conversión",
-    "Configuración avanzada de seguimiento de conversiones",
-    "A/B Testing de anuncios y creatividades",
-    "Optimización continua del coste por lead (CPL)"
-  ],
-  stats: [
-    { label: "ROAS Promedio", value: "4.5x" },
-    { label: "Costo por Lead", value: "-30%" },
-    { label: "CTR", value: "6.8%" },
-    { label: "Presupuesto", value: "Optimizado" }
+const data: ServicePageData = {
+  meta: {
+    title: "PPC & Paid Search",
+    description: "Campañas de pago que generan leads cualificados desde el día 1. Maximizamos tu ROAS con gestión experta en Google Ads y Meta Ads.",
+    ogImage: "/og/ppc-paid-search.jpg",
+  },
+  hero: {
+    title: "PPC & Paid Search",
+    subtitle: "Campañas de pago que generan leads cualificados desde el día 1. Maximizamos tu ROAS con gestión experta en Google Ads y Meta Ads.",
+    whyPoints: [
+      "El PPC te da resultados inmediatos con un coste de adquisición predecible",
+      "Complementa tu estrategia SEO: captas demanda mientras construyes autoridad orgánica",
+      "La data de campañas paid es invaluable para informar tu estrategia de contenido",
+    ],
+    ctaLabel: "Solicítanos Más Información",
+    ctaHref: "#contacto",
+  },
+  includes: [
+    { text: "Estrategia y configuración de Google Ads (Search, Display, YouTube)" },
+    { text: "Campañas en Meta Ads (Facebook e Instagram) con segmentación avanzada" },
+    { text: "Remarketing y audiencias lookalike para maximizar conversiones" },
+    { text: "Optimización continua de pujas, CPA y ROAS" },
+    { text: "A/B testing de creatividades, copies y landing pages" },
+    { text: "Reporting semanal con dashboards en tiempo real" },
   ],
   process: [
-    { title: "Estrategia", desc: "Definimos los canales y el presupuesto más rentable para ti." },
-    { title: "Montaje", desc: "Creamos las campañas con copys persuasivos y segmentación." },
-    { title: "Escalado", desc: "Aumentamos la inversión en lo que funciona y cerramos lo que no." },
-    { title: "Reporting", desc: "Sabrás exactamente cuánto dinero entra por cada euro invertido." }
-  ]
+    { title: "Análisis y Estrategia", description: "Estudiamos tu mercado, competidores y buyer persona para diseñar una estructura de campañas que maximice el ROI." },
+    { title: "Configuración de Campañas", description: "Creamos cuentas, campañas y grupos de anuncios con keyword research, copies persuasivos y extensiones optimizadas." },
+    { title: "Landing Pages", description: "Diseñamos o optimizamos landing pages específicas para cada campaña, maximizando la tasa de conversión." },
+    { title: "Optimización Continua", description: "Ajustamos pujas, negativizamos keywords, testamos creatividades y escalamos lo que funciona en ciclos semanales." },
+    { title: "Reporting y Escalado", description: "Reportes semanales con métricas clave. Identificamos oportunidades de escalar presupuesto en canales rentables." },
+  ],
+  results: [
+    { value: "4.2x", label: "ROAS promedio" },
+    { value: "-45%", label: "Reducción CPA" },
+    { value: "+180%", label: "Leads cualificados" },
+    { value: "98%", label: "Clientes satisfechos" },
+  ],
+  faq: [
+    { q: "¿Cuánto presupuesto necesito para empezar con PPC?", a: "Recomendamos un mínimo de 1.500€/mes en inversión publicitaria para obtener datos suficientes que permitan optimizar. El presupuesto óptimo depende de tu sector y objetivos." },
+    { q: "¿Google Ads o Meta Ads? ¿Cuál es mejor?", a: "Depende de tu negocio. Google Ads captura demanda existente (usuarios buscando activamente). Meta Ads genera demanda y es excelente para awareness y remarketing. Generalmente recomendamos una combinación." },
+    { q: "¿Cuánto tiempo hasta ver resultados?", a: "Los primeros resultados se ven en 1-2 semanas. Sin embargo, la optimización real comienza tras 4-6 semanas cuando tenemos suficientes datos para tomar decisiones basadas en evidencia." },
+    { q: "¿Gestionáis también las creatividades?", a: "Sí, nuestro equipo crea copies, diseños de anuncios y landing pages. También trabajamos con tu equipo de diseño si lo prefieres." },
+  ],
+  form: { endpoint: "/api/contact" },
 };
 
-const PpcPaidSearch = () => (
-  <div className="pt-24 bg-[#0a2b49] min-h-screen">
-    <ServicePageTemplate {...serviceData} />
-  </div>
-);
-
-export default PpcPaidSearch;
+export const metadata = buildMetadata(data);
+export default function Page() { return <ServicePageTemplate data={data} />; }

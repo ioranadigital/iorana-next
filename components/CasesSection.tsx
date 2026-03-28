@@ -1,91 +1,112 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
+import { ExternalLink, Trophy, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 const cases = [
   {
-    company: "StreamFlow",
-    industry: "SaaS de Productividad",
-    challenge: "CAC elevado ($180) y cero tráfico orgánico.",
-    solution: "Estrategia de topic clusters con +60 artículos.",
-    result: "+320% Tráfico Orgánico",
-    resultSub: "en 5 meses",
-    link: "/casos/streamflow"
+    company: "SaaS Techflow",
+    result: "+145% MRR",
+    tag: "SEO & Content",
+    image: "/cases/saas-case.jpg", // Asegúrate de tener estas imágenes o usa placeholders
+    desc: "Escalamos su adquisición orgánica de 2k a 45k visitas mensuales en 8 meses."
   },
   {
-    company: "DataPulse",
-    industry: "SaaS de Analytics",
-    challenge: "Ranking en posiciones 30+. Tasa de conversión del 0.3%.",
-    solution: "Auditoría técnica y optimización de Core Web Vitals.",
-    result: "+540% Conversiones",
-    resultSub: "en 6 meses",
-    link: "/casos/datapulse"
+    company: "Fintech Pro",
+    result: "x3.5 ROAS",
+    tag: "PPC Ads",
+    image: "/cases/fintech-case.jpg",
+    desc: "Optimizamos su inversión en Google Ads reduciendo el CPA un 40%."
   },
   {
-    company: "HireBot",
-    industry: "SaaS de HR Tech",
-    challenge: "Sin blog ni estrategia técnica.",
-    solution: "Reconstrucción de arquitectura SEO y hub educativo.",
-    result: "12K visitas/mes",
-    resultSub: "desde cero",
-    link: "/casos/hirebot"
+    company: "Cloud Service",
+    result: "Top 3 Keywords",
+    tag: "SEO Técnico",
+    image: "/cases/cloud-case.jpg",
+    desc: "Dominio total de términos de alta intención de compra en el mercado USA."
   }
 ];
 
 const CasesSection = () => {
   return (
     <section id="casos" className="w-full py-24 bg-[#0a2b49] overflow-visible">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 overflow-visible">
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="text-sm font-bold text-orange-500 tracking-widest uppercase">
-            Casos de Éxito
-          </span>
-          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
-            Resultados <span className="text-orange-500">Reales</span>
-          </h2>
-        </motion.div>
+        {/* Cabecera */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase flex items-center gap-2">
+              <Trophy className="h-4 w-4" /> Resultados Reales
+            </span>
+            <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
+              Casos de <span className="text-[#ff8c00]">Éxito</span>
+            </h2>
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-[#ebf2f7]/60 text-lg max-w-sm"
+          >
+            No vendemos humo. Vendemos crecimiento medible y escalable para negocios digitales.
+          </motion.p>
+        </div>
 
-        {/* ✅ LÍNEA 64 CORREGIDA: Comillas cerradas correctamente */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-visible">
+        {/* Grid de Casos */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 overflow-visible">
           {cases.map((c, i) => (
             <motion.div
-              key={c.company}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              /* Estilo consistente con la sección Nosotros */
-              className="flex flex-col rounded-3xl border border-[#ebf2f7]/10 bg-[#08223a] shadow-2xl p-8 hover:border-orange-500/30 transition-all duration-300"
+              className="group relative bg-[#08223a] rounded-3xl border border-[#ebf2f7]/5 overflow-hidden hover:border-[#ff8c00]/30 transition-all duration-500 shadow-2xl"
             >
-              <div className="text-2xl font-bold text-[#ebf2f7] mb-1">{c.result}</div>
-              <div className="text-xs text-orange-500 font-bold uppercase mb-6">{c.resultSub}</div>
-              
-              <div className="space-y-4 flex-grow">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-orange-500 font-bold">Desafío</div>
-                  <p className="text-sm text-[#ebf2f7]/70">{c.challenge}</p>
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-orange-500 font-bold">Solución</div>
-                  <p className="text-sm text-[#ebf2f7]/70">{c.solution}</p>
+              {/* Imagen/Overlay */}
+              <div className="h-48 bg-[#0a2b49] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08223a] to-transparent z-10" />
+                {/* Aquí iría la imagen <img src={c.image} ... /> */}
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="px-3 py-1 rounded-full bg-[#0a2b49]/80 border border-white/10 text-[10px] font-bold text-[#ebf2f7] uppercase tracking-widest">
+                    {c.tag}
+                  </span>
                 </div>
               </div>
 
-              <Button 
-                variant="link" 
-                className="mt-6 p-0 text-orange-500 w-fit hover:text-orange-400"
-              >
-                Ver caso →
-              </Button>
+              {/* Contenido */}
+              <div className="p-8 relative z-20 -mt-12">
+                <div className="flex items-center gap-2 text-[#ff8c00] mb-2">
+                  <TrendingUp className="h-5 w-5" />
+                  <span className="text-2xl font-black drop-shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+                    {c.result}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#ebf2f7] mb-4">{c.company}</h3>
+                <p className="text-[#ebf2f7]/60 text-sm leading-relaxed mb-8">
+                  {c.desc}
+                </p>
+                
+                <Link 
+                  href="/casos" 
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#ebf2f7] group-hover:text-[#ff8c00] transition-colors"
+                >
+                  Ver Proyecto <ExternalLink className="h-4 w-4" />
+                </Link>
+              </div>
+
+              {/* Decoración Hover */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ff8c00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

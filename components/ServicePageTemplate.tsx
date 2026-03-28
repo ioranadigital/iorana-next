@@ -1,117 +1,271 @@
-"use client";
+// components/ServicePageTemplate.tsx
+import { Metadata } from "next";
+import Link from "next/link";
+import { CheckCircle2, ChevronDown } from "lucide-react";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ContactSection from "@/components/ContactSection";
-import FAQSection from "@/components/FAQSection";
+// Colores extraídos de globals.css — body: #0a2b49 / text: #ebf2f7
+// Panel más oscuro: #07213a  |  Panel elevado: #0d3355
+// Borde sutil: rgba(255,255,255,0.08)
+const C = {
+  bg:          "bg-[#0a2b49]",
+  panel:       "bg-[#07213a]",
+  panelAlt:    "bg-[#0d3355]",
+  border:      "border-white/10",
+  text:        "text-[#ebf2f7]",
+  muted:       "text-[#7fa8c9]",
+  accent:      "text-[#ff8c00]",
+  accentBg:    "bg-[#ff8c00]",
+  accentHover: "hover:bg-[#e67e00]",
+} as const;
 
-export interface ServicePageProps {
-  title: string;
-  subtitle: string;
-  description: string;
-  benefits: string[];
-  features?: Array<{ title: string; desc: string }>;
-  process: Array<{ title: string; desc: string }>;
-  stats: Array<{ label: string; value: string }>;
+/* ─── TIPOS ─────────────────────────────────────────────── */
+export interface ServicePageData {
+  meta: { title: string; description: string; ogImage?: string };
+  hero: {
+    title: string;
+    subtitle: string;
+    whyPoints: string[];
+    ctaLabel?: string;
+    ctaHref?: string;
+  };
+  includes: { text: string }[];
+  process:  { title: string; description: string }[];
+  results:  { value: string; label: string }[];
+  faq:      { q: string; a: string }[];
+  form?:    { endpoint: string };
 }
 
-const ServicePageTemplate = ({
-  title,
-  subtitle,
-  description,
-  benefits,
-  process,
-  stats
-}: ServicePageProps) => {
-  return (
-    <div className="bg-[#0a2b49] min-h-screen">
-      
-      {/* HERO SECTION - pt-40 para dar aire bajo el Navbar fijo */}
-      <section className="pt-40 pb-20 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-6"
-          >
-            <span className="text-orange-500 font-bold tracking-widest uppercase text-sm">
-              {subtitle}
-            </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-black text-[#ebf2f7] leading-tight">
-              {title}
-            </h1>
-            <p className="text-lg text-[#ebf2f7]/70 leading-relaxed max-w-xl">
-              {description}
-            </p>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 rounded-full text-lg font-bold transition-all shadow-lg shadow-orange-500/20">
-              Solicitar Información
-            </Button>
-          </motion.div>
+/* ─── METADATA ───────────────────────────────────────────── */
+export function buildMetadata(data: ServicePageData): Metadata {
+  return {
+    title: `${data.meta.title} | IORANA Digital`,
+    description: data.meta.description,
+    openGraph: {
+      title: data.meta.title,
+      description: data.meta.description,
+      images: data.meta.ogImage ? [data.meta.ogImage] : [],
+      type: "website",
+    },
+    twitter: { card: "summary_large_image", title: data.meta.title },
+  };
+}
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#08223a] border border-[#ebf2f7]/10 p-8 rounded-3xl shadow-2xl relative overflow-hidden"
+/* ─── HELPER: primera palabra blanca, resto naranja ─────── */
+function SplitTitle({ text, center = false, size = "text-3xl md:text-4xl" }: { text: string; center?: boolean; size?: string }) {
+  const words = text.trim().split(" ");
+  const first = words[0];
+  const rest  = words.slice(1).join(" ");
+  return (
+    <span className={`block font-extrabold leading-tight ${size} ${center ? "text-center" : ""}`}>
+      <span className="text-white">{first}</span>
+      {rest && <> <span className="text-[#ff8c00]">{rest}</span></>}
+    </span>
+  );
+}
+
+/* ─── TEMPLATE ───────────────────────────────────────────── */
+export default function ServicePageTemplate({ data }: { data: ServicePageData }) {
+  const { hero, includes, process, results, faq } = data;
+
+  return (
+    <main className={`w-full ${C.bg} ${C.text} font-body pt-20`}>
+
+      {/* ── HERO + QUÉ INCLUYE ── */}
+      <section
+        aria-label="Presentación del servicio"
+        className="max-w-5xl mx-auto px-6 pt-12 pb-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+      >
+        {/* Columna izquierda: título + subtítulo */}
+        <div className="flex flex-col gap-8">
+          <div>
+            <span
+              aria-hidden="true"
+              className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${C.panel} border ${C.border} ${C.muted} mb-5`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+            </span>
+            {/* H1: primera palabra blanca, resto naranja, dos líneas */}
+            <h1 className="mb-4">
+              <SplitTitle text={hero.title} size="text-5xl md:text-6xl" />
+            </h1>
+            <p className={`${C.muted} text-base`}>{hero.subtitle}</p>
+          </div>
+        </div>
+
+        {/* Columna derecha: card ¿Por qué importa? + CTA */}
+        <div className="flex flex-col gap-4">
+          <aside
+            aria-label="Por qué importa"
+            className="bg-[#0d3355] border border-[#ebf2f7]/25 rounded-xl p-7"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-              <Star size={120} className="text-orange-500" />
-            </div>
-            <h3 className="text-xl font-bold text-[#ebf2f7] mb-6">¿Qué incluye?</h3>
-            <ul className="space-y-4">
-              {benefits.map((benefit, i) => (
-                <li key={i} className="flex items-start gap-3 text-[#ebf2f7]/80">
-                  <CheckCircle2 className="text-orange-500 mt-1 shrink-0" size={20} />
-                  <span>{benefit}</span>
+            {/* Título más grande con icono */}
+            <h2 className={`flex items-center gap-2 text-xl font-bold ${C.text} mb-5`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#ff8c00] shrink-0" aria-hidden="true">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+              </svg>
+              ¿Por qué <em className={`not-italic ${C.accent} ml-1`}>importa</em>?
+            </h2>
+            <ul role="list" className="space-y-4">
+              {hero.whyPoints.map((p, i) => (
+                <li key={i} className={`flex items-start gap-3 text-sm ${C.text}`}>
+                  <span aria-hidden="true" className="mt-1.5 w-2.5 h-2.5 rounded-full bg-[#ff8c00] shrink-0" />
+                  {p}
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </aside>
+
+          {/* Botón CTA debajo del card — fondo claro, texto oscuro */}
+          <Link
+            href={hero.ctaHref ?? "#contacto"}
+            className="block w-full text-center py-3 px-5 rounded-xl bg-[#ebf2f7] hover:bg-white text-[#07213a] text-sm font-semibold transition-colors"
+          >
+            {hero.ctaLabel ?? "Solicítanos Más Información"} →
+          </Link>
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="py-16 border-y border-[#ebf2f7]/5 bg-[#08223a]/50">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-orange-500 mb-2">{stat.value}</div>
-              <div className="text-xs uppercase tracking-widest text-[#ebf2f7]/40 font-bold">{stat.label}</div>
+      {/* ── QUÉ INCLUYE — ancho completo, 3 columnas ── */}
+      <section aria-labelledby="includes-title-full" className="max-w-5xl mx-auto px-6 pb-16">
+        <h2 id="includes-title-full" className="mb-6">
+          <SplitTitle text="¿Qué incluye?" size="text-2xl md:text-3xl" />
+        </h2>
+        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {includes.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3 bg-[#0d3355] border border-[#ebf2f7]/20 rounded-xl px-5 py-4 text-sm text-[#ebf2f7]"
+            >
+              <CheckCircle2 size={18} className="text-[#ff8c00] shrink-0 mt-0.5" aria-hidden="true" />
+              {item.text}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ── PROCESO ── */}
+      <section aria-labelledby="process-title" className="w-full max-w-5xl mx-auto px-6 py-16">
+        <h2 id="process-title" className="text-center mb-10">
+          <SplitTitle text="Nuestro proceso" center size="text-3xl md:text-4xl" />
+        </h2>
+        <ol role="list" className="flex flex-col gap-4">
+          {process.map((step, i) => (
+            <li key={i} className={`flex items-start gap-5 ${C.panel} border ${C.border} rounded-xl px-6 py-5`}>
+              <span
+                aria-label={`Paso ${i + 1}`}
+                className={`shrink-0 w-9 h-9 rounded-full ${C.accentBg} text-white font-extrabold text-sm flex items-center justify-center font-mono`}
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 className={`text-base font-bold ${C.text} mb-1`}>{step.title}</h3>
+                <p className={`text-sm ${C.muted}`}>{step.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ── RESULTADOS ── */}
+      <section aria-labelledby="results-title" className={`w-full ${C.bg} py-16 px-6 text-center`}>
+        <h2 id="results-title" className="mb-10">
+          <SplitTitle text="Resultados reales" center size="text-3xl md:text-4xl" />
+        </h2>
+        <ul role="list" className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          {results.map((r, i) => (
+            <li key={i} className="flex flex-col gap-1">
+              <strong className={`text-4xl font-black ${C.accent}`}>{r.value}</strong>
+              <span className={`text-xs ${C.muted} uppercase tracking-widest`}>{r.label}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section aria-labelledby="faq-title" className="w-full max-w-2xl mx-auto px-6 py-16">
+        <h2 id="faq-title" className="text-center mb-10">
+          <SplitTitle text="Preguntas frecuentes" center size="text-3xl md:text-4xl" />
+        </h2>
+        <dl className="flex flex-col gap-3">
+          {faq.map((item, i) => (
+            <div key={i} className={`${C.panel} border ${C.border} rounded-xl overflow-hidden`}>
+              <details>
+                <summary className={`flex justify-between items-center px-5 py-4 cursor-pointer text-sm font-semibold ${C.text} list-none [&::-webkit-details-marker]:hidden`}>
+                  {item.q}
+                  <ChevronDown size={18} aria-hidden="true" className={`${C.muted} shrink-0 transition-transform duration-200`} />
+                </summary>
+                <dd className={`px-5 pb-4 text-sm ${C.muted} m-0`}>{item.a}</dd>
+              </details>
             </div>
           ))}
+        </dl>
+      </section>
+
+      {/* ── CONTACTO ── */}
+      <section id="contacto" aria-labelledby="contact-title" className={`w-full ${C.bg} py-16 px-6 text-center`}>
+        <h2 id="contact-title" className={`text-2xl md:text-3xl font-bold ${C.text} mb-2`}>
+          ¿Tienes preguntas?
+        </h2>
+        <p className={`${C.muted} text-sm mb-8`}>
+          Estaremos encantados de responderte. Contáctanos y estudiaremos tu caso.
+        </p>
+        <div className="max-w-lg mx-auto bg-[#07213a] border border-white/15 rounded-2xl p-7">
+          <ContactForm service={hero.title} endpoint={data.form?.endpoint} />
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section className="py-24 px-4 bg-[#0a2b49]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#ebf2f7]">
-              Nuestro <span className="text-orange-500">proceso</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            {process.map((p, i) => (
-              <div key={i} className="bg-[#08223a] p-6 rounded-2xl border border-[#ebf2f7]/10 relative group hover:border-orange-500/30 transition-all">
-                <span className="text-4xl font-black text-orange-500/20 absolute top-4 right-4">
-                  {i + 1}
-                </span>
-                <h4 className="font-bold text-[#ebf2f7] mb-2 pr-8 leading-tight">{p.title}</h4>
-                <p className="text-xs text-[#ebf2f7]/50 leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECCIONES FINALES */}
-      <FAQSection />
-      <ContactSection />      
-
-      {/* El Footer NO se incluye aquí. Se renderiza automáticamente desde el layout global de Next.js */}
-    </div>
+    </main>
   );
-};
+}
 
-export default ServicePageTemplate;
+/* ─── CONTACT FORM ───────────────────────────────────── */
+function ContactForm({ service, endpoint }: { service: string; endpoint?: string }) {
+  const inputCls = "w-full bg-[#0a2b49] border border-white/10 rounded-lg px-4 py-3 text-sm text-[#ebf2f7] placeholder:text-[#7fa8c9] focus:outline-none focus:border-[#ff8c00] transition-colors";
+
+  return (
+    <form
+      className="max-w-lg mx-auto flex flex-col gap-3 text-left"
+      action={endpoint ?? "/api/contact"}
+      method="POST"
+      aria-label="Formulario de contacto"
+    >
+      <input type="hidden" name="service" value={service} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <label className="sr-only" htmlFor="cf-name">Nombre</label>
+        <input id="cf-name" name="name" type="text" placeholder="Nombre" required className={inputCls} />
+        <label className="sr-only" htmlFor="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" placeholder="Email" required className={inputCls} />
+      </div>
+
+      <label className="sr-only" htmlFor="cf-company">Empresa / SaaS</label>
+      <input id="cf-company" name="company" type="text" placeholder="Empresa / SaaS" className={inputCls} />
+
+      <label className="sr-only" htmlFor="cf-message">Cuéntanos sobre tu proyecto</label>
+      <textarea id="cf-message" name="message" rows={4} required placeholder="Cuéntanos sobre tu proyecto..." className={`${inputCls} resize-y`} />
+
+      <button
+        type="submit"
+        className="w-full py-3 px-6 bg-[#ebf2f7] hover:bg-white text-[#07213a] font-bold text-sm rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2"
+      >
+        Enviar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+
+      <p className="text-xs text-[#7fa8c9]">
+        <span className="inline-flex items-center gap-1.5">
+          <input type="checkbox" required id="cf-legal" className="w-3.5 h-3.5 accent-[#ff8c00]" />
+          <label htmlFor="cf-legal">
+            Acepto los{" "}
+            <Link href="/terminos" className="text-[#ff8c00] underline underline-offset-2">Términos</Link>{" "}
+            y la{" "}
+            <Link href="/privacidad" className="text-[#ff8c00] underline underline-offset-2">Privacidad</Link>
+          </label>
+        </span>
+      </p>
+    </form>
+  );
+}
