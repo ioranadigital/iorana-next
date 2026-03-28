@@ -32,7 +32,6 @@ const Index = () => {
         <FAQSection />
         <ContactSection />
       </main>
-      <Footer />
     </>
   );
 };
