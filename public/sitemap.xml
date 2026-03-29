@@ -1,16 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
-  <loc>https://iorana.digital/</loc>
-  <lastmod>2026-03-13T08:30:28+00:00</lastmod>
+<loc>https://iorana.digital/</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>1.00</priority>
 </url>
-
-
+<url>
+<loc>https://iorana.digital/servicios/seo-tecnico</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/soluciones/como-esta-optimizado-mi-web</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/servicios/ppc-paid-search</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/servicios/content-marketing</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/servicios/automatizaciones</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/servicios/desarrollo-web</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/servicios/imagen-de-marca</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/casos</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/soluciones/kit-digital</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/soluciones/diseno-de-landings</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/soluciones/todo-para-tu-negocio</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/privacidad</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://iorana.digital/terminos</loc>
+<lastmod>2026-03-29T10:02:22+00:00</lastmod>
+<priority>0.80</priority>
+</url>
 </urlset>
