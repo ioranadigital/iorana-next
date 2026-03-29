@@ -7,7 +7,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     '',
     '/servicios',
+    '/servicios/seo-tecnico',
+    '/servicios/ppc-paid-search',
+    '/servicios/desarrollo-web',
+    '/servicios/content-marketing',
+    '/servicios/automatizaciones',
+    '/servicios/imagen-de-marca',
     '/soluciones',
+    '/soluciones/kit-digital',
+    '/soluciones/diseno-landings',
+    '/soluciones/como-esta-optimizada-mi-web',
+    '/soluciones/todo-para-tu-negocio',
+    '/sobre-nosotros',
     '/contacto',
     '/blog', // Esta es la landing de Next.js que servirá de puente
   ].map((route) => ({
