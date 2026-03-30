@@ -12,7 +12,6 @@ const serviceLinks = [
 ];
 
 const solutionLinks = [
-  { label: "Kit Digital", href: "/soluciones/kit-digital" },
   { label: "Diseño de Landings", href: "/soluciones/diseno-de-landings" },
   { label: "Todo para Tu Negocio", href: "/soluciones/todo-para-tu-negocio" },
 ];
@@ -73,7 +72,7 @@ const Footer = () => (
           </ul>
         </div>
 
-        {/* Legal */}
+        {/* Legal 
         <div>
           <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
             Legal
@@ -90,7 +89,7 @@ const Footer = () => (
               </Link>
             </li>
           </ul>
-        </div>
+        </div>*/}
       </div>
 
       {/* ── COPYRIGHT ── */}

@@ -1,76 +1,173 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./ui/accordion";
-import { HelpCircle, Plus } from "lucide-react";
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  MessageSquare, 
+  Search, 
+  BarChart3, 
+  Settings, 
+  ShieldCheck, 
+  AlertCircle 
+} from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 
 const faqs = [
   { 
-    question: "¿Cuánto tardan en verse los resultados?", 
-    answer: "En campañas de PPC (Ads) los resultados son casi inmediatos. Para estrategias de SEO y Contenidos, el impacto real suele consolidarse entre los 3 y 6 meses, dependiendo de la autoridad actual de tu dominio." 
+    question: "¿Cuánto se tarda en ver resultados SEO?", 
+    answer: "El SEO es una inversión a medio plazo. Los cambios técnicos suelen mostrar impacto en 4-12 semanas, consolidándose entre los 6 y 9 meses de trabajo continuo.",
+    icon: Search 
   },
   { 
-    question: "¿Tienen un periodo de permanencia mínimo?", 
-    answer: "No obligamos a contratos a largo plazo porque confiamos en nuestro trabajo. Sin embargo, recomendamos un mínimo de 3 meses para que las optimizaciones técnicas y de contenido surtan efecto en los algoritmos." 
+    question: "¿Por qué necesito SEO Técnico?", 
+    answer: "Es el motor de tu web. Sin una base técnica sólida (WPO, Indexación, Arquitectura), Google no mostrará tu contenido por muy bueno que sea.",
+    icon: Settings 
   },
   { 
-    question: "¿Cómo miden el éxito de las campañas?", 
-    answer: "Nos alejamos de las 'métricas de vanidad'. Nos enfocamos en KPIs de negocio: incremento de MQLs (Leads Cualificados), reducción del CAC (Coste de Adquisición) y crecimiento del MRR." 
+    question: "¿Diferencia entre SEO y PPC?", 
+    answer: "El PPC da visibilidad inmediata pagada; el SEO construye autoridad orgánica recurrente. Combinarlos maximiza el ROI y reduce costes a largo plazo.",
+    icon: BarChart3 
   },
   { 
-    question: "¿Trabajan con empresas que no sean SaaS?", 
-    answer: "Aunque somos especialistas en software y tecnología B2B, nuestra metodología de Growth es aplicable a cualquier negocio digital con un ticket medio alto que necesite captación recurrente." 
-  }
+    question: "¿Realizan auditorías previas?", 
+    answer: "Sí. Todo proyecto en iorana.digital inicia con un diagnóstico profundo de tu web y competencia para trazar una hoja de ruta personalizada y real.",
+    icon: ShieldCheck 
+  },
+  { 
+    question: "¿Cómo miden el éxito?", 
+    answer: "Nos enfocamos en KPIs de negocio: incremento de conversiones, reducción del CPA (Coste por Adquisición) y mejora real del retorno de inversión.",
+    icon: MessageSquare 
+  },
+  { 
+    question: "¿Recuperan tráfico caído?", 
+    answer: "Identificamos si es una penalización algorítmica, un error técnico de rastreo o un cambio en la intención de búsqueda para ejecutar un plan de recuperación.",
+    icon: AlertCircle 
+  },
 ];
 
 const FAQSection = () => {
+  const [current, setCurrent] = useState(0);
+  const total = faqs.length;
+
+  const next = useCallback(() => setCurrent((p) => (p + 1) % total), [total]);
+  const prev = useCallback(() => setCurrent((p) => (p - 1 + total) % total), [total]);
+
+  useEffect(() => {
+    const interval = setInterval(next, 5000); 
+    return () => clearInterval(interval);
+  }, [next]);
+
+  const getVisibleIndices = (count: number) => {
+    const indices: number[] = [];
+    for (let i = 0; i < count; i++) {
+      indices.push((current + i) % total);
+    }
+    return indices;
+  };
+
   return (
-    <section id="faq" className="w-full py-24 bg-[#0a2b49] border-t border-white/5">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="faqs" className="section-padding relative overflow-hidden bg-[#05192d] py-24">
+      <div className="container mx-auto px-6">
         
-        {/* CABECERA */}
+        {/* Cabecera */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase flex items-center justify-center gap-2">
-            <HelpCircle className="h-4 w-4" /> Centro de Ayuda
+          <span className="text-sm font-medium text-[#ebf2f7] tracking-widest uppercase opacity-80">
+            Resolvemos tus dudas
           </span>
-          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mt-4 text-[#ebf2f7]">
             Preguntas <span className="text-[#ff8c00]">Frecuentes</span>
           </h2>
+          <p className="text-[#ebf2f7]/60 mt-6 max-w-2xl mx-auto text-lg">
+            Estrategia, claridad y resultados. Todo lo que necesitas saber sobre cómo impulsamos el crecimiento de iorana.digital.
+          </p>
         </motion.div>
 
-        {/* ACORDEÓN PERSONALIZADO */}
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          {faqs.map((faq, i) => (
-            <AccordionItem 
-              key={i} 
-              value={`item-${i}`} 
-              className="bg-[#08223a] px-6 py-2 rounded-2xl border border-[#ebf2f7]/5 shadow-xl transition-all hover:border-[#ff8c00]/20 data-[state=open]:border-[#ff8c00]/40"
-            >
-              <AccordionTrigger className="text-left font-bold text-[#ebf2f7] text-lg py-4 group data-[state=open]:text-[#ff8c00] transition-colors hover:no-underline">
-                {faq.question}
-                {/* Icono + que gira y cambia a naranja */}
-                <Plus className="h-5 w-5 text-[#ebf2f7]/30 group-data-[state=open]:text-[#ff8c00] transition-transform duration-300 group-data-[state=open]:rotate-45" />
-              </AccordionTrigger>
-              <AccordionContent className="text-[#ebf2f7]/70 text-base leading-relaxed pb-6">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="relative">
+          {/* Navegación */}
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 w-12 h-12 rounded-full bg-[#0a2b49] border border-[#ebf2f7]/20 flex items-center justify-center text-[#ebf2f7] hover:border-[#ff8c00] hover:text-[#ff8c00] transition-all hidden xl:flex"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 w-12 h-12 rounded-full bg-[#0a2b49] border border-[#ebf2f7]/20 flex items-center justify-center text-[#ebf2f7] hover:border-[#ff8c00] hover:text-[#ff8c00] transition-all hidden xl:flex"
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
 
+          <div className="mx-auto max-w-7xl">
+            {/* Mobile: 1 tarjeta */}
+            <div className="flex md:hidden justify-center">
+              {getVisibleIndices(1).map((idx) => (
+                <div key={`m-${idx}`} className="w-full">
+                  <FAQCard faq={faqs[idx]} />
+                </div>
+              ))}
+            </div>
+
+            {/* Tablet: 2 tarjetas */}
+            <div className="hidden md:flex lg:hidden justify-center gap-8">
+              {getVisibleIndices(2).map((idx) => (
+                <div key={`t-${idx}`} className="w-1/2">
+                  <FAQCard faq={faqs[idx]} />
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: 3 tarjetas */}
+            <div className="hidden lg:flex justify-center gap-8">
+              {getVisibleIndices(3).map((idx) => (
+                <div key={`d-${idx}`} className="w-1/3">
+                  <FAQCard faq={faqs[idx]} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Indicadores */}
+          <div className="flex justify-center gap-3 mt-14">
+            {faqs.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  i === current ? "bg-[#ff8c00] w-10" : "bg-[#ebf2f7]/20 hover:bg-[#ebf2f7]/40 w-2.5"
+                }`}
+                aria-label={`Ver pregunta ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 };
+
+const FAQCard = ({ faq }: { faq: { question: string; answer: string; icon: any } }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    className="flex flex-col p-10 md:p-12 rounded-3xl border border-[#ebf2f7]/10 bg-[#0a2b49]/40 backdrop-blur-xl hover:border-[#ff8c00]/30 transition-all duration-500 h-full min-h-[320px] shadow-2xl"
+  >
+    <div className="w-14 h-14 rounded-2xl bg-[#ff8c00]/10 border border-[#ff8c00]/20 flex items-center justify-center mb-8">
+      <faq.icon className="h-7 w-7 text-[#ff8c00]" />
+    </div>
+    <h3 className="text-xl font-bold text-[#ebf2f7] mb-5 leading-tight italic">
+      "{faq.question}"
+    </h3>
+    <p className="text-base leading-relaxed text-[#ebf2f7]/70">
+      {faq.answer}
+    </p>
+  </motion.div>
+);
 
 export default FAQSection;

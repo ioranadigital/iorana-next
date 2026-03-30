@@ -1,23 +1,23 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, Zap, Target } from "lucide-react";
+import { UserCheck, MessageSquare, Euro } from "lucide-react";
 
 const pillars = [
   {
-    icon: Target,
-    title: "Solo SaaS. Solo Resultados.",
-    desc: "No somos generalistas. Nos especializamos exclusivamente en startups de SaaS, lo que nos permite entender tu funnel, tu ICP y tus métricas mejor que nadie.",
+    icon: Euro,
+    title: "Nos centramos en tus ventas",
+    desc: "Olvida las métricas que no entiendes. A nosotros nos importa lo mismo que a ti: que entren más clientes y que tu negocio crezca.",
   },
   {
-    icon: TrendingUp,
-    title: "Data-Driven al 100%",
-    desc: "Cada decisión se basa en datos reales: análisis de competidores, intent de búsqueda y modelos de atribución que conectan SEO con ingresos.",
+    icon: UserCheck,
+    title: "Trato directo con Profesioanles",
+    desc: "Sin secretarias ni intermediarios. Hablarás directamente con la persona que se encarga de que tu web funcione y tus anuncios vendan.",
   },
   {
-    icon: Zap,
-    title: "Velocidad de Startup",
-    desc: "Sprints de 2 semanas, reportes transparentes y un equipo que opera a la velocidad que tu startup necesita. Sin burocracia.",
+    icon: MessageSquare,
+    title: "Cuentas claras siempre",
+    desc: "Te explicamos todo de forma sencilla, sin palabras raras. Sabrás en todo momento qué estamos haciendo y cómo se aprovecha tu inversión.",
   },
 ];
 
@@ -35,7 +35,7 @@ const USPSection = () => (
           ¿Por qué IORANA?
         </span>
         <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
-          La agencia SEO que piensa como <span className="text-[#ff8c00] drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">tu co-founder</span>
+         Cuidamos de tu negocio <span className="text-[#ff8c00] drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">como si fuera el nuestro</span>
         </h2>
       </motion.div>
 

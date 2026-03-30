@@ -62,7 +62,7 @@ const HeroSection = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff8c00]/30 bg-[#ff8c00]/10 mb-8">
             <span className="w-2 h-2 rounded-full bg-[#ff8c00] animate-pulse" aria-hidden="true" />
             <span className="text-xs font-medium text-[#ebf2f7]">
-              Agencia de Marketing en Asturias
+              Posicionamiento SEO y Diseño web
             </span>
           </div>
 
@@ -81,18 +81,19 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <Link
-              href="/soluciones/como-esta-optimizado-mi-web"
+              href="/informe-sitio-web-gratis"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#ebf2f7] text-[#0a2b49] font-bold text-base hover:bg-white transition-colors"
             >
-              ¿Cómo está mi sitio web? <ArrowRight className="h-4 w-4" />
+              ¿Cómo está mi sitio web? - Informe Gratuito <ArrowRight className="h-4 w-4" />
             </Link>
 
-            <button
+            {/*<button
               onClick={() => scrollTo("#casos")}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-[#ebf2f7]/25 text-[#ebf2f7] font-bold text-base hover:bg-[#ebf2f7]/10 transition-colors bg-transparent"
             >
               Ver Casos de Éxito
-            </button>
+            </button>*/}
+            
           </div>
 
           {/* Stats */}

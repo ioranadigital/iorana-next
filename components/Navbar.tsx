@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -17,32 +16,35 @@ const serviceLinks = [
 ];
 
 const solutionLinks = [
-  { label: "Kit Digital",            href: "/soluciones/kit-digital" },
-  { label: "Diseño de Landings",     href: "/soluciones/diseno-de-landings" },
-  { label: "Todo para Tu Negocio",   href: "/soluciones/todo-para-tu-negocio" },
   { label: "Informe Gratuito",       href: "/soluciones/como-esta-optimizado-mi-web" },
 ];
 
-// Enlaces de scroll — llevan a secciones de la Home
 const scrollLinks = [
   { label: "Nosotros",     id: "#nosotros" },
-  { label: "Casos de Éxito", id: "#casos" },
-  { label: "FAQ",          id: "#faq" },
+  { label: "Como trabajamos", id: "#metodologia" },
+  { label: "FAQs",           id: "#faqs" },
 ];
 
 const Navbar = () => {
-  const [open, setOpen]           = useState(false);
-  const [megaOpen, setMegaOpen]   = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openServicios, setOpenServicios] = useState(false);
+  const [openSoluciones, setOpenSoluciones] = useState(false);
+  
+  const [mobileSerOpen, setMobileSerOpen] = useState(false);
   const [mobileSolOpen, setMobileSolOpen] = useState(false);
+
   const pathname = usePathname();
-  const router   = useRouter();
+  const router = useRouter();
 
   const handleScroll = (id: string) => {
     setOpen(false);
     if (pathname !== "/") {
       router.push("/" + id);
     } else {
-      document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+      const element = document.querySelector(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -65,147 +67,124 @@ const Navbar = () => {
 
         {/* ── DESKTOP MENU ── */}
         <div className="hidden md:flex items-center gap-7">
-
-          {/* Inicio */}
-          <button
-            onClick={() => handleScroll("#hero")}
-            className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
-          >
+          <button onClick={() => handleScroll("#hero")} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
             Inicio
           </button>
 
-          {/* Soluciones de Marketing — mega menu */}
-          <div
+          {/* DROP DOWN: SERVICIOS */}
+          <div 
             className="relative h-20 flex items-center"
-            onMouseEnter={() => setMegaOpen(true)}
-            onMouseLeave={() => setMegaOpen(false)}
+            onMouseEnter={() => setOpenServicios(true)}
+            onMouseLeave={() => setOpenServicios(false)}
           >
             <button className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
-              Soluciones de Marketing
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${megaOpen ? "rotate-180 text-[#ff8c00]" : ""}`}
-              />
+              Servicios
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openServicios ? "rotate-180 text-[#ff8c00]" : ""}`} />
             </button>
-
-            {/* Dropdown */}
-            {megaOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[520px] bg-[#07213a] border border-white/10 rounded-2xl shadow-2xl p-6 grid grid-cols-2 gap-6">
-                <div>
-                  <p className="text-[10px] font-bold text-[#ff8c00] uppercase tracking-widest mb-3">
-                    Servicios
-                  </p>
-                  <ul className="space-y-2">
-                    {serviceLinks.map((s) => (
-                      <li key={s.href}>
-                        <Link
-                          href={s.href}
-                          className="block text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors py-1"
-                          onClick={() => setMegaOpen(false)}
-                        >
-                          {s.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-[#ff8c00] uppercase tracking-widest mb-3">
-                    Soluciones
-                  </p>
-                  <ul className="space-y-2">
-                    {solutionLinks.map((s) => (
-                      <li key={s.href}>
-                        <Link
-                          href={s.href}
-                          className="block text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00] transition-colors py-1"
-                          onClick={() => setMegaOpen(false)}
-                        >
-                          {s.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            {openServicios && (
+              <div className="absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-2">
+                <ul className="space-y-1">
+                  {serviceLinks.map((s) => (
+                    <li key={s.href}>
+                      <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </div>
 
-          {/* Nosotros / Casos de Éxito / FAQ */}
+          {/* DROP DOWN: SOLUCIONES */}
+          <div 
+            className="relative h-20 flex items-center"
+            onMouseEnter={() => setOpenSoluciones(true)}
+            onMouseLeave={() => setOpenSoluciones(false)}
+          >
+            <button className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+              Soluciones
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openSoluciones ? "rotate-180 text-[#ff8c00]" : ""}`} />
+            </button>
+            {openSoluciones && (
+              <div className="absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-2">
+                <ul className="space-y-1">
+                  {solutionLinks.map((s) => (
+                    <li key={s.href}>
+                      <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* ── PYMES (Entre Soluciones y Nosotros) ── */}
+          <Link href="/pymes/todo-para-tu-negocio" className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+            Pymes
+          </Link>
+
+          {/* ENLACES DE SCROLL (Comienza con Nosotros) */}
           {scrollLinks.map((l) => (
-            <button
-              key={l.id}
-              onClick={() => handleScroll(l.id)}
-              className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
-            >
+            <button key={l.id} onClick={() => handleScroll(l.id)} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
               {l.label}
             </button>
           ))}
-
-          {/* CTA */}
-          <Link
-            href="/servicios/seo-tecnico"
-            className="text-sm font-semibold px-5 py-2 rounded-full border border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all duration-200"
-          >
-            Nuestros Servicios
+          
+          <Link href="/contacto" className="text-sm font-semibold px-5 py-2 rounded-full border border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all duration-200">
+            Contáctanos
           </Link>
         </div>
 
         {/* ── HAMBURGER ── */}
-        <button
-          className="md:hidden text-[#ebf2f7] p-2"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-        >
+        <button className="md:hidden text-[#ebf2f7] p-2" onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* ── MOBILE MENU ── */}
       {open && (
-        <div className="md:hidden bg-[#07213a] border-t border-white/10 px-6 py-5 space-y-3">
-          <button onClick={() => handleScroll("#hero")} className="block w-full text-left text-[#ebf2f7] font-medium py-2 hover:text-[#ff8c00]">
-            Inicio
-          </button>
+        <div className="md:hidden bg-[#07213a] border-t border-white/10 px-6 py-5 space-y-3 overflow-y-auto max-h-[80vh]">
+          <button onClick={() => handleScroll("#hero")} className="block w-full text-left text-[#ebf2f7] font-medium py-2">Inicio</button>
 
-          {/* Soluciones accordion */}
           <div>
-            <button
-              onClick={() => setMobileSolOpen(!mobileSolOpen)}
-              className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2 hover:text-[#ff8c00]"
-            >
-              Soluciones de Marketing
-              <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
+            <button onClick={() => setMobileSerOpen(!mobileSerOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
+              Servicios <ChevronDown className={`h-4 w-4 transition-transform ${mobileSerOpen ? "rotate-180" : ""}`} />
             </button>
-            {mobileSolOpen && (
-              <div className="pl-4 pt-2 space-y-1">
-                <p className="text-[10px] font-bold text-[#ff8c00] uppercase tracking-widest pb-1">Servicios</p>
+            {mobileSerOpen && (
+              <div className="pl-4 space-y-2 pb-2">
                 {serviceLinks.map((s) => (
-                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)}
-                    className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00]">
-                    {s.label}
-                  </Link>
-                ))}
-                <p className="text-[10px] font-bold text-[#ff8c00] uppercase tracking-widest pb-1 pt-3">Soluciones</p>
-                {solutionLinks.map((s) => (
-                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)}
-                    className="block py-1.5 text-sm text-[#ebf2f7]/70 hover:text-[#ff8c00]">
-                    {s.label}
-                  </Link>
+                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
                 ))}
               </div>
             )}
           </div>
 
-          {scrollLinks.map((l) => (
-            <button key={l.id} onClick={() => handleScroll(l.id)}
-              className="block w-full text-left text-[#ebf2f7] font-medium py-2 hover:text-[#ff8c00]">
-              {l.label}
+          <div>
+            <button onClick={() => setMobileSolOpen(!mobileSolOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
+              Soluciones <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
             </button>
-          ))}
+            {mobileSolOpen && (
+              <div className="pl-4 space-y-2 pb-2">
+                {solutionLinks.map((s) => (
+                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
+                ))}
+              </div>
+            )}
+          </div>
 
-          <Link href="/servicios/seo-tecnico" onClick={() => setOpen(false)}
-            className="block w-full text-center mt-4 py-3 rounded-xl border border-[#ebf2f7]/20 text-[#ebf2f7] font-semibold hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all">
-            Nuestros Servicios
+          <Link href="/pymes/todo-para-tu-negocio" onClick={() => setOpen(false)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">
+            Pymes
+          </Link>
+
+          {scrollLinks.map((l) => (
+            <button key={l.id} onClick={() => handleScroll(l.id)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">{l.label}</button>
+          ))}
+          
+          <Link href="/contacto" onClick={() => setOpen(false)} className="block w-full text-center mt-4 py-3 rounded-xl bg-[#ff8c00] text-white font-semibold">
+            Contáctanos
           </Link>
         </div>
       )}

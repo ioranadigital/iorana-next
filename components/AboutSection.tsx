@@ -28,17 +28,15 @@ const AboutSection = () => (
             Nosotros
           </span>
           <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] leading-tight tracking-tight">
-            Obsesionados con el crecimiento de <span className="text-[#ff8c00] drop-shadow-[0_0_10px_rgba(255,140,0,0.3)]">tu empresa</span>
+            Impulsamos el crecimiento de tu empresa <span className="text-[#ff8c00] drop-shadow-[0_0_10px_rgba(255,140,0,0.3)]">como si fuera la nuestra. </span>
           </h2>
 
           <div className="mt-8 space-y-4">
             <p className="text-[#ebf2f7]/70 text-lg leading-relaxed">
-              IORANA Digital nació de la necesidad de startups brillantes que 
-              necesitaban una ejecución técnica impecable para dominar su mercado.
+             IORANA Digital nace para ofrecer a empresas ambiciosas la ejecución técnica que el mercado actual exige. No creemos en fórmulas genéricas; creemos en estrategias diseñadas a medida para dominar tu sector desde el primer día.
             </p>
             <p className="text-[#ebf2f7]/70 text-lg leading-relaxed mb-10">
-              No somos solo una agencia; somos ingenieros de crecimiento. Entendemos 
-              que el MRR y el LTV son los únicos números que realmente importan.
+              Más que una agencia, somos tus aliados en la escalada de ingresos. Entendemos que en la nueva economía digital, el ROI y el crecimiento sostenible son los únicos indicadores que definen el éxito.
             </p>
           </div>
 

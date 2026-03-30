@@ -28,7 +28,7 @@ const ContactSection = () => {
               Estamos a un paso de diseñar la estrategia que escalará tu SaaS. Rellena el formulario y agendaremos una breve sesión de auditoría gratuita para analizar tu potencial.
             </p>
             
-            {/* Tarjeta de contacto */}
+            {/* Tarjeta de contacto 
             <div className="flex items-center gap-6 p-6 rounded-2xl bg-[#08223a] border border-[#ff8c00]/30 shadow-2xl shadow-[#ff8c00]/5">
               <div className="flex items-center justify-center p-3 rounded-xl bg-[#ff8c00]/10 border border-[#ff8c00]/20">
                 <Mail className="h-7 w-7 text-[#ff8c00]" />
@@ -37,7 +37,7 @@ const ContactSection = () => {
                 <div className="text-sm text-[#ebf2f7]/50 font-medium">Nuestro correo</div>
                 <div className="text-xl font-bold text-[#ebf2f7]">hola@iorana.digital</div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* FORMULARIO SIMPLIFICADO */}
