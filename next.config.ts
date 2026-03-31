@@ -1,17 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ... tus otras configuraciones (como ignoreBuildErrors)
-  
-  async rewrites() {
+  async redirects() {
     return [
       {
-        // Esto captura CUALQUIER ruta (excepto archivos estáticos como imágenes)
-        // y las redirige internamente a la página principal
-        source: '/:path*',
-        destination: '/',
+        source: '/pyme/vcard',
+        destination: '/pymes/todo-para-tu-negocio',
+        permanent: true, // 301
       },
-    ];
+      {
+        source: '/pyme/vcard/',
+        destination: '/pymes/todo-para-tu-negocio',
+        permanent: true,
+      },
+      {
+        source: '/pymes/vcard',
+        destination: '/pymes/todo-para-tu-negocio',
+        permanent: true,
+      },
+      {
+        source: '/pymes/vcard/',
+        destination: '/pymes/todo-para-tu-negocio',
+        permanent: true,
+      },
+    ]
   },
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig
