@@ -25,7 +25,7 @@ const footerLinks = {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#071d31] border-t border-white/5 pt-16 pb-8 font-sans">
+    <footer className="bg-[#0a2b49] border-t border-white/5 pt-16 pb-8 font-sans">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           

@@ -249,18 +249,15 @@ export default function PymesProcess() {
         </div>
 
         {/* CTA debajo del proceso */}
-        <div className="mt-16 text-center">
-          <button
-            type="button"
-            onClick={() =>
-              document.getElementById("pymes-form")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-white border border-[#ff8c00]/40 hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#0a2b49]"
-          >
-            Empezar el diagnóstico gratuito
-            <span aria-hidden="true" className="text-[#ff8c00]">→</span>
-          </button>
-        </div>
+      <div className="mt-16 text-center">
+  <a
+    href="informe-sitio-web-gratis"
+    className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-white border border-[#ff8c00]/40 hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#0a2b49]"
+  >
+    Empezar el diagnóstico gratuito
+    <span aria-hidden="true" className="text-[#ff8c00]">→</span>
+  </a>
+</div>
       </div>
 
       {/* Animación CSS */}
