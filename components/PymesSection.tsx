@@ -10,6 +10,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Globe, Headphones, TrendingUp, Trophy, ChevronDown } from "lucide-react";
+import { supabase } from "@/lib/supabaseClient";
 
 /* ─────────────────────────────────────────────
    SUBPRODUCTOS
@@ -97,10 +98,20 @@ const PymesSection = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: conectar con Supabase — ver INSTRUCCIONES-INSTALACION.md Paso 3c
-    setSubmitted(true);
+    const { error } = await supabase.from("leads").insert([{
+      nombre:              formData.nombre,
+      email:               formData.email,
+      telefono:            formData.telefono   || null,
+      empresa:             formData.empresa    || null,
+      servicio:            formData.subproducto || null,
+      mensaje:             formData.mensaje    || null,
+      fuente:              "pymes",
+      consentimiento_rgpd: true,
+    }]);
+    if (!error) setSubmitted(true);
+    else console.error("Error Supabase:", error.message);
   };
 
   const scrollToForm = (sub?: string) => {

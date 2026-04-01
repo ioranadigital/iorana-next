@@ -1,104 +1,110 @@
-// components/Footer.tsx
 "use client";
+
 import Link from "next/link";
+import Image from "next/image";
 
-const serviceLinks = [
-  { label: "SEO Técnico & On-Page", href: "/servicios/seo-tecnico" },
-  { label: "PPC & Paid Search", href: "/servicios/ppc-paid-search" },
-  { label: "Content Marketing", href: "/servicios/content-marketing" },
-  { label: "Automatizaciones", href: "/servicios/automatizaciones" },
-  { label: "Desarrollo Web", href: "/servicios/desarrollo-web" },
-  { label: "Imagen de Marca", href: "/servicios/imagen-de-marca" },
-];
+const footerLinks = {
+  servicios: [
+    { label: "SEO Técnico", href: "/servicios/seo-tecnico" },
+    { label: "PPC & Paid Search", href: "/servicios/ppc-paid-search" },
+    { label: "Content Marketing", href: "/servicios/content-marketing" },
+    { label: "Desarrollo Web", href: "/servicios/desarrollo-web" },
+  ],
+  pymes: [
+    { label: "Porqué digitalizar", href: "/pymes/" },
+    { label: "Todo para tu negocio", href: "/pymes/todo-para-tu-negocio" },
+    { label: "Proceso de trabajo", href: "/pymes/proceso" },
+    { label: "Casos de éxito", href: "/pymes/casos-de-exito" },
+  ],
+  legal: [
+    { label: "Aviso Legal", href: "/legal/terminos" },
+    { label: "Privacidad", href: "/legal/privacidad" },
+    { label: "Cookies", href: "/legal/cookies" },
+  ]
+};
 
-const solutionLinks = [
-  { label: "Diseño de Landings", href: "/soluciones/diseno-de-landings" },
-  { label: "Todo para Tu Negocio", href: "/soluciones/todo-para-tu-negocio" },
-];
+const Footer = () => {
+  return (
+    <footer className="bg-[#071d31] border-t border-white/5 pt-16 pb-8 font-sans">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          
+          {/* Columna 1: Logo y Bio */}
+          <div className="space-y-6">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/iorana-marketing-digital.png"
+                alt="IORANA Digital - Agencia SEO y Marketing"
+                width={32} height={32}
+              />
+              <span className="text-xl font-bold text-white">
+                <span className="text-[#ff8c00]">IORANA</span> Digital
+              </span>
+            </Link>
+            <p className="text-[#ebf2f7]/60 text-sm leading-relaxed">
+              Especialistas en digitalización acelerada para pymes y estrategias SEO de alto rendimiento.
+            </p>
+          </div>
 
-const Footer = () => (
-  <footer className="w-full bg-[#0a2b49] border-t border-[#ebf2f7]/10 pt-16 pb-8">
-    <div className="max-w-6xl mx-auto px-6">
+          {/* Columna 2: Servicios */}
+          <div>
+            <h3 className="text-[#ff8c00] font-bold mb-5 uppercase tracking-wider text-xs">
+              Servicios SEO
+            </h3>
+            <ul className="space-y-2"> {/* Interlineado ajustado de 4 a 2 */}
+              {footerLinks.servicios.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[#ebf2f7]/60 hover:text-[#ff8c00] text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      {/* ── GRID 4 COLUMNAS ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Columna 3: Soluciones Pymes */}
+          <div>
+            <h3 className="text-[#ff8c00] font-bold mb-5 uppercase tracking-wider text-xs">
+              Soluciones Pymes
+            </h3>
+            <ul className="space-y-2"> {/* Interlineado ajustado de 4 a 2 */}
+              {footerLinks.pymes.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[#ebf2f7]/60 hover:text-[#ff8c00] text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Branding */}
-        <div className="space-y-4">
-          <Link href="/" className="inline-block font-heading text-xl font-black tracking-tight">
-            <span className="text-[#ff8c00]">IORANA</span>
-            <span className="text-[#ebf2f7]"> Digital</span>
-          </Link>
-          <p className="text-sm text-[#ebf2f7]/50 leading-relaxed max-w-[200px]">
-            Marketing digital estratégico para empresas que quieren crecer.
-          </p>
+          {/* Columna 4: Legal */}
+          <div>
+            <h3 className="text-[#ff8c00] font-bold mb-5 uppercase tracking-wider text-xs">
+              Legal
+            </h3>
+            <ul className="space-y-2"> {/* Interlineado ajustado de 4 a 2 */}
+              {footerLinks.legal.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[#ebf2f7]/60 hover:text-[#ff8c00] text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Servicios */}
-        <div>
-          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
-            Servicios
-          </p>
-          <ul className="space-y-3">
-            {serviceLinks.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Soluciones */}
-        <div>
-          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
-            Soluciones
-          </p>
-          <ul className="space-y-3">
-            {solutionLinks.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Legal 
-        <div>
-          <p className="text-xs font-bold text-[#ff8c00] uppercase tracking-[0.18em] mb-6">
-            Legal
-          </p>
-          <ul className="space-y-3">
-            <li>
-              <Link href="/privacidad" className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200">
-                Privacidad
-              </Link>
-            </li>
-            <li>
-              <Link href="/terminos" className="text-sm text-[#ebf2f7]/60 hover:text-[#ff8c00] transition-colors duration-200">
-                Términos
-              </Link>
-            </li>
-          </ul>
-        </div>*/}
+        {/* Bottom Bar */}
+      {/* Bottom Bar */}
+<div className="pt-8 border-t border-white/5 flex flex-col items-center justify-center gap-4">
+  <p className="text-[#ebf2f7]/40 text-xs text-center">
+    © {new Date().getFullYear()} Iorana Digital. Todos los derechos reservados.
+  </p>
+</div>
       </div>
-
-      {/* ── COPYRIGHT ── */}
-      <div className="border-t border-[#ebf2f7]/5 pt-8 text-center text-xs text-[#ebf2f7]/30">
-        © {new Date().getFullYear()} IORANA Digital. Todos los derechos reservados.
-      </div>
-
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

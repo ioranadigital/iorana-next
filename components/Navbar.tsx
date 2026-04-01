@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const serviceLinks = [
-  { label: "SEO Técnico & On-Page",  href: "/servicios/seo-tecnico" },
+  { label: "SEO Técnico & On-Page",   href: "/servicios/seo-tecnico" },
   { label: "PPC & Paid Search",      href: "/servicios/ppc-paid-search" },
   { label: "Content Marketing",      href: "/servicios/content-marketing" },
   { label: "Automatizaciones",       href: "/servicios/automatizaciones" },
@@ -19,44 +19,47 @@ const solutionLinks = [
   { label: "Informe Gratuito",       href: "/soluciones/como-esta-optimizado-mi-web" },
 ];
 
+const pymesLinks = [
+  { label: "Porqué digitalizar",     href: "/pymes/" },
+  { label: "Todo para tu negocio",   href: "/pymes/todo-para-tu-negocio" },
+  { label: "Proceso de trabajo",     href: "/pymes/proceso" },    
+  { label: "Casos de éxito",         href: "/pymes/casos-de-exito" },
+];
+
 const scrollLinks = [
-  { label: "Nosotros",     id: "#nosotros" },
-  { label: "Como trabajamos", id: "#metodologia" },
-  { label: "FAQs",           id: "#faqs" },
+  { label: "Nosotros",           href: "/#nosotros" },
+  { label: "Como trabajamos",    href: "/#metodologia" },
+  { label: "FAQs",               href: "/#faqs" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openServicios, setOpenServicios] = useState(false);
   const [openSoluciones, setOpenSoluciones] = useState(false);
+  const [openPymes, setOpenPymes] = useState(false);
   
   const [mobileSerOpen, setMobileSerOpen] = useState(false);
   const [mobileSolOpen, setMobileSolOpen] = useState(false);
+  const [mobilePymesOpen, setMobilePymesOpen] = useState(false);
 
   const pathname = usePathname();
-  const router = useRouter();
 
-  const handleScroll = (id: string) => {
-    setOpen(false);
-    if (pathname !== "/") {
-      router.push("/" + id);
-    } else {
-      const element = document.querySelector(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
+  // Estilos comunes para los desplegables de escritorio (SEO Friendly)
+  const dropdownClasses = (isOpen: boolean) => `
+    absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 
+    transition-all duration-200 transform
+    ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"}
+  `;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[9999] bg-[#0a2b49]/95 backdrop-blur-md border-b border-white/10 font-sans">
+    <nav className="fixed top-0 left-0 w-full z-[9999] bg-[#0a2b49]/95 backdrop-blur-md border-b border-white/10 font-sans" aria-label="Menú principal">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
 
         {/* ── LOGO ── */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/iorana-marketing-digital.png"
-            alt="IORANA Digital logo"
+            alt="IORANA Digital - Agencia de Marketing y SEO"
             width={36} height={36}
             className="object-contain"
           />
@@ -67,9 +70,9 @@ const Navbar = () => {
 
         {/* ── DESKTOP MENU ── */}
         <div className="hidden md:flex items-center gap-7">
-          <button onClick={() => handleScroll("#hero")} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+          <Link href="/" className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
             Inicio
-          </button>
+          </Link>
 
           {/* DROP DOWN: SERVICIOS */}
           <div 
@@ -77,23 +80,25 @@ const Navbar = () => {
             onMouseEnter={() => setOpenServicios(true)}
             onMouseLeave={() => setOpenServicios(false)}
           >
-            <button className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+            <button 
+              className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+              aria-expanded={openServicios}
+              aria-haspopup="true"
+            >
               Servicios
               <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openServicios ? "rotate-180 text-[#ff8c00]" : ""}`} />
             </button>
-            {openServicios && (
-              <div className="absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-2">
-                <ul className="space-y-1">
-                  {serviceLinks.map((s) => (
-                    <li key={s.href}>
-                      <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
-                        {s.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <div className={dropdownClasses(openServicios)}>
+              <ul className="space-y-1">
+                {serviceLinks.map((s) => (
+                  <li key={s.href}>
+                    <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* DROP DOWN: SOLUCIONES */}
@@ -102,35 +107,59 @@ const Navbar = () => {
             onMouseEnter={() => setOpenSoluciones(true)}
             onMouseLeave={() => setOpenSoluciones(false)}
           >
-            <button className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+            <button 
+              className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+              aria-expanded={openSoluciones}
+              aria-haspopup="true"
+            >
               Soluciones
               <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openSoluciones ? "rotate-180 text-[#ff8c00]" : ""}`} />
             </button>
-            {openSoluciones && (
-              <div className="absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-2">
-                <ul className="space-y-1">
-                  {solutionLinks.map((s) => (
-                    <li key={s.href}>
-                      <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
-                        {s.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <div className={dropdownClasses(openSoluciones)}>
+              <ul className="space-y-1">
+                {solutionLinks.map((s) => (
+                  <li key={s.href}>
+                    <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* ── PYMES (Entre Soluciones y Nosotros) ── */}
-          <Link href="/pymes/todo-para-tu-negocio" className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
-            Pymes
-          </Link>
-
-          {/* ENLACES DE SCROLL (Comienza con Nosotros) */}
-          {scrollLinks.map((l) => (
-            <button key={l.id} onClick={() => handleScroll(l.id)} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
-              {l.label}
+          {/* DROP DOWN: PYMES */}
+          <div 
+            className="relative h-20 flex items-center"
+            onMouseEnter={() => setOpenPymes(true)}
+            onMouseLeave={() => setOpenPymes(false)}
+          >
+            <button 
+              className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+              aria-expanded={openPymes}
+              aria-haspopup="true"
+            >
+              Pymes
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openPymes ? "rotate-180 text-[#ff8c00]" : ""}`} />
             </button>
+            <div className={dropdownClasses(openPymes)}>
+              <ul className="space-y-1">
+                {pymesLinks.map((s) => (
+                  <li key={s.href}>
+                    <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* ENLACES DE SCROLL (Convertidos a Link) */}
+          {scrollLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
+              {l.label}
+            </Link>
           ))}
           
           <Link href="/contacto" className="text-sm font-semibold px-5 py-2 rounded-full border border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all duration-200">
@@ -139,55 +168,63 @@ const Navbar = () => {
         </div>
 
         {/* ── HAMBURGER ── */}
-        <button className="md:hidden text-[#ebf2f7] p-2" onClick={() => setOpen(!open)}>
+        <button 
+          className="md:hidden text-[#ebf2f7] p-2" 
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* ── MOBILE MENU ── */}
-      {open && (
-        <div className="md:hidden bg-[#07213a] border-t border-white/10 px-6 py-5 space-y-3 overflow-y-auto max-h-[80vh]">
-          <button onClick={() => handleScroll("#hero")} className="block w-full text-left text-[#ebf2f7] font-medium py-2">Inicio</button>
+      <div className={`md:hidden bg-[#07213a] border-t border-white/10 px-6 py-5 space-y-3 overflow-y-auto max-h-[80vh] transition-all ${open ? "block" : "hidden"}`}>
+          <Link href="/" onClick={() => setOpen(false)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">Inicio</Link>
 
+          {/* Mobile Servicios */}
           <div>
             <button onClick={() => setMobileSerOpen(!mobileSerOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
               Servicios <ChevronDown className={`h-4 w-4 transition-transform ${mobileSerOpen ? "rotate-180" : ""}`} />
             </button>
-            {mobileSerOpen && (
-              <div className="pl-4 space-y-2 pb-2">
+            <div className={`${mobileSerOpen ? "block" : "hidden"} pl-4 space-y-2 pb-2`}>
                 {serviceLinks.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
                 ))}
-              </div>
-            )}
+            </div>
           </div>
 
+          {/* Mobile Soluciones */}
           <div>
             <button onClick={() => setMobileSolOpen(!mobileSolOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
               Soluciones <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
             </button>
-            {mobileSolOpen && (
-              <div className="pl-4 space-y-2 pb-2">
+            <div className={`${mobileSolOpen ? "block" : "hidden"} pl-4 space-y-2 pb-2`}>
                 {solutionLinks.map((s) => (
                   <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
                 ))}
-              </div>
-            )}
+            </div>
           </div>
 
-          <Link href="/pymes/todo-para-tu-negocio" onClick={() => setOpen(false)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">
-            Pymes
-          </Link>
+          {/* Mobile Pymes */}
+          <div>
+            <button onClick={() => setMobilePymesOpen(!mobilePymesOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
+              Pymes <ChevronDown className={`h-4 w-4 transition-transform ${mobilePymesOpen ? "rotate-180" : ""}`} />
+            </button>
+            <div className={`${mobilePymesOpen ? "block" : "hidden"} pl-4 space-y-2 pb-2`}>
+                {pymesLinks.map((s) => (
+                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
+                ))}
+            </div>
+          </div>
 
           {scrollLinks.map((l) => (
-            <button key={l.id} onClick={() => handleScroll(l.id)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">{l.label}</button>
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">{l.label}</Link>
           ))}
           
           <Link href="/contacto" onClick={() => setOpen(false)} className="block w-full text-center mt-4 py-3 rounded-xl bg-[#ff8c00] text-white font-semibold">
             Contáctanos
           </Link>
-        </div>
-      )}
+      </div>
     </nav>
   );
 };

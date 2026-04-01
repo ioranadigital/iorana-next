@@ -16,7 +16,7 @@ const data: ServicePageData = {
       "Un workflow bien diseñado trabaja 24/7, incluso cuando tu equipo descansa",
     ],
     ctaLabel: "Solicítanos Más Información",
-    ctaHref: "#contacto",
+    ctaHref: "/contacto",
   },
   includes: [
     { text: "Automatización de flujos de marketing (email sequences, nurturing)" },

@@ -2,6 +2,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ChevronDown } from "lucide-react";
+import ServiceContactForm from "@/components/ServiceContactForm";
 
 // Colores extraídos de globals.css — body: #0a2b49 / text: #ebf2f7
 // Panel más oscuro: #07213a  |  Panel elevado: #0d3355
@@ -184,36 +185,47 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </ul>
       </section>
 
-      {/* ── FAQ ── */}
-      <section aria-labelledby="faq-title" className="w-full max-w-2xl mx-auto px-6 py-16">
-        <h2 id="faq-title" className="text-center mb-10">
-          <SplitTitle text="Preguntas frecuentes" center size="text-3xl md:text-4xl" />
-        </h2>
-        <dl className="flex flex-col gap-3">
-          {faq.map((item, i) => (
-            <div key={i} className={`${C.panel} border ${C.border} rounded-xl overflow-hidden`}>
-              <details>
-                <summary className={`flex justify-between items-center px-5 py-4 cursor-pointer text-sm font-semibold ${C.text} list-none [&::-webkit-details-marker]:hidden`}>
-                  {item.q}
-                  <ChevronDown size={18} aria-hidden="true" className={`${C.muted} shrink-0 transition-transform duration-200`} />
-                </summary>
-                <dd className={`px-5 pb-4 text-sm ${C.muted} m-0`}>{item.a}</dd>
-              </details>
-            </div>
-          ))}
-        </dl>
-      </section>
+      {/* ── FAQ + CONTACTO — layout 2 columnas ── */}
+      <section
+        id="contacto"
+        aria-labelledby="faq-title"
+        className="w-full max-w-6xl mx-auto px-6 py-16"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-      {/* ── CONTACTO ── */}
-      <section id="contacto" aria-labelledby="contact-title" className={`w-full ${C.bg} py-16 px-6 text-center`}>
-        <h2 id="contact-title" className={`text-2xl md:text-3xl font-bold ${C.text} mb-2`}>
-          ¿Tienes preguntas?
-        </h2>
-        <p className={`${C.muted} text-sm mb-8`}>
-          Estaremos encantados de responderte. Contáctanos y estudiaremos tu caso.
-        </p>
-        <div className="max-w-lg mx-auto bg-[#07213a] border border-white/15 rounded-2xl p-7">
-          <ContactForm service={hero.title} endpoint={data.form?.endpoint} />
+          {/* ── Columna izquierda: FAQs ── */}
+          <div>
+            <h2 id="faq-title" className="mb-8">
+              <SplitTitle text="Preguntas frecuentes" size="text-3xl md:text-4xl" />
+            </h2>
+            <dl className="flex flex-col gap-3">
+              {faq.map((item, i) => (
+                <div key={i} className={`${C.panel} border ${C.border} rounded-xl overflow-hidden`}>
+                  <details>
+                    <summary className={`flex justify-between items-center px-5 py-4 cursor-pointer text-sm font-semibold ${C.text} list-none [&::-webkit-details-marker]:hidden`}>
+                      {item.q}
+                      <ChevronDown size={18} aria-hidden="true" className={`${C.muted} shrink-0 transition-transform duration-200`} />
+                    </summary>
+                    <dd className={`px-5 pb-4 text-sm ${C.muted} m-0`}>{item.a}</dd>
+                  </details>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* ── Columna derecha: Formulario ── */}
+          <div className="lg:sticky lg:top-28">
+            <h2 className={`text-3xl md:text-4xl font-extrabold ${C.text} mb-2`}>
+              ¿Tienes <span className="text-[#ff8c00]">preguntas?</span>
+            </h2>
+            <p className={`${C.muted} text-sm mb-6`}>
+              Estaremos encantados de responderte. Contáctanos y estudiaremos tu caso sin compromiso.
+            </p>
+            <div className="bg-[#07213a] border border-white/15 rounded-2xl p-7">
+              <ServiceContactForm service={hero.title} />
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -221,51 +233,4 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
   );
 }
 
-/* ─── CONTACT FORM ───────────────────────────────────── */
-function ContactForm({ service, endpoint }: { service: string; endpoint?: string }) {
-  const inputCls = "w-full bg-[#0a2b49] border border-white/10 rounded-lg px-4 py-3 text-sm text-[#ebf2f7] placeholder:text-[#7fa8c9] focus:outline-none focus:border-[#ff8c00] transition-colors";
-
-  return (
-    <form
-      className="max-w-lg mx-auto flex flex-col gap-3 text-left"
-      action={endpoint ?? "/api/contact"}
-      method="POST"
-      aria-label="Formulario de contacto"
-    >
-      <input type="hidden" name="service" value={service} />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <label className="sr-only" htmlFor="cf-name">Nombre</label>
-        <input id="cf-name" name="name" type="text" placeholder="Nombre" required className={inputCls} />
-        <label className="sr-only" htmlFor="cf-email">Email</label>
-        <input id="cf-email" name="email" type="email" placeholder="Email" required className={inputCls} />
-      </div>
-
-      <label className="sr-only" htmlFor="cf-company">Empresa / SaaS</label>
-      <input id="cf-company" name="company" type="text" placeholder="Empresa / SaaS" className={inputCls} />
-
-      <label className="sr-only" htmlFor="cf-message">Cuéntanos sobre tu proyecto</label>
-      <textarea id="cf-message" name="message" rows={4} required placeholder="Cuéntanos sobre tu proyecto..." className={`${inputCls} resize-y`} />
-
-      <button
-        type="submit"
-        className="w-full py-3 px-6 bg-[#ebf2f7] hover:bg-white text-[#07213a] font-bold text-sm rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2"
-      >
-        Enviar
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-
-      <p className="text-xs text-[#7fa8c9]">
-        <span className="inline-flex items-center gap-1.5">
-          <input type="checkbox" required id="cf-legal" className="w-3.5 h-3.5 accent-[#ff8c00]" />
-          <label htmlFor="cf-legal">
-            Acepto los{" "}
-            <Link href="/terminos" className="text-[#ff8c00] underline underline-offset-2">Términos</Link>{" "}
-            y la{" "}
-            <Link href="/privacidad" className="text-[#ff8c00] underline underline-offset-2">Privacidad</Link>
-          </label>
-        </span>
-      </p>
-    </form>
-  );
-}
+// ContactForm eliminado — usar ServiceContactForm desde @/components/ServiceContactForm
