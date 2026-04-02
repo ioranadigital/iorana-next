@@ -1,10 +1,7 @@
-// components/PymesProcess.tsx
-// Iorana Digital — Sección 4 · Proceso "¿Cómo funciona?"
-// 4 pasos · timeline visual · animación de entrada via IntersectionObserver
-
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const STEPS = [
   {
@@ -65,6 +62,7 @@ const STEPS = [
 ];
 
 export default function PymesProcess() {
+  const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -85,41 +83,33 @@ export default function PymesProcess() {
     <section
       ref={sectionRef}
       aria-labelledby="process-h2"
-      className="relative w-full bg-[#060a10] overflow-hidden"
+      className="relative w-full bg-[#0a2b49] overflow-hidden"
     >
-      {/* BG decorativo */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[#ff8c00]/5 blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
 
-        {/* Header */}
         <header className="text-center mb-16 lg:mb-20">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff8c00]/25 bg-[#ff8c00]/8 text-[#ff8c00] text-xs font-semibold tracking-widest uppercase mb-5">
             Proceso
           </span>
-          <h2
-            id="process-h2"
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#ebf2f7] leading-tight tracking-tight"
-          >
-            ¿Cómo digitalizamos{" "}
-            <span className="text-[#ff8c00]">tu pyme en 30 días?</span>
+          <h2 id="process-h2" className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#ebf2f7] leading-tight tracking-tight">
+            ¿Cómo digitalizamos <span className="text-[#ff8c00]">tu pyme en 30 días?</span>
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-[#ebf2f7]/50 text-base leading-relaxed">
             Proceso probado en más de 80 proyectos. Sin tecnicismos, sin sorpresas.
           </p>
         </header>
 
-        {/* Steps — desktop: grid 4 col / móvil: timeline vertical */}
+        {/* Desktop View */}
         <div className="hidden lg:grid grid-cols-4 gap-4 relative">
-          {/* Línea conectora */}
           <div
             aria-hidden="true"
             className="absolute top-[52px] left-[12.5%] right-[12.5%] h-px"
             style={{
-              background:
-                "linear-gradient(to right, #ff8c00 0%, #818cf8 33%, #34d399 66%, #fbbf24 100%)",
+              background: "linear-gradient(to right, #ff8c00 0%, #818cf8 33%, #34d399 66%, #fbbf24 100%)",
               opacity: 0.25,
             }}
           />
@@ -135,7 +125,6 @@ export default function PymesProcess() {
                 transition: `opacity 0.5s ease ${i * 0.12}s, transform 0.5s ease ${i * 0.12}s`,
               }}
             >
-              {/* Icono / número */}
               <div
                 className="relative z-10 w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-5 border"
                 style={{
@@ -146,55 +135,25 @@ export default function PymesProcess() {
                 }}
               >
                 {step.icon}
-                <span
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center"
-                  style={{ background: step.color, color: "#060a10" }}
-                  aria-hidden="true"
-                >
+                <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center" style={{ background: step.color, color: "#0a2b49" }}>
                   {i + 1}
                 </span>
               </div>
 
-              {/* Badge duración */}
-              <span
-                className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3 border"
-                style={{
-                  background: `${step.color}10`,
-                  borderColor: `${step.color}30`,
-                  color: step.color,
-                }}
-              >
+              <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-3 border" style={{ background: `${step.color}10`, borderColor: `${step.color}30`, color: step.color }}>
                 {step.duration}
               </span>
 
-              <h3 className="text-base font-bold text-[#ebf2f7] mb-2 leading-snug">
-                {step.title}
-              </h3>
-              <p className="text-sm text-[#ebf2f7]/50 leading-relaxed mb-3">
-                {step.body}
-              </p>
-              <p
-                className="text-[11px] font-mono"
-                style={{ color: `${step.color}80` }}
-                dangerouslySetInnerHTML={{ __html: step.detail }}
-              />
+              <h3 className="text-base font-bold text-[#ebf2f7] mb-2 leading-snug">{step.title}</h3>
+              <p className="text-sm text-[#ebf2f7]/50 leading-relaxed mb-3">{step.body}</p>
+              <p className="text-[11px] font-mono" style={{ color: `${step.color}80` }} dangerouslySetInnerHTML={{ __html: step.detail }} />
             </div>
           ))}
         </div>
 
-        {/* Móvil: timeline vertical */}
+        {/* Mobile View */}
         <div className="lg:hidden relative">
-          {/* Línea vertical */}
-          <div
-            aria-hidden="true"
-            className="absolute left-[27px] top-0 bottom-0 w-px"
-            style={{
-              background:
-                "linear-gradient(to bottom, #ff8c00, #818cf8, #34d399, #fbbf24)",
-              opacity: 0.2,
-            }}
-          />
-
+          <div aria-hidden="true" className="absolute left-[27px] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, #ff8c00, #818cf8, #34d399, #fbbf24)", opacity: 0.2 }} />
           <ol className="space-y-10 relative" role="list">
             {STEPS.map((step, i) => (
               <li
@@ -207,29 +166,12 @@ export default function PymesProcess() {
                   transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
                 }}
               >
-                {/* Icono lateral */}
-                <div
-                  className="relative z-10 shrink-0 w-[54px] h-[54px] rounded-2xl flex items-center justify-center border"
-                  style={{
-                    background: `${step.color}12`,
-                    borderColor: `${step.color}30`,
-                    color: step.color,
-                  }}
-                >
+                <div className="relative z-10 shrink-0 w-[54px] h-[54px] rounded-2xl flex items-center justify-center border" style={{ background: `${step.color}12`, borderColor: `${step.color}30`, color: step.color }}>
                   {step.icon}
                 </div>
-
-                {/* Contenido */}
                 <div className="flex-1 pt-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span
-                      className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full border"
-                      style={{
-                        background: `${step.color}10`,
-                        borderColor: `${step.color}25`,
-                        color: step.color,
-                      }}
-                    >
+                    <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full border" style={{ background: `${step.color}10`, borderColor: `${step.color}25`, color: step.color }}>
                       {step.duration}
                     </span>
                     <span className="text-xs text-[#ebf2f7]/25">·</span>
@@ -237,33 +179,27 @@ export default function PymesProcess() {
                   </div>
                   <h3 className="text-base font-bold text-[#ebf2f7] mb-1.5">{step.title}</h3>
                   <p className="text-sm text-[#ebf2f7]/50 leading-relaxed">{step.body}</p>
-                  <p
-                    className="mt-2 text-[11px] font-mono"
-                    style={{ color: `${step.color}70` }}
-                    dangerouslySetInnerHTML={{ __html: step.detail }}
-                  />
+                  <p className="mt-2 text-[11px] font-mono" style={{ color: `${step.color}70` }} dangerouslySetInnerHTML={{ __html: step.detail }} />
                 </div>
               </li>
             ))}
           </ol>
         </div>
 
-        {/* CTA debajo del proceso */}
+        {/* CTA */}
         <div className="mt-16 text-center">
           <button
             type="button"
-            onClick={() =>
-              document.getElementById("pymes-form")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-white border border-[#ff8c00]/40 hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#060a10]"
+            onClick={() => router.push("/informe-sitio-web-gratis")}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-white border border-[#ff8c00]/40 hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#0a2b49]"
           >
             Empezar el diagnóstico gratuito
             <span aria-hidden="true" className="text-[#ff8c00]">→</span>
           </button>
         </div>
-      </div>
 
-      {/* Animación CSS */}
+      </div>{/* cierre: relative z-10 max-w-7xl */}
+
       <style>{`
         .step-visible[data-step] {
           opacity: 1 !important;

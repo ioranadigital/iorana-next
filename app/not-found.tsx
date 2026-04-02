@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 const NotFound = () => {
   const pathname = usePathname();
@@ -41,9 +39,7 @@ const NotFound = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      <main className="flex-1 flex items-center justify-center relative overflow-hidden pt-20">
+    <main className="min-h-screen bg-[#0a2b49] flex items-center justify-center relative overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a2b49] to-background opacity-50" />
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#ff8c00]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ebf2f7]/5 rounded-full blur-3xl" />
@@ -55,7 +51,7 @@ const NotFound = () => {
             transition={{ duration: 0.6 }}
           >
             <h1
-              className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-heading font-black leading-none select-none"
+              className="text-[5rem] md:text-[7rem] lg:text-[9rem] font-heading font-black leading-none select-none"
               style={{
                 background: "linear-gradient(135deg, #ff8c00 0%, #f97316 40%, #ebf2f7 100%)",
                 WebkitBackgroundClip: "text",
@@ -95,17 +91,21 @@ const NotFound = () => {
               </Button>
             </Link>
 
-            <Link href="/#servicios" passHref>
+            <Link href="/contacto" passHref>
               <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
-                Ver nuestros servicios
+                Contacto
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/pymes" passHref>
+              <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
+                Pymes
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </motion.div>
         </div>
-      </main>
-      <Footer />
-    </div>
+    </main>
   );
 };
 

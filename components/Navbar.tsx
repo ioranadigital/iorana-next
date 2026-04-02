@@ -7,16 +7,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const serviceLinks = [
-  { label: "SEO Técnico & On-Page",   href: "/servicios/seo-tecnico" },
+  { label: "SEO Técnico & On-Page",  href: "/servicios/seo-tecnico" },
   { label: "PPC & Paid Search",      href: "/servicios/ppc-paid-search" },
   { label: "Content Marketing",      href: "/servicios/content-marketing" },
   { label: "Automatizaciones",       href: "/servicios/automatizaciones" },
   { label: "Desarrollo Web",         href: "/servicios/desarrollo-web" },
   { label: "Imagen de Marca",        href: "/servicios/imagen-de-marca" },
-];
-
-const solutionLinks = [
-  { label: "Informe Gratuito",       href: "/soluciones/como-esta-optimizado-mi-web" },
 ];
 
 const pymesLinks = [
@@ -35,16 +31,13 @@ const scrollLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openServicios, setOpenServicios] = useState(false);
-  const [openSoluciones, setOpenSoluciones] = useState(false);
   const [openPymes, setOpenPymes] = useState(false);
   
   const [mobileSerOpen, setMobileSerOpen] = useState(false);
-  const [mobileSolOpen, setMobileSolOpen] = useState(false);
   const [mobilePymesOpen, setMobilePymesOpen] = useState(false);
 
   const pathname = usePathname();
 
-  // Estilos comunes para los desplegables de escritorio (SEO Friendly)
   const dropdownClasses = (isOpen: boolean) => `
     absolute top-[70px] left-0 w-64 bg-[#07213a] border border-white/10 rounded-xl shadow-2xl p-4 
     transition-all duration-200 transform
@@ -101,33 +94,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* DROP DOWN: SOLUCIONES */}
-          <div 
-            className="relative h-20 flex items-center"
-            onMouseEnter={() => setOpenSoluciones(true)}
-            onMouseLeave={() => setOpenSoluciones(false)}
-          >
-            <button 
-              className="flex items-center gap-1 text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
-              aria-expanded={openSoluciones}
-              aria-haspopup="true"
-            >
-              Soluciones
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openSoluciones ? "rotate-180 text-[#ff8c00]" : ""}`} />
-            </button>
-            <div className={dropdownClasses(openSoluciones)}>
-              <ul className="space-y-1">
-                {solutionLinks.map((s) => (
-                  <li key={s.href}>
-                    <Link href={s.href} className="block text-sm text-[#ebf2f7]/80 hover:text-[#ff8c00] hover:bg-white/5 px-3 py-2 rounded-lg transition-all">
-                      {s.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
           {/* DROP DOWN: PYMES */}
           <div 
             className="relative h-20 flex items-center"
@@ -155,12 +121,20 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* ENLACES DE SCROLL (Convertidos a Link) */}
+          {/* ENLACES DE SCROLL (Nosotros, Metodología, FAQs) */}
           {scrollLinks.map((l) => (
             <Link key={l.href} href={l.href} className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium">
               {l.label}
             </Link>
           ))}
+
+          {/* INFORME GRATUITO (Posicionado después de FAQs) */}
+          <Link 
+            href="/informe-sitio-web-gratis" 
+            className="text-sm text-[#ebf2f7] hover:text-[#ff8c00] transition-colors font-medium"
+          >
+            Informe Gratuito
+          </Link>
           
           <Link href="/contacto" className="text-sm font-semibold px-5 py-2 rounded-full border border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all duration-200">
             Contáctanos
@@ -193,18 +167,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Soluciones */}
-          <div>
-            <button onClick={() => setMobileSolOpen(!mobileSolOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
-              Soluciones <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
-            </button>
-            <div className={`${mobileSolOpen ? "block" : "hidden"} pl-4 space-y-2 pb-2`}>
-                {solutionLinks.map((s) => (
-                  <Link key={s.href} href={s.href} onClick={() => setOpen(false)} className="block py-1 text-sm text-[#ebf2f7]/70">{s.label}</Link>
-                ))}
-            </div>
-          </div>
-
           {/* Mobile Pymes */}
           <div>
             <button onClick={() => setMobilePymesOpen(!mobilePymesOpen)} className="flex justify-between items-center w-full text-[#ebf2f7] font-medium py-2">
@@ -220,7 +182,16 @@ const Navbar = () => {
           {scrollLinks.map((l) => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block w-full text-left text-[#ebf2f7] font-medium py-2">{l.label}</Link>
           ))}
-          
+
+          {/* Informe Gratuito Mobile */}
+          <Link 
+            href="/informe-sitio-web-gratis" 
+            onClick={() => setOpen(false)} 
+            className="block w-full text-left text-[#ebf2f7] font-medium py-2"
+          >
+            Informe Gratuito
+          </Link>
+
           <Link href="/contacto" onClick={() => setOpen(false)} className="block w-full text-center mt-4 py-3 rounded-xl bg-[#ff8c00] text-white font-semibold">
             Contáctanos
           </Link>

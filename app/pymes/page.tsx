@@ -222,7 +222,7 @@ export default function PymesAuthority() {
             <button
               type="button"
               onClick={() =>
-                window.location.href = "/pymes/todo-para-tu-negocio"
+                window.location.href = "/informe-sitio-web-gratis"
               }
               className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2"
               style={{

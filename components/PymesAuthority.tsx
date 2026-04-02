@@ -6,6 +6,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const COMPARATIVA = [
   { aspecto: "Visibilidad en Google Maps", sinDigital: "Invisible", conIorana: "Top 3 pack local" },
@@ -26,6 +27,7 @@ const ENTIDADES = [
 ];
 
 export default function PymesAuthority() {
+  const router = useRouter();
   const [expanded, setExpanded] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -45,7 +47,7 @@ export default function PymesAuthority() {
       ref={sectionRef}
       id="digitalizar-pyme-2026"
       aria-labelledby="authority-h2"
-      className="w-full bg-[#060a10] auth-section"
+      className="w-full bg-[#0a2b49] auth-section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -221,13 +223,9 @@ export default function PymesAuthority() {
             {/* Mini CTA */}
             <button
               type="button"
-              onClick={() =>
-                document.getElementById("pymes-form")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#060a10] focus:ring-offset-2"
-              style={{
-                background: "linear-gradient(135deg, #ff8c00, #ff6b00)",
-              }}
+              onClick={() => router.push("/informe-sitio-web-gratis")}
+              className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2 flex items-center justify-center"
+              style={{ background: "linear-gradient(135deg, #ff8c00, #ff6b00)" }}
             >
               Pedir diagnóstico gratuito →
             </button>

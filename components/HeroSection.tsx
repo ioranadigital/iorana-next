@@ -84,7 +84,7 @@ const HeroSection = () => {
               href="/informe-sitio-web-gratis"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#ebf2f7] text-[#0a2b49] font-bold text-base hover:bg-white transition-colors"
             >
-              ¿Cómo está mi sitio web? - Informe Gratuito <ArrowRight className="h-4 w-4" />
+              ¿Cómo está mi sitio? - Informe Gratuito <ArrowRight className="h-4 w-4" />
             </Link>
 
             {/*<button
