@@ -5,6 +5,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation"; // Importación necesaria
 import { motion } from "framer-motion";
 import { TrendingUp, Trophy, MapPin, Globe, Headphones } from "lucide-react";
 
@@ -45,7 +46,7 @@ const CASES = [
     resultLabel: "Satisfacción cliente",
     period: "+18 meses activo",
     desc: "Pack completo con soporte directo. Crecimiento del 210% en matriculaciones online en el primer semestre.",
-    tags: ["Pack Completo", "Soporte &lt;4h", "Analítica"],
+    tags: ["Pack Completo", "Soporte <4h", "Analítica"],
     icon: Headphones,
     accent: "#fbbf24",
     accentBg: "rgba(251,191,36,0.06)",
@@ -54,6 +55,8 @@ const CASES = [
 ];
 
 const PymesCases = () => {
+  const router = useRouter(); // Inicialización del router
+
   return (
     <section
       id="casos-pymes"
@@ -86,6 +89,7 @@ const PymesCases = () => {
             </p>
           </motion.div>
 
+          {/* BOTÓN ESCRITORIO ACTUALIZADO */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -93,10 +97,8 @@ const PymesCases = () => {
           >
             <button
               type="button"
-              onClick={() =>
-                document.getElementById("pymes-form")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#ff8c00]/30 text-[#ff8c00] text-sm font-bold hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none"
+              onClick={() => router.push("/informe-sitio-web-gratis")}
+              className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#ff8c00]/30 text-[#ff8c00] text-sm font-bold hover:bg-[#ff8c00]/10 transition-all duration-300 focus:outline-none cursor-pointer"
             >
               Quiero resultados similares →
             </button>
@@ -120,9 +122,7 @@ const PymesCases = () => {
                   borderColor: c.accentBorder,
                 }}
               >
-                {/* Header card */}
                 <div className="relative h-36 overflow-hidden" style={{ background: "rgba(8,22,40,0.6)" }}>
-                  {/* Patrón decorativo */}
                   <div aria-hidden="true" className="absolute inset-0 opacity-[0.04]">
                     <svg width="100%" height="100%">
                       <defs>
@@ -133,11 +133,7 @@ const PymesCases = () => {
                       <rect width="100%" height="100%" fill={`url(#dot-${i})`} />
                     </svg>
                   </div>
-
-                  {/* Gradiente inferior */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#08223a] to-transparent z-10" />
-
-                  {/* Tags */}
                   <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-1.5">
                     <span
                       className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border"
@@ -149,8 +145,6 @@ const PymesCases = () => {
                       {c.sector}
                     </span>
                   </div>
-
-                  {/* Icono flotante */}
                   <div
                     className="absolute bottom-4 right-4 z-20 w-10 h-10 rounded-xl flex items-center justify-center border"
                     style={{ background: `${c.accent}18`, borderColor: `${c.accent}30`, color: c.accent }}
@@ -160,9 +154,7 @@ const PymesCases = () => {
                   </div>
                 </div>
 
-                {/* Contenido */}
                 <div className="p-7 relative z-20 -mt-8">
-                  {/* KPI principal */}
                   <div className="flex items-baseline gap-1.5 mb-1">
                     <TrendingUp
                       className="w-5 h-5 shrink-0 mt-0.5"
@@ -185,19 +177,11 @@ const PymesCases = () => {
                   <p className="text-[11px]" style={{ color: `${c.accent}80` }}>
                     {c.period}
                   </p>
-
-                  {/* Divider */}
                   <div className="h-px my-4" style={{ background: `${c.accent}20` }} />
-
-                  {/* Company */}
                   <h3 className="text-base font-bold text-[#ebf2f7] mb-2">{c.company}</h3>
-                  <p
-                    className="text-sm text-[#ebf2f7]/55 leading-relaxed mb-5"
-                  >
+                  <p className="text-sm text-[#ebf2f7]/55 leading-relaxed mb-5">
                     {c.desc}
                   </p>
-
-                  {/* Micro tags */}
                   <div className="flex flex-wrap gap-1.5">
                     {c.tags.map((tag) => (
                       <span
@@ -213,8 +197,6 @@ const PymesCases = () => {
                     ))}
                   </div>
                 </div>
-
-                {/* Barra hover inferior */}
                 <div
                   className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
                   style={{ background: c.accent }}
@@ -225,14 +207,13 @@ const PymesCases = () => {
           })}
         </div>
 
-        {/* CTA móvil */}
+        {/* CTA MÓVIL ACTUALIZADO */}
         <div className="mt-10 text-center md:hidden">
           <button
             type="button"
-            onClick={() =>
-              document.getElementById("pymes-form")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#ff8c00]/30 text-[#ff8c00] text-sm font-bold hover:bg-[#ff8c00]/10 transition-all duration-300"
+            onClick={() => router.push("/informe-sitio-web-gratis")}
+            className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer shadow-lg shadow-[#ff8c00]/20"
+            style={{ background: "linear-gradient(135deg, #ff8c00, #ff6b00)" }}
           >
             Quiero resultados similares →
           </button>

@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 
 const COMPARATIVA = [
   { aspecto: "Visibilidad en Google Maps", sinDigital: "Invisible", conIorana: "Top 3 pack local" },
-  { aspecto: "Web con Core Web Vitals", sinDigital: "Lenta / sin SEO", conIorana: "Verde · &lt;2s LCP" },
+  { aspecto: "Web con Core Web Vitals", sinDigital: "Lenta / sin SEO", conIorana: "Verde · <2s LCP" },
   { aspecto: "Captación de leads", sinDigital: "Solo boca a boca", conIorana: "Formularios 24/7" },
-  { aspecto: "Respuesta a clientes", sinDigital: "Email o teléfono", conIorana: "WhatsApp &lt;4h" },
+  { aspecto: "Respuesta a clientes", sinDigital: "Email o teléfono", conIorana: "WhatsApp <4h" },
   { aspecto: "Análisis de resultados", sinDigital: "Sin datos", conIorana: "Dashboard en tiempo real" },
 ];
 
@@ -82,7 +82,7 @@ export default function PymesAuthority() {
                 aparece en el Pack Local de Google Maps, lo que significa que cada vez que un cliente busca
                 su servicio a menos de 10 km, el negocio es invisible. En 2026, la presencia digital ya no
                 es opcional: es la diferencia entre crecer o desaparecer frente a competidores que sí
-                invierten en{" "}
+                vierten en{" "}
                 <strong className="text-[#ebf2f7]/85 font-semibold">posicionamiento SEO local</strong>.
               </p>
               <p>
@@ -220,14 +220,14 @@ export default function PymesAuthority() {
               </footer>
             </blockquote>
 
-            {/* Mini CTA */}
+            {/* Mini CTA — ENLACE ACTUALIZADO */}
             <button
               type="button"
               onClick={() => router.push("/informe-sitio-web-gratis")}
-              className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2 flex items-center justify-center"
+              className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2 flex items-center justify-center cursor-pointer"
               style={{ background: "linear-gradient(135deg, #ff8c00, #ff6b00)" }}
             >
-              Pedir diagnóstico gratuito →
+              Quiero resultados similares →
             </button>
 
             {/* Norma RGPD badge */}
