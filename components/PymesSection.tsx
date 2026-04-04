@@ -10,8 +10,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Globe, Headphones, TrendingUp, Trophy, ChevronDown } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
-
+import { supabase } from "@/lib/supabase/supabaseClient";
 /* ─────────────────────────────────────────────
    SUBPRODUCTOS
 ───────────────────────────────────────────── */

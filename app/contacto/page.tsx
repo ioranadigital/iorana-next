@@ -1,182 +1,162 @@
+// app/contacto/page.tsx
 "use client";
 
-import { useState, useCallback } from "react";
-// Corregido: Importación desde 'lucide-react' (no 'lucide-center')
-import { CheckCircle2, Send, MessageSquare } from "lucide-react";
-// Importación del cliente de Supabase según tu estructura de carpetas
-import { supabase } from "../../lib/supabaseClient";
-
-// Definición del tipo para eliminar el error ts(2304)
-type ModalType = "privacidad" | "terminos" | "cookies" | null;
+import { useState } from "react";
+import { insertLead } from '@/lib/leads';
+import { CheckCircle2, Sparkles, Send, Check } from "lucide-react";
 
 export default function ContactoPage() {
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
-  const [isSending, setIsSending] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [acceptedTerms, setAcceptedTerms] = useState(false); // Estado para el checkbox legal
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Estado con TODOS los campos que aparecen en tu diseño visual
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    profile: "",
-    specific_services: "",
-    urgent_need: "",
-    main_service: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
     
-    // Validación estricta del apartado legal
-    if (!acceptedTerms) {
-      alert("Debes aceptar la política de privacidad y los términos.");
-      return;
-    }
+    const { error: sbError } = await insertLead({
+      nombre: formData.get("nombre") as string,
+      email: formData.get("email") as string,
+      empresa: formData.get("empresa") as string,
+      telefono: formData.get("telefono") as string,
+      mensaje: `Perfil: ${formData.get("perfil")} | Servicios: ${formData.get("servicios")} | Urgencia: ${formData.get("urgencia")} | Interés: ${formData.get("interes")} | Detalle: ${formData.get("mensaje")}`,
+      fuente: 'pagina-contacto',
+      consentimiento_rgpd: true
+    });
 
-    setIsSending(true);
-
-    // Mapeo de campos a la tabla 'crm_leads'
-    const { error } = await supabase
-      .from("crm_leads")
-      .insert([
-        {
-          nombre: formData.name,
-          email: formData.email,
-          telefono: formData.phone,
-          empresa: formData.company,
-          mensaje: formData.message,
-          fuente: "iorana-contacto-seo",
-          metadata: {
-            perfil: formData.profile,
-            servicios_especificos: formData.specific_services,
-            urgencia: formData.urgent_need,
-            servicio_interes: formData.main_service,
-            terminos_aceptados: true
-          }
-        }
-      ]);
-
-    setIsSending(false);
-    if (error) {
-      alert("Error al enviar: " + error.message);
+    setLoading(false);
+    if (sbError) {
+      setError("Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.");
     } else {
-      setIsSuccess(true);
-      setFormData({ name: "", email: "", phone: "", company: "", profile: "", specific_services: "", urgent_need: "", main_service: "", message: "" });
-      setAcceptedTerms(false);
+      setSubmitted(true);
     }
   };
 
   return (
-    <main className="bg-[#0a2b49] text-[#ebf2f7] min-h-screen pt-32 pb-20 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
-        {/* Columna Izquierda: Textos y Beneficios */}
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff8c00]/10 border border-[#ff8c00]/20 text-[#ff8c00] text-xs font-bold uppercase tracking-widest">
-            <MessageSquare className="h-3.5 w-3.5" /> HABLEMOS DE TU PROYECTO
-          </div>
-          <h1 className="font-black leading-[1.1] text-5xl md:text-6xl text-white">
-            ¿Listo para <br /><span className="text-[#ff8c00]">crecer juntos?</span>
-          </h1>
-          <p className="text-lg text-[#ebf2f7]/70 max-w-lg">
-            Cuéntanos tu proyecto y en menos de 48h te contactamos con un análisis inicial y una propuesta adaptada a tus objetivos.
-          </p>
-          <div className="space-y-4">
-            <h2 className="text-xl font-bold text-white">¿En qué podemos <span className="text-[#ff8c00]">ayudarte</span>?</h2>
-            <ul className="grid gap-3">
-              {["SEO Técnico & On-Page", "PPC & Paid Search", "Content Marketing", "Automatizaciones y CRM", "Desarrollo Web", "Imagen de Marca"].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium text-[#ebf2f7]/80">
-                  <CheckCircle2 className="text-[#ff8c00] h-5 w-5" /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Columna Derecha: Formulario con el diseño de tu imagen */}
-        <div className="bg-[#07213a] p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
-          <h2 className="text-2xl font-bold mb-8 text-white">Envíanos <span className="text-[#ff8c00]">tu consulta</span></h2>
+    <main className="min-h-screen bg-[#0a2b49] selection:bg-[#ff8c00]/30 relative overflow-hidden font-sans">
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#ff8c00]/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-6xl mx-auto px-6 pt-24 pb-20 lg:pt-32 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
           
-          {isSuccess ? (
-            <div className="text-center py-10 space-y-4">
-              <CheckCircle2 className="text-green-500 h-12 w-12 mx-auto" />
-              <h2 className="text-xl font-bold text-white">¡Mensaje enviado con éxito!</h2>
-              <button onClick={() => setIsSuccess(false)} className="text-[#ff8c00] hover:underline">Enviar otro mensaje</button>
+          {/* Columna Izquierda: Se mantiene siempre visible */}
+          <div className="lg:sticky lg:top-24">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff8c00]/10 border border-[#ff8c00]/20 text-[#ff8c00] text-[10px] font-bold uppercase tracking-wider mb-8">
+              <span className="w-2 h-2 bg-[#ff8c00] rounded-full animate-pulse" /> HABLEMOS DE TU PROYECTO
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input name="name" required placeholder="Nombre de contacto *" value={formData.name} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white focus:border-[#ff8c00]/50 outline-none" />
-                <input name="email" type="email" required placeholder="tu@email.com *" value={formData.email} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white focus:border-[#ff8c00]/50 outline-none" />
-              </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight mb-8">
+              ¿Listo para <br/>
+              <span className="text-[#ff8c00]">crecer juntos?</span>
+            </h1>
+            
+            <p className="text-lg text-[#ebf2f7]/60 leading-relaxed max-w-md mb-12">
+              Cuéntanos tu proyecto y en menos de 48h te contactamos con un análisis inicial y una propuesta adaptada a tus objetivos.
+            </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input name="phone" placeholder="Teléfono (Opcional)" value={formData.phone} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white outline-none" />
-                <input name="company" placeholder="Empresa / Web" value={formData.company} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white outline-none" />
-              </div>
+            <div className="space-y-8">
+              <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                ¿En qué podemos <span className="text-[#ff8c00]">ayudarte</span>?
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                {[
+                  "SEO Técnico & On-Page",
+                  "PPC & Paid Search",
+                  "Content Marketing",
+                  "Automatizaciones y CRM",
+                  "Desarrollo Web",
+                  "Imagen de Marca"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-[#ebf2f7]/80 group">
+                    <CheckCircle2 className="w-5 h-5 text-[#ff8c00] shrink-0" />
+                    <span className="text-base font-medium group-hover:text-white transition-colors">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <select name="profile" required value={formData.profile} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white appearance-none">
-                  <option value="">Perfil de empresa *</option>
-                  <option value="pyme">Autónomo / PYME</option>
-                  <option value="empresa">Empresa Mediana / Grande</option>
-                </select>
-                <select name="specific_services" value={formData.specific_services} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white appearance-none">
-                  <option value="">¿Qué servicios necesitas cubrir?</option>
-                  <option value="seo">SEO Técnico e Indexación</option>
-                  <option value="ads">Google Ads / Meta Ads</option>
-                </select>
-              </div>
+          {/* Columna Derecha: Contenedor del Formulario / Éxito */}
+          <div className="relative min-h-[600px]">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-[#ff8c00]/20 to-transparent blur-3xl opacity-10" />
+            
+            <div className="relative bg-[#08223a] p-8 md:p-12 rounded-[2.5rem] border border-white/10 shadow-3xl h-full flex flex-col justify-center">
+              
+              {!submitted ? (
+                <>
+                  <h2 className="text-3xl font-bold text-white mb-8">Envíanos <span className="text-[#ff8c00]">tu consulta</span></h2>
+                  
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <input name="nombre" type="text" required placeholder="Nombre de contacto *" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff8c00]/50 transition-all placeholder:text-[#ebf2f7]/30" />
+                      <input name="email" type="email" required placeholder="tu@email.com *" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff8c00]/50 transition-all placeholder:text-[#ebf2f7]/30" />
+                    </div>
 
-              <select name="urgent_need" value={formData.urgent_need} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white appearance-none">
-                <option value="">Necesidad más urgente</option>
-                <option value="leads">Necesito generar leads/ventas ya</option>
-              </select>
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <input name="telefono" type="tel" placeholder="Teléfono (Opcional)" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff8c00]/50 transition-all placeholder:text-[#ebf2f7]/30" />
+                      <input name="empresa" type="text" placeholder="Empresa / Web" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff8c00]/50 transition-all placeholder:text-[#ebf2f7]/30" />
+                    </div>
 
-              <select name="main_service" value={formData.main_service} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl h-12 px-4 text-sm text-white appearance-none">
-                <option value="">¿Qué servicio te interesa?</option>
-                <option value="seo_360">Estrategia SEO 360°</option>
-              </select>
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <select name="perfil" required className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
+                        <option value="" disabled selected>Perfil de empresa *</option>
+                        <option value="pyme">PYME / Autonómo</option>
+                        <option value="startup">Startup</option>
+                        <option value="corporativo">Gran Empresa</option>
+                      </select>
+                      <select name="servicios" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
+                        <option value="" disabled selected>¿Qué servicios necesitas?</option>
+                        <option value="seo">SEO</option>
+                        <option value="ads">Publicidad (SEM)</option>
+                        <option value="web">Diseño Web</option>
+                        <option value="all">Estrategia 360º</option>
+                      </select>
+                    </div>
 
-              <textarea name="message" required rows={4} placeholder="¿Cuál es tu objetivo principal? ¿Qué retos tienes ahora mismo?" value={formData.message} onChange={handleChange} className="w-full bg-[#0a2b49] border border-white/10 rounded-xl p-4 text-sm text-white focus:border-[#ff8c00]/50 outline-none resize-none" />
+                    <textarea name="mensaje" required rows={4} placeholder="¿Cuál es tu objetivo principal? ¿Qué retos tienes ahora mismo?" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff8c00]/50 transition-all resize-none placeholder:text-[#ebf2f7]/30" />
 
-              {/* ÚNICO APARTADO AGREGADO: SECCIÓN LEGAL */}
-              <div className="flex items-start gap-3 pt-2">
-                <input 
-                  type="checkbox" 
-                  id="legal" 
-                  required
-                  checked={acceptedTerms}
-                  onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-1 h-4 w-4 rounded border-white/10 bg-[#0a2b49] text-[#ff8c00] focus:ring-[#ff8c00]/50" 
-                />
-                <label htmlFor="legal" className="text-xs text-[#ebf2f7]/60 leading-relaxed">
-                  He leído y acepto la{" "}
-                  <button type="button" onClick={() => setActiveModal("privacidad")} className="text-[#ff8c00] hover:underline transition-colors">Política de Privacidad</button>
-                  {" "}y los{" "}
-                  <button type="button" onClick={() => setActiveModal("terminos")} className="text-[#ff8c00] hover:underline transition-colors">Términos y Condiciones</button>. 
-                  También puedes consultar nuestra{" "}
-                  <button type="button" onClick={() => setActiveModal("cookies")} className="text-[#ff8c00] hover:underline transition-colors">Política de Cookies</button>.
-                </label>
-              </div>
+                    <div className="flex items-start gap-3 pt-2">
+                      <input id="legal" type="checkbox" required className="mt-1 w-4 h-4 rounded border-white/10 bg-[#0a2b49] text-[#ff8c00] focus:ring-[#ff8c00] accent-[#ff8c00]" />
+                      <label htmlFor="legal" className="text-[11px] text-[#ebf2f7]/40 leading-tight">
+                        He leído y acepto la <a href="/privacidad" className="text-[#ff8c00] hover:underline">Política de Privacidad</a> y los <a href="/terminos" className="text-[#ff8c00] hover:underline">Términos y Condiciones</a>.
+                      </label>
+                    </div>
 
-              <button 
-                type="submit" 
-                disabled={isSending || !acceptedTerms} 
-                className="w-full flex items-center justify-center gap-2 bg-[#ebf2f7] hover:bg-[#ff8c00] text-[#0a2b49] hover:text-white font-bold rounded-xl h-14 transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSending ? "Enviando..." : "Enviar mensaje"} <Send className="h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
-            </form>
-          )}
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-[#6b7c93] hover:bg-[#ff8c00] text-white hover:text-[#08223a] font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 mt-4 shadow-xl group"
+                    >
+                      {loading ? "Enviando consulta..." : "Enviar mensaje"}
+                      {!loading && <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                    </button>
+                    {error && <p className="text-sm text-red-400 text-center font-bold mt-4">{error}</p>}
+                  </form>
+                </>
+              ) : (
+                /* Mensaje de éxito dentro del cajetín */
+                <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
+                  <div className="w-20 h-20 bg-[#ff8c00]/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <Sparkles className="w-10 h-10 text-[#ff8c00]" />
+                  </div>
+                  <h2 className="text-4xl font-black text-white mb-6">¡Mensaje enviado!</h2>
+                  <p className="text-lg text-[#ebf2f7]/60 leading-relaxed mb-10 max-w-sm mx-auto">
+                    Gracias por contactar. Un consultor SEO revisará tu mensaje y te responderá en menos de **48 horas**.
+                  </p>
+                  <button 
+                    onClick={() => setSubmitted(false)}
+                    className="bg-[#ff8c00] text-[#08223a] font-bold px-10 py-4 rounded-xl hover:bg-white transition-colors text-sm uppercase tracking-widest"
+                  >
+                    Volver al inicio
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
         </div>
       </div>
     </main>

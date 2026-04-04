@@ -1,7 +1,3 @@
-// app/pymes/todo-para-tu-negocio/page.tsx
-// ✅ SIN Navbar ni Footer — los gestiona app/layout.tsx globalmente
-// URL: https://iorana.digital/pymes/todo-para-tu-negocio
-
 import type { Metadata } from "next";
 import PymesSection from "@/components/PymesSection";
 
