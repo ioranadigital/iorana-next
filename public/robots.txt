@@ -3,7 +3,8 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /temp/
-Disallow: /kit-Digital
+Disallow: /kit-Digital/
+Disallow: /login/
 
 User-agent: Google-Extended
 Allow: /
