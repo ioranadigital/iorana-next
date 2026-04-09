@@ -522,11 +522,11 @@ const PymesSection = () => {
                     {/* RGPD */}
                     <p className="text-[11px] text-[#ebf2f7]/25 leading-relaxed">
                       He leído y acepto la{" "}
-                      <a href="/privacidad" className="underline hover:text-[#ebf2f7]/50 transition-colors">Política de Privacidad</a>{" "}
+                      <a href="/legal/privacidad" className="underline hover:text-[#ebf2f7]/50 transition-colors">Política de Privacidad</a>{" "}
                       y los{" "}
-                      <a href="/terminos" className="underline hover:text-[#ebf2f7]/50 transition-colors">Términos y Condiciones</a>.
+                      <a href="/legal/terminos" className="underline hover:text-[#ebf2f7]/50 transition-colors">Términos y Condiciones</a>.
                       También puedes consultar nuestra{" "}
-                      <a href="/cookies" className="underline hover:text-[#ebf2f7]/50 transition-colors">Política de Cookies</a>.
+                      <a href="/legal/cookies" className="underline hover:text-[#ebf2f7]/50 transition-colors">Política de Cookies</a>.
                     </p>
 
                     <button

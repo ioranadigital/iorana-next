@@ -121,7 +121,7 @@ export default function ContactoPage() {
                     <div className="flex items-start gap-3 pt-2">
                       <input id="legal" type="checkbox" required className="mt-1 w-4 h-4 rounded border-white/10 bg-[#0a2b49] text-[#ff8c00] focus:ring-[#ff8c00] accent-[#ff8c00]" />
                       <label htmlFor="legal" className="text-[11px] text-[#ebf2f7]/40 leading-tight">
-                        He leído y acepto la <a href="/privacidad" className="text-[#ff8c00] hover:underline">Política de Privacidad</a> y los <a href="/terminos" className="text-[#ff8c00] hover:underline">Términos y Condiciones</a>.
+                        He leído y acepto la <a href="/legal/privacidad" className="text-[#ff8c00] hover:underline">Política de Privacidad</a> y los <a href="/legal/terminos" className="text-[#ff8c00] hover:underline">Términos y Condiciones</a>.
                       </label>
                     </div>
 

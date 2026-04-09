@@ -86,8 +86,8 @@ const CasesSection = () => {
                   {c.desc}
                 </p>
                 
-                <Link 
-                  href="/casos" 
+                <Link
+                  href="/pymes/casos-de-exito"
                   className="inline-flex items-center gap-2 text-sm font-bold text-[#ebf2f7] group-hover:text-[#ff8c00] transition-colors"
                 >
                   Ver Proyecto <ExternalLink className="h-4 w-4" />

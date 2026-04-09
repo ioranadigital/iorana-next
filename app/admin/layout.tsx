@@ -22,13 +22,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <LayoutDashboard size={18} /> Dashboard
           </Link>
           <Link 
-            href="/admin/leads" 
+            href="/admin"
             className="flex items-center gap-3 px-4 py-3 text-[#7fa8c9] hover:bg-white/5 hover:text-white rounded-xl transition-all"
           >
             <Users size={18} /> Leads
           </Link>
           <Link 
-            href="/admin/analytics" 
+            href="/admin"
             className="flex items-center gap-3 px-4 py-3 text-[#7fa8c9] hover:bg-white/5 hover:text-white rounded-xl transition-all"
           >
             <BarChart3 size={18} /> Rendimiento

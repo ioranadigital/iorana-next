@@ -5,7 +5,6 @@
 import type { Metadata } from "next";
 import PymesCases from "@/components/PymesCases";
 import PymesContactForm from "@/components/PymesContactForm";
-
 export const metadata: Metadata = {
   title: "Casos de éxito de pymes digitalizadas — Iorana Digital",
   description:
@@ -24,15 +23,6 @@ export const metadata: Metadata = {
 };
 
 const schemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://iorana.digital" },
-      { "@type": "ListItem", position: 2, name: "Pymes", item: "https://iorana.digital/pymes" },
-      { "@type": "ListItem", position: 3, name: "Casos de éxito", item: "https://iorana.digital/pymes/casos-de-exito" },
-    ],
-  },
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -55,19 +45,6 @@ export default function PymesCasosPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
         />
       ))}
-
-      {/* Breadcrumb visual */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 pb-2">
-        <nav aria-label="Breadcrumb">
-          <ol className="flex items-center gap-2 text-xs text-[#ebf2f7]/35">
-            <li><a href="/" className="hover:text-[#ff8c00] transition-colors">Inicio</a></li>
-            <li aria-hidden="true" className="text-[#ebf2f7]/20">/</li>
-            <li><a href="/pymes" className="hover:text-[#ff8c00] transition-colors">Pymes</a></li>
-            <li aria-hidden="true" className="text-[#ebf2f7]/20">/</li>
-            <li className="text-[#ff8c00]" aria-current="page">Casos de éxito</li>
-          </ol>
-        </nav>
-      </div>
 
       <PymesCases />
       <PymesContactForm />

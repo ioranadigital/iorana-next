@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PymesSection from "@/components/PymesSection";
-
 export const metadata: Metadata = {
   title: "Pack Digital para Pymes | Google Maps · Web · Soporte — Iorana Digital",
   description:
@@ -18,37 +17,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const breadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://iorana.digital" },
-    { "@type": "ListItem", position: 2, name: "Pymes", item: "https://iorana.digital/pymes" },
-    { "@type": "ListItem", position: 3, name: "Todo para tu negocio", item: "https://iorana.digital/pymes/todo-para-tu-negocio" },
-  ],
-};
-
 export default function TodoParaTuNegocioPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
-      />
-
-      {/* Breadcrumb visual */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 pb-2">
-        <nav aria-label="Breadcrumb">
-          <ol className="flex items-center gap-2 text-xs text-[#ebf2f7]/35">
-            <li><a href="/" className="hover:text-[#ff8c00] transition-colors">Inicio</a></li>
-            <li aria-hidden="true" className="text-[#ebf2f7]/20">/</li>
-            <li><a href="/pymes" className="hover:text-[#ff8c00] transition-colors">Pymes</a></li>
-            <li aria-hidden="true" className="text-[#ebf2f7]/20">/</li>
-            <li className="text-[#ff8c00]" aria-current="page">Todo para tu negocio</li>
-          </ol>
-        </nav>
-      </div>
-
       <PymesSection />
 
       {/* Internal links hacia páginas separadas */}

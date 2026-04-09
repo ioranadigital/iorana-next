@@ -140,7 +140,7 @@ export default function InformeGratisPage() {
                       <div className="flex items-center gap-3">
                         <input id="legal" type="checkbox" required className="w-4 h-4 rounded bg-[#0a2b49] border-white/10 text-[#ff8c00] focus:ring-[#ff8c00] accent-[#ff8c00] cursor-pointer" />
                         <label htmlFor="legal" className="text-xs text-[#ebf2f7]/40 leading-none">
-                          Acepto el tratamiento de mis datos según la <a href="/privacidad" className="text-[#ff8c00] hover:underline font-medium underline-offset-2 italic">Política de Privacidad</a>. *
+                          Acepto el tratamiento de mis datos según la <a href="/legal/privacidad" className="text-[#ff8c00] hover:underline font-medium underline-offset-2 italic">Política de Privacidad</a>. *
                         </label>
                       </div>
                     </div>

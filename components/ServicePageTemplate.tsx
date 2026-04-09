@@ -6,14 +6,14 @@ import ServiceContactForm from "@/components/ServiceContactForm";
 
 const C = {
   bg:           "bg-[#0a2b49]",
-  panel:        "bg-[#07213a]",
-  panelAlt:     "bg-[#0d3355]",
-  border:       "border-white/10",
-  text:         "text-[#ebf2f7]",
-  muted:        "text-[#7fa8c9]",
-  accent:       "text-[#ff8c00]",
-  accentBg:     "bg-[#ff8c00]",
-  accentHover:  "hover:bg-[#e67e00]",
+  panel:         "bg-[#07213a]",
+  panelAlt:      "bg-[#0d3355]",
+  border:        "border-white/10",
+  text:          "text-[#ebf2f7]",
+  muted:         "text-[#7fa8c9]",
+  accent:        "text-[#ff8c00]",
+  accentBg:      "bg-[#ff8c00]",
+  accentHover:   "hover:bg-[#e67e00]",
 } as const;
 
 export interface ServicePageData {
@@ -62,23 +62,24 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
   const { hero, includes, process, faq } = data;
 
   return (
-    <main className={`w-full ${C.bg} ${C.text} font-body pt-20`}>
+    /* Reducido pt-20 a pt-6 para maximizar Above the Fold */
+    <main className={`w-full ${C.bg} ${C.text} font-body pt-6`}>
 
-      {/* ── HERO ── */}
-      <section className="max-w-5xl mx-auto px-6 pt-12 pb-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div className="flex flex-col gap-8">
+      {/* ── HERO: Reducido pt-12 a pt-6 ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="flex flex-col gap-6">
           <div>
             <h1 className="mb-4">
               <SplitTitle text={hero.title} size="text-5xl md:text-6xl" />
             </h1>
-            <p className={`${C.muted} text-base`}>{hero.subtitle}</p>
+            <p className={`${C.muted} text-base max-w-lg leading-relaxed`}>{hero.subtitle}</p>
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
           <aside className="bg-[#0d3355] border border-[#ebf2f7]/25 rounded-xl p-7">
             <h2 className={`flex items-center gap-2 text-xl font-bold ${C.text} mb-5`}>
-               ¿Por qué <em className={`not-italic ${C.accent} ml-1`}>importa</em>?
+                ¿Por qué <em className={`not-italic ${C.accent} ml-1`}>importa</em>?
             </h2>
             <ul role="list" className="space-y-4">
               {hero.whyPoints.map((p, i) => (
@@ -90,18 +91,17 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </ul>
           </aside>
 
-          {/* Enlace Normal a Diagnóstico */}
           <a
-            href="https://iorana.digital/informe-sitio-web-gratis"
-            className="block w-full text-center py-3 px-5 rounded-xl bg-[#ebf2f7] hover:bg-white text-[#07213a] text-sm font-semibold transition-colors"
+            href="/informe-sitio-web-gratis"
+            className="block w-full text-center py-3 px-5 rounded-xl bg-[#ebf2f7] hover:bg-white text-[#07213a] text-sm font-semibold transition-colors shadow-lg"
           >
             Empezar el diagnóstico gratuito →
           </a>
         </div>
       </section>
 
-      {/* ── QUÉ INCLUYE ── */}
-      <section className="max-w-5xl mx-auto px-6 pb-16">
+      {/* ── QUÉ INCLUYE: Reducido pb-16 a pb-10 ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <h2 className="mb-6">
           <SplitTitle text="¿Qué incluye?" size="text-2xl md:text-3xl" />
         </h2>
@@ -115,8 +115,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </ul>
       </section>
 
-      {/* ── PROCESO ── */}
-      <section className="w-full max-w-5xl mx-auto px-6 py-16">
+      {/* ── PROCESO: Reducido py-16 a py-10 ── */}
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h2 className="text-center mb-10">
           <SplitTitle text="Nuestro proceso" center size="text-3xl md:text-4xl" />
         </h2>
@@ -135,12 +135,9 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </ol>
       </section>
 
-{/* ── FAQ + CONTACTO — Secciones más juntas ── */}
-      <section id="contacto" className="w-full max-w-6xl mx-auto px-6 py-24">
-        {/* gap-12 en lugar de gap-32 para juntar las columnas */}
+      {/* ── FAQ + CONTACTO ── */}
+      <section id="contacto" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-          {/* Columna FAQs: Sin max-w-md para que ocupe su espacio natural y se acerque al centro */}
           <div className="w-full">
             <div className="mb-10"> 
               <h2 className="mb-2">
@@ -163,7 +160,6 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </dl>
           </div>
 
-          {/* Columna Formulario: Alineada visualmente con la primera FAQ */}
           <div className="lg:sticky lg:top-28 w-full flex flex-col">
             <div className="mb-6">
               <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
@@ -175,7 +171,6 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               <ServiceContactForm service={hero.title} />
             </div>
           </div>
-
         </div>
       </section>
     </main>
