@@ -78,7 +78,7 @@ const PageLayout = ({
   <header className="relative z-[9999]"> 
     <Navbar />
   </header>  
-  <main className="flex-1 w-full overflow-visible pt-16">
+  <main className="flex-1 w-full overflow-visible pt-10">
     {/* Rutas ... */}
   </main>
 </div>

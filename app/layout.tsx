@@ -1,9 +1,3 @@
-// app/layout.tsx
-// ✅ SIN "use client" — permite exportar metadata desde páginas hijas
-// ✅ Navbar y Footer globales — NO los repitas en ninguna página
-// ✅ Providers movidos a componente separado (Providers.tsx)
-// ✅ SIN min-h-screen en main — el Footer siempre es visible
-
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";

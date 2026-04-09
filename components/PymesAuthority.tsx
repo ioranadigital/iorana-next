@@ -47,9 +47,9 @@ export default function PymesAuthority() {
       ref={sectionRef}
       id="digitalizar-pyme-2026"
       aria-labelledby="authority-h2"
-      className="w-full bg-[#0a2b49] auth-section"
+      className="w-full pt-10 bg-[#0a2b49] auth-section"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
           {/* ── Columna principal (8/12) ── */}

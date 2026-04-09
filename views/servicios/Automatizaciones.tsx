@@ -8,7 +8,7 @@ const data: ServicePageData = {
     ogImage: "/og/automatizaciones.jpg",
   },
   hero: {
-    title: "Automatización de Procesos",
+    title: "Automatizaciones de Procesos",
     subtitle: "Elimina tareas manuales y escala tus operaciones de marketing y ventas. Conectamos tus herramientas para que tu equipo se enfoque en lo que realmente importa.",
     whyPoints: [
       "Las empresas que automatizan experimentan un aumento del 451% en leads cualificados",

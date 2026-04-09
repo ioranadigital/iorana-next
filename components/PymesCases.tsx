@@ -1,7 +1,3 @@
-// components/PymesCases.tsx
-// Iorana Digital — Sección 5 · Mini Casos de Éxito Pymes
-// Mismo sistema de diseño que CasesSection.tsx · motion framer · 3 cards
-
 "use client";
 
 import React from "react";
@@ -61,7 +57,7 @@ const PymesCases = () => {
     <section
       id="casos-pymes"
       aria-labelledby="cases-h2"
-      className="w-full py-24 bg-[#08223a] overflow-visible"
+      className="w-full pt-10 bg-[#08223a] overflow-visible"
     >
       <div className="max-w-7xl mx-auto px-6 overflow-visible">
 

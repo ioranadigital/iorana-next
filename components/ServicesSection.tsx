@@ -17,50 +17,50 @@ const services = [
   { 
     icon: Search, 
     subtitle: "Visibilidad",
-    title: "SEO Técnico & On-Page", 
-    desc: "Hacemos que tu página web sea fácil de encontrar para que, cuando alguien busque lo que ofreces, tú seas la primera opción.", 
+    title: "SEO Técnico", 
+    desc: "Optimizamos tu web para que aparezcas en los primeros resultados cuando tus clientes potenciales te busquen.", 
     href: "/servicios/seo-tecnico",
-    linkText: "Posicionamiento SEO" // Texto personalizado
+    linkText: "Mejorar mi ranking"
   },
   { 
     icon: BarChart3, 
     subtitle: "Publicidad",
-    title: "PPC & Paid Search", 
-    desc: "Creamos campañas en Google y Redes Sociales diseñadas para atraer a personas interesadas en comprar tus productos o servicios hoy mismo.", 
+    title: "Google Ads & Social Ads", 
+    desc: "Campañas de pago diseñadas para atraer tráfico cualificado y generar ventas de forma inmediata.", 
     href: "/servicios/ppc-paid-search",
-    linkText: "PPC"
+    linkText: "Captar clientes ya"
   },
   { 
     icon: PenTool, 
     subtitle: "Contenido",
-    title: "Content Marketing", 
-    desc: "Escribimos y creamos materiales que explican el valor de tu negocio, generan confianza y convencen a tus visitas de elegirte a ti.", 
+    title: "Marketing de Contenidos", 
+    desc: "Creamos contenido estratégico que genera confianza, resuelve dudas y convence a tus visitas de elegirte.", 
     href: "/servicios/content-marketing",
-    linkText: "Crear contenido"
+    linkText: "Ver estrategia"
   },
   { 
     icon: Zap, 
     subtitle: "Eficiencia",
     title: "Automatizaciones", 
-    desc: "Conectamos tus herramientas para que no pierdas tiempo en tareas repetitivas y puedas centrarte en atender a tus nuevos clientes.", 
+    desc: "Ahorra horas de trabajo eliminando tareas repetitivas mediante herramientas que trabajan por ti 24/7.", 
     href: "/servicios/automatizaciones",
-    linkText: "Ahorrar tiempo"
+    linkText: "Optimizar procesos"
   },
   { 
     icon: MousePointer2, 
     subtitle: "Conversión",
-    title: "Desarrollo Web (CRO)", 
-    desc: "Diseñamos páginas modernas, rápidas y muy fáciles de usar, pensadas exclusivamente para que tus visitas se conviertan en ventas.", 
+    title: "Diseño Web CRO", 
+    desc: "Páginas rápidas y modernas enfocadas exclusivamente en convertir tus visitas en clientes finales.", 
     href: "/servicios/desarrollo-web",
-    linkText: "Como Mejorar mi web"
+    linkText: "Vender más"
   },
   { 
     icon: Palette, 
-    subtitle: "Pymes",
-    title: "Todo para Tu Negocio", 
-    desc: "Creamos una identidad visual que transmite seriedad y confianza desde el primer segundo, haciendo que tu marca sea inolvidable.", 
+    subtitle: "Identidad",
+    title: "Branding para Pymes", 
+    desc: "Construimos una imagen profesional y sólida que transmite la seriedad que tu negocio merece.", 
     href: "/pymes/todo-para-tu-negocio",
-    linkText: "Renovar mi imagen"
+    linkText: "Renovar mi marca"
   },
 ];
 
@@ -76,13 +76,13 @@ const ServicesSection = () => (
         className="text-center max-w-2xl mx-auto mb-16"
       >
         <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase">
-          Qué hacemos por ti
+          Impulsa tu crecimiento
         </span>
         <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight leading-tight">
-          Nuestros <span className="text-[#ff8c00] drop-shadow-[0_0_10px_rgba(255,140,0,0.3)]">Servicios</span>
+          Soluciones <span className="text-[#ff8c00] drop-shadow-[0_0_10px_rgba(255,140,0,0.3)]">Estratégicas</span>
         </h2>
         <p className="mt-6 text-lg text-[#ebf2f7]/70">
-          Soluciones claras y directas para que tu negocio destaque en internet y consigas más clientes cada día.
+          Todo lo que tu negocio necesita para dominar su mercado digital y multiplicar sus resultados.
         </p>
       </motion.div>
 

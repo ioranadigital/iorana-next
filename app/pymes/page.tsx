@@ -1,8 +1,3 @@
-// components/PymesAuthority.tsx
-// Iorana Digital — Sección 6 · Authority Content
-// Texto enriquecido SEO · min. 300 palabras · entidades LSI · E-E-A-T
-// Schema: Article + Speakable markup integrado
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";

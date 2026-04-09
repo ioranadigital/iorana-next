@@ -83,13 +83,13 @@ export default function PymesProcess() {
     <section
       ref={sectionRef}
       aria-labelledby="process-h2"
-      className="relative w-full bg-[#0a2b49] overflow-hidden"
+      className="relative w-full  bg-[#0a2b49] overflow-hidden"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[#ff8c00]/5 blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-28">
+     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 lg:pt-12 lg:pb-28">
 
         <header className="text-center mb-16 lg:mb-20">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff8c00]/25 bg-[#ff8c00]/8 text-[#ff8c00] text-xs font-semibold tracking-widest uppercase mb-5">
