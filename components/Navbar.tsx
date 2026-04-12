@@ -51,7 +51,7 @@ const Navbar = () => {
         {/* ── LOGO ── */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
-            src="/iorana-marketing-digital.png"
+            src="/iorana-seo-marketing-digital.png"
             alt="IORANA Digital - Agencia de Marketing y SEO"
             width={36} height={36}
             className="object-contain"

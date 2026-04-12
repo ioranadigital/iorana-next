@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/iorana-marketing-digital.png"
+                src="/iorana-seo-marketing-digital.png"
                 alt="IORANA Digital - Agencia SEO y Marketing"
                 width={32} height={32}
               />
@@ -44,7 +44,7 @@ const Footer = () => {
             <p className="text-[#ebf2f7]/60 text-sm leading-relaxed">
               Especialistas en digitalización acelerada para pymes y estrategias SEO de alto rendimiento.
             </p>
-          </div>
+          </div>S
 
           {/* Columna 2: Servicios */}
           <div>
