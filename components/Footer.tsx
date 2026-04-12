@@ -5,10 +5,13 @@ import Image from "next/image";
 
 const footerLinks = {
   servicios: [
-    { label: "SEO Técnico", href: "/servicios/seo-tecnico" },
-    { label: "PPC & Paid Search", href: "/servicios/ppc-paid-search" },
-    { label: "Content Marketing", href: "/servicios/content-marketing" },
-    { label: "Desarrollo Web", href: "/servicios/desarrollo-web" },
+    { label: "SEO Técnico",          href: "/servicios/seo-tecnico" },
+    { label: "Google Business Local",href: "/servicios/google-business-local" },
+    { label: "PPC & Paid Search",    href: "/servicios/ppc-paid-search" },
+    { label: "Content Marketing",    href: "/servicios/content-marketing" },
+    { label: "Automatizaciones",     href: "/servicios/automatizaciones" },
+    { label: "Desarrollo Web",       href: "/servicios/desarrollo-web" },
+    { label: "Imagen de Marca",      href: "/servicios/imagen-de-marca" },
   ],
   pymes: [
     { label: "Porqué digitalizar", href: "/pymes/" },
@@ -44,7 +47,7 @@ const Footer = () => {
             <p className="text-[#ebf2f7]/60 text-sm leading-relaxed">
               Especialistas en digitalización acelerada para pymes y estrategias SEO de alto rendimiento.
             </p>
-          </div>S
+          </div>
 
           {/* Columna 2: Servicios */}
           <div>

@@ -62,23 +62,46 @@ Para clientes con servicios contratados, cualquier modificación sustancial ser�
   },
 ];
 
+const NAV_LINKS = [
+  { href: "/legal/terminos",   label: "Aviso Legal" },
+  { href: "/legal/privacidad", label: "Privacidad" },
+  { href: "/legal/cookies",    label: "Cookies" },
+];
+
 export default function TerminosView() {
   return (
-    <section className="py-16 px-4 md:py-24">
+    <section className="pt-24 pb-16 px-4 md:pb-24 min-h-screen bg-[#0a2b49]">
       <div className="container max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-10"
         >
+          <span className="text-xs font-bold text-[#ff8c00] tracking-widest uppercase mb-3 block">
+            Información Legal
+          </span>
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-[#ebf2f7] mb-4">
-            Términos y{" "}
-            <span className="bg-gradient-to-r from-brand-orange to-brand-dark bg-clip-text text-transparent">
-              Condiciones
-            </span>
+            Aviso <span className="text-[#ff8c00]">Legal</span>
           </h1>
-          <p className="text-[#ebf2f7]/60 text-sm">Última actualización: Marzo 2026</p>
+          <p className="text-[#ebf2f7]/50 text-sm mb-8">Última actualización: Marzo 2026</p>
+
+          <nav aria-label="Secciones legales" className="flex gap-2 flex-wrap">
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  l.href === "/legal/terminos"
+                    ? "bg-[#ff8c00] text-[#08223a]"
+                    : "bg-[#08223a] border border-[#ebf2f7]/10 text-[#ebf2f7]/60 hover:text-[#ff8c00] hover:border-[#ff8c00]/30"
+                }`}
+                aria-current={l.href === "/legal/terminos" ? "page" : undefined}
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
         </motion.div>
 
         <div className="space-y-10">

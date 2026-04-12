@@ -1,26 +1,35 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Search, 
-  BarChart3, 
-  PenTool, 
-  Zap, 
-  MousePointer2, 
-  Palette, 
-  ArrowRight, 
-  TrendingUp 
+import {
+  Search,
+  BarChart3,
+  PenTool,
+  Zap,
+  MousePointer2,
+  Palette,
+  MapPin,
+  ArrowRight,
+  TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 
 const services = [
-  { 
-    icon: Search, 
+  {
+    icon: Search,
     subtitle: "Visibilidad",
-    title: "SEO Técnico", 
-    desc: "Optimizamos tu web para que aparezcas en los primeros resultados cuando tus clientes potenciales te busquen.", 
+    title: "SEO Técnico",
+    desc: "Optimizamos tu web para que aparezcas en los primeros resultados cuando tus clientes potenciales te busquen.",
     href: "/servicios/seo-tecnico",
     linkText: "Mejorar mi ranking"
+  },
+  {
+    icon: MapPin,
+    subtitle: "SEO Local",
+    title: "Google Business Local",
+    desc: "Aparece en el Top 3 de Google Maps cuando alguien busca tu servicio cerca. Más llamadas, más visitas, más clientes locales.",
+    href: "/servicios/google-business-local",
+    linkText: "Posicionamiento local"
   },
   { 
     icon: BarChart3, 

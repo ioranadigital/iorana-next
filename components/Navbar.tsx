@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 const serviceLinks = [
   { label: "SEO Técnico & On-Page",  href: "/servicios/seo-tecnico" },
+  { label: "Google Business Local",  href: "/servicios/google-business-local" },
   { label: "PPC & Paid Search",      href: "/servicios/ppc-paid-search" },
   { label: "Content Marketing",      href: "/servicios/content-marketing" },
   { label: "Automatizaciones",       href: "/servicios/automatizaciones" },

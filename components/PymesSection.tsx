@@ -293,12 +293,12 @@ const PymesSection = () => {
       >
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-14"
+            className="mb-14 text-center"
           >
-            <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase flex items-center gap-2 mb-4">
+            <span className="text-sm font-bold text-[#ff8c00] tracking-widest uppercase flex items-center justify-center gap-2 mb-4">
               <Trophy className="h-4 w-4" aria-hidden="true" />
               Dudas frecuentes
             </span>
@@ -311,7 +311,7 @@ const PymesSection = () => {
             </h2>
           </motion.div>
 
-          <div className="max-w-3xl divide-y divide-[#ebf2f7]/8">
+          <div className="max-w-3xl mx-auto divide-y divide-[#ebf2f7]/8">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
