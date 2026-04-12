@@ -1,12 +1,27 @@
 /** @type {import('next').NextConfig} */
+const WP_HOST = process.env.WP_HOST ?? "http://TU_IP_HETZNER";
+
 const nextConfig = {
-  // ...tu configuración existente...
+  async rewrites() {
+    return [
+      // Todo /blog/* se proxifica al VPS donde corre WordPress
+      {
+        source: "/blog",
+        destination: `${WP_HOST}/blog`,
+      },
+      {
+        source: "/blog/:path*",
+        destination: `${WP_HOST}/blog/:path*`,
+      },
+    ];
+  },
+
   async redirects() {
     return [
       {
         source: "/r/:path*",
         destination: "https://qr.iorana.dev/slug/iorana.digital/:path*",
-        permanent: false, // 302, no 301
+        permanent: false,
       },
     ];
   },
