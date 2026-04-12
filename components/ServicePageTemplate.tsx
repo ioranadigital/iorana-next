@@ -70,7 +70,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <div className="flex flex-col gap-6">
           <div>
             <h1 className="mb-4">
-              <SplitTitle text={hero.title} size="text-5xl md:text-6xl" />
+              <SplitTitle text={hero.title} size="text-4xl sm:text-5xl md:text-6xl" />
             </h1>
             <p className={`${C.muted} text-base max-w-lg leading-relaxed`}>{hero.subtitle}</p>
           </div>

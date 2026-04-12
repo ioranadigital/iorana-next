@@ -101,7 +101,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap gap-10 mt-16 pt-8 border-t border-[#ebf2f7]/10"
+            className="flex flex-wrap gap-6 sm:gap-10 mt-10 sm:mt-16 pt-8 border-t border-[#ebf2f7]/10"
           >
             {stats.map((s) => (
               <div key={s.label}>

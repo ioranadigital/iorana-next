@@ -128,7 +128,7 @@ const CertCard = ({ cert }: { cert: { name: string; icon: typeof Award } }) => (
     initial={{ opacity: 0, scale: 0.95 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.3 }}
-    className="flex flex-col items-center justify-center p-12 md:p-14 lg:p-12 rounded-2xl border border-[#ebf2f7]/10 bg-[#0a2b49]/60 backdrop-blur-sm hover:border-[#ff8c00]/40 transition-all duration-300 h-full text-center"
+    className="flex flex-col items-center justify-center p-6 md:p-10 lg:p-12 rounded-2xl border border-[#ebf2f7]/10 bg-[#0a2b49]/60 backdrop-blur-sm hover:border-[#ff8c00]/40 transition-all duration-300 h-full text-center"
   >
     <div className="w-16 h-16 rounded-xl bg-[#ff8c00]/10 border border-[#ff8c00]/20 flex items-center justify-center mb-8">
       <cert.icon className="h-8 w-8 text-[#ff8c00]" />

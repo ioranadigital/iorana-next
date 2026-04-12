@@ -14,7 +14,7 @@ const AboutSection = () => (
   <section id="nosotros" className="w-full py-24 bg-[#0a2b49] overflow-visible">
     <div className="max-w-7xl mx-auto px-6 overflow-visible">
       
-      <div className="grid lg:grid-cols-2 gap-16 items-center overflow-visible">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center overflow-visible">
         
         {/* BLOQUE IZQUIERDO: TEXTOS */}
         <motion.div
@@ -74,7 +74,7 @@ const AboutSection = () => (
           viewport={{ once: true }}
           className="relative overflow-visible"
         >
-          <div className="bg-[#08223a] p-10 rounded-3xl border border-[#ebf2f7]/10 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#08223a] p-6 md:p-10 rounded-3xl border border-[#ebf2f7]/10 shadow-2xl relative overflow-hidden">
             {/* Brillo de fondo naranja */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#ff8c00]/10 blur-3xl rounded-full" />
             

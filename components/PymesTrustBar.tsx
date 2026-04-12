@@ -67,7 +67,7 @@ export default function PymesTrustBar() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="text-3xl font-black text-[#ff8c00] tabular-nums leading-none">
+              <p className="text-2xl sm:text-3xl font-black text-[#ff8c00] tabular-nums leading-none">
                 {s.value}
                 <span className="text-lg text-[#ff8c00]/70">{s.suffix}</span>
               </p>

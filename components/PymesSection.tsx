@@ -174,7 +174,7 @@ const PymesSection = () => {
 
             <h1
               id="pymes-h1"
-              className="text-4xl md:text-6xl font-heading font-extrabold text-[#ebf2f7] tracking-tight leading-[1.05] mb-6"
+              className="text-3xl sm:text-4xl md:text-6xl font-heading font-extrabold text-[#ebf2f7] tracking-tight leading-[1.05] mb-6"
             >
               Digitaliza tu Pyme.<br />
               <span className="text-[#ff8c00]">Clientes Reales.</span>{" "}
@@ -304,7 +304,7 @@ const PymesSection = () => {
             </span>
             <h2
               id="pymes-faq-h2"
-              className="text-3xl md:text-5xl font-heading font-extrabold text-[#ebf2f7] tracking-tight"
+              className="text-2xl sm:text-3xl md:text-5xl font-heading font-extrabold text-[#ebf2f7] tracking-tight"
             >
               Preguntas sobre el{" "}
               <span className="text-[#ff8c00]">Pack Pyme</span>
@@ -371,7 +371,7 @@ const PymesSection = () => {
               </span>
               <h2
                 id="pymes-form-h2"
-                className="text-3xl md:text-5xl font-heading font-extrabold text-[#ebf2f7] tracking-tight leading-tight mb-6"
+                className="text-2xl sm:text-3xl md:text-5xl font-heading font-extrabold text-[#ebf2f7] tracking-tight leading-tight mb-6"
               >
                 ¿Listo para{" "}
                 <span className="text-[#ff8c00]">crecer juntos?</span>

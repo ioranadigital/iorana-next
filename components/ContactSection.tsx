@@ -75,15 +75,15 @@ const ContactSection = () => {
 
   return (
     <section id="contacto" className="w-full py-24 bg-[#0a2b49] border-t border-white/5 relative overflow-hidden">
-      <div className="max-w-15xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Columna izquierda */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff8c00]/10 border border-[#ff8c00]/20 text-[#ff8c00] text-xs font-bold uppercase tracking-widest mb-6">
               HABLEMOS DE TU PROYECTO
             </div>
-            <h2 className="text-4xl md:text-6xl font-heading font-black mt-4 text-white leading-[1.1]">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black mt-4 text-white leading-[1.1]">
               ¿Listo para <br /><span className="text-[#ff8c00]">crecer juntos?</span>
             </h2>
             <p className="mt-6 text-lg text-[#ebf2f7]/70 leading-relaxed mb-10 max-w-lg">
@@ -96,7 +96,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="p-10 rounded-3xl bg-[#08223a] border border-[#ebf2f7]/5 shadow-2xl"
+            className="p-6 md:p-10 rounded-3xl bg-[#08223a] border border-[#ebf2f7]/5 shadow-2xl"
           >
             {submitted ? (
               <div className="text-center py-10">
