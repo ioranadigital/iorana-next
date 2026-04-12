@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const WP_HOST = process.env.WP_HOST ?? "http://TU_IP_HETZNER";
+const WP_HOST = process.env.WP_HOST ?? "http://89.167.103.147";
 
 const nextConfig = {
   async rewrites() {
