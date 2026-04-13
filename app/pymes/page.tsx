@@ -214,18 +214,12 @@ export default function PymesAuthority() {
             </blockquote>
 
             {/* Mini CTA */}
-            <button
-              type="button"
-              onClick={() =>
-                window.location.href = "/informe-sitio-web-gratis"
-              }
-              className="w-full py-4 rounded-2xl font-bold text-sm text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2"
-              style={{
-                background: "linear-gradient(135deg, #ff8c00, #ff6b00)",
-              }}
+            <a
+              href="/informe-sitio-web-gratis"
+              className="w-full py-4 rounded-2xl font-bold text-sm text-[#07213a] bg-[#ff8c00] hover:bg-white transition-all duration-200 shadow-[0_0_16px_rgba(255,140,0,0.35)] hover:shadow-[0_0_24px_rgba(255,140,0,0.6)] hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-[#0a2b49] focus:ring-offset-2 flex items-center justify-center cursor-pointer"
             >
               Pedir diagnóstico gratuito →
-            </button>
+            </a>
 
             {/* Norma RGPD badge */}
             <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-white/6 bg-white/[0.02]">

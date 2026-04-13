@@ -101,15 +101,15 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* ── QUÉ INCLUYE: Reducido pb-16 a pb-10 ── */}
+      {/* ── QUÉ INCLUYE ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <h2 className="mb-6">
           <SplitTitle text="¿Qué incluye?" size="text-2xl md:text-3xl" />
         </h2>
-        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {includes.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 bg-[#0d3355] border border-[#ebf2f7]/20 rounded-xl px-5 py-4 text-sm">
-              <CheckCircle2 size={18} className="text-[#ff8c00] shrink-0 mt-0.5" />
+            <li key={i} className="flex flex-col items-center text-center gap-3 bg-[#0d3355]/60 border border-white/10 rounded-2xl px-4 py-5 text-xs text-white leading-snug hover:border-[#ff8c00]/30 hover:bg-[#0a2b49] transition-all duration-300">
+              <CheckCircle2 size={20} className="text-[#ff8c00] shrink-0" />
               {item.text}
             </li>
           ))}
