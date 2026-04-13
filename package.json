@@ -78,6 +78,10 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "optionalDependencies": {
+    "lightningcss-linux-arm64-gnu": "*",
+    "lightningcss-linux-x64-gnu": "*"
+  },
   "ignoreScripts": [
     "sharp",
     "unrs-resolver"
