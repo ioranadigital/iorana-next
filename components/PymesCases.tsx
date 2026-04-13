@@ -57,7 +57,7 @@ const PymesCases = () => {
     <section
       id="casos-pymes"
       aria-labelledby="cases-h2"
-      className="w-full pt-10 bg-[#08223a] overflow-visible"
+      className="w-full pt-10 pb-20 bg-[#0a2b49] overflow-visible"
     >
       <div className="max-w-7xl mx-auto px-6 overflow-visible">
 
@@ -118,7 +118,7 @@ const PymesCases = () => {
                   borderColor: c.accentBorder,
                 }}
               >
-                <div className="relative h-36 overflow-hidden" style={{ background: "rgba(8,22,40,0.6)" }}>
+                <div className="relative h-24 overflow-hidden" style={{ background: "rgba(8,22,40,0.6)" }}>
                   <div aria-hidden="true" className="absolute inset-0 opacity-[0.04]">
                     <svg width="100%" height="100%">
                       <defs>
@@ -129,7 +129,7 @@ const PymesCases = () => {
                       <rect width="100%" height="100%" fill={`url(#dot-${i})`} />
                     </svg>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08223a] to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2b49] to-transparent z-10" />
                   <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-1.5">
                     <span
                       className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border"
@@ -150,7 +150,7 @@ const PymesCases = () => {
                   </div>
                 </div>
 
-                <div className="p-7 relative z-20 -mt-8">
+                <div className="p-7 relative z-20 mt-4">
                   <div className="flex items-baseline gap-1.5 mb-1">
                     <TrendingUp
                       className="w-5 h-5 shrink-0 mt-0.5"

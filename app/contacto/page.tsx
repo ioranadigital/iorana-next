@@ -101,14 +101,14 @@ export default function ContactoPage() {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-5">
-                      <select name="perfil" required className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
-                        <option value="" disabled selected>Perfil de empresa *</option>
+                      <select name="perfil" required defaultValue="" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
+                        <option value="" disabled>Perfil de empresa *</option>
                         <option value="pyme">PYME / Autonómo</option>
                         <option value="startup">Startup</option>
                         <option value="corporativo">Gran Empresa</option>
                       </select>
-                      <select name="servicios" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
-                        <option value="" disabled selected>¿Qué servicios necesitas?</option>
+                      <select name="servicios" defaultValue="" className="w-full text-sm bg-[#0a2b49]/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none appearance-none cursor-pointer">
+                        <option value="" disabled>¿Qué servicios necesitas?</option>
                         <option value="seo">SEO</option>
                         <option value="ads">Publicidad (SEM)</option>
                         <option value="web">Diseño Web</option>

@@ -147,7 +147,7 @@ export default function PymesAuthority() {
               <h3 className="text-lg font-bold text-[#ebf2f7] mb-4">
                 Pyme sin digitalizar vs Pyme con Iorana Digital
               </h3>
-              <div className="overflow-x-auto rounded-2xl border border-white/8">
+              <div className="overflow-x-auto rounded-2xl border border-white/8 bg-[#ebf2f7]/8">
                 <table className="w-full text-sm" role="table">
                   <thead>
                     <tr className="bg-[#0a2b49]/60">
