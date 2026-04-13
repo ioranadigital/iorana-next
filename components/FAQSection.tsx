@@ -66,7 +66,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faqs" className="section-padding relative overflow-hidden bg-[#05192d] py-24">
+    <section id="faqs" className="section-padding relative overflow-hidden bg-[#0a2b49] py-20">
       <div className="container mx-auto px-6">
         
         {/* Cabecera */}
@@ -156,15 +156,15 @@ const FAQCard = ({ faq }: { faq: { question: string; answer: string; icon: any }
   <motion.div
     initial={{ opacity: 0, scale: 0.95 }}
     animate={{ opacity: 1, scale: 1 }}
-    className="flex flex-col p-10 md:p-12 rounded-3xl border border-[#ebf2f7]/10 bg-[#0a2b49]/40 backdrop-blur-xl hover:border-[#ff8c00]/30 transition-all duration-500 h-full min-h-[320px] shadow-2xl"
+    className="flex flex-col p-6 rounded-2xl border border-white/10 bg-[#0d3355]/60 backdrop-blur-sm hover:border-[#ff8c00]/30 hover:bg-[#0a2b49] transition-all duration-500 h-full min-h-[200px] shadow-md shadow-black/20"
   >
-    <div className="w-14 h-14 rounded-2xl bg-[#ff8c00]/10 border border-[#ff8c00]/20 flex items-center justify-center mb-8">
-      <faq.icon className="h-7 w-7 text-[#ff8c00]" />
+    <div className="w-10 h-10 rounded-xl bg-[#ff8c00]/10 border border-[#ff8c00]/20 flex items-center justify-center mb-5">
+      <faq.icon className="h-5 w-5 text-[#ff8c00]" />
     </div>
-    <h3 className="text-xl font-bold text-[#ebf2f7] mb-5 leading-tight italic">
-      "{faq.question}"
+    <h3 className="text-base font-bold text-[#ebf2f7] mb-3 leading-snug">
+      {faq.question}
     </h3>
-    <p className="text-base leading-relaxed text-[#ebf2f7]/70">
+    <p className="text-sm leading-relaxed text-[#ebf2f7]/60">
       {faq.answer}
     </p>
   </motion.div>
