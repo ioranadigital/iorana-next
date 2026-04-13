@@ -162,7 +162,7 @@ export default function ComoEstaOptimizadoMiWeb() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-[#ebf2f7] hover:bg-[#ff8c00] text-[#0a2b49] hover:text-white font-bold rounded-xl h-14 text-base transition-all duration-300 cursor-pointer mt-2 group"
+              className="w-full flex items-center justify-center gap-2 bg-[#ff8c00] hover:bg-white text-[#08223a] font-bold rounded-xl h-14 text-base transition-all duration-300 cursor-pointer mt-2 group"
             >
               Quiero mi informe gratuito
               <Send className="h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" aria-hidden="true" />

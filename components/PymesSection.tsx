@@ -156,7 +156,7 @@ const PymesSection = () => {
       <section
         id="pymes"
         aria-labelledby="pymes-h1"
-        className="w-full py-24 bg-[#0a2b49] overflow-hidden"
+        className="w-full pt-10 pb-24 bg-[#0a2b49] overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-6">
 
@@ -190,7 +190,7 @@ const PymesSection = () => {
             {/* Trust bar */}
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 mt-10">
               {[
-                "+ 80 pymes digitalizadas",
+                "Experiencia con pymes digitalizadas",
                 "Soporte en < 4 h",
                 "Sin permanencia",
                 "Garantía 90 días",
@@ -531,7 +531,7 @@ const PymesSection = () => {
 
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-2xl font-heading font-extrabold text-base text-[#08223a] bg-[#ff8c00] hover:bg-[#ff9f20] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#08223a] flex items-center justify-center gap-2"
+                      className="w-full py-4 rounded-2xl font-heading font-extrabold text-base text-[#08223a] bg-[#ff8c00] hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 focus:ring-offset-[#08223a] flex items-center justify-center gap-2"
                     >
                       Enviar mensaje
                       <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">

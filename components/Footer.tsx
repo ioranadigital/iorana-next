@@ -41,7 +41,7 @@ const Footer = () => {
                 width={32} height={32}
               />
               <span className="text-xl font-bold text-white">
-                <span className="text-[#ff8c00]">iORANA</span>.Digital
+                <span className="text-[#ff8c00]">iORANA</span>.digital
               </span>
             </Link>
             <p className="text-[#ebf2f7]/60 text-sm leading-relaxed">

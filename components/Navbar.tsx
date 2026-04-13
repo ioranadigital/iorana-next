@@ -56,9 +56,10 @@ const Navbar = () => {
             alt="iORANA Digital - Agencia de Marketing y SEO"
             width={36} height={36}
             className="object-contain"
+
           />
           <span className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
-            <span className="text-[#ff8c00]">iORANA</span>.Digital
+            <span className="text-[#ff8c00]">iORANA</span>.digital
           </span>
         </Link>
 
@@ -137,7 +138,7 @@ const Navbar = () => {
             Informe Gratuito
           </Link>
           
-          <Link href="/contacto" className="text-sm font-semibold px-5 py-2 rounded-full border border-[#ebf2f7]/30 text-[#ebf2f7] hover:bg-[#ebf2f7] hover:text-[#0a2b49] transition-all duration-200">
+          <Link href="/contacto" className="group relative text-sm font-semibold px-5 py-2 rounded-full bg-[#ff8c00] text-[#07213a] hover:bg-white transition-all duration-200 shadow-[0_0_16px_rgba(255,140,0,0.35)] hover:shadow-[0_0_24px_rgba(255,140,0,0.6)] hover:scale-105">
             Contáctanos
           </Link>
         </div>

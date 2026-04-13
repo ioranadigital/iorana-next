@@ -10,7 +10,7 @@ const C = {
   panelAlt:      "bg-[#0d3355]",
   border:        "border-white/10",
   text:          "text-[#ebf2f7]",
-  muted:         "text-[#7fa8c9]",
+  muted:         "text-white",
   accent:        "text-[#ff8c00]",
   accentBg:      "bg-[#ff8c00]",
   accentHover:   "hover:bg-[#e67e00]",
@@ -77,23 +77,24 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
 
         <div className="flex flex-col gap-4">
-          <aside className="bg-[#0d3355] border border-[#ebf2f7]/25 rounded-xl p-7">
-            <h2 className={`flex items-center gap-2 text-xl font-bold ${C.text} mb-5`}>
-                ¿Por qué <em className={`not-italic ${C.accent} ml-1`}>importa</em>?
+          <aside className="group relative bg-[#08223a] rounded-3xl border border-[#ebf2f7]/5 hover:border-[#ff8c00]/30 transition-all duration-500 shadow-2xl overflow-hidden p-7">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-[#ff8c00] mb-5">
+              ¿Por qué <em className="not-italic ml-1">importa</em>?
             </h2>
             <ul role="list" className="space-y-4">
               {hero.whyPoints.map((p, i) => (
-                <li key={i} className={`flex items-start gap-3 text-sm ${C.text}`}>
+                <li key={i} className="flex items-start gap-3 text-sm text-white">
                   <span aria-hidden="true" className="mt-1.5 w-2.5 h-2.5 rounded-full bg-[#ff8c00] shrink-0" />
                   {p}
                 </li>
               ))}
             </ul>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ff8c00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
           </aside>
 
           <a
             href="/informe-sitio-web-gratis"
-            className="block w-full text-center py-3 px-5 rounded-xl bg-[#ebf2f7] hover:bg-white text-[#07213a] text-sm font-semibold transition-colors shadow-lg"
+            className="block w-full text-center py-3 px-5 rounded-xl bg-[#ff8c00] hover:bg-white text-[#07213a] text-sm font-semibold transition-colors shadow-lg"
           >
             Empezar el diagnóstico gratuito →
           </a>
@@ -115,24 +116,69 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </ul>
       </section>
 
-      {/* ── PROCESO: Reducido py-16 a py-10 ── */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <h2 className="text-center mb-10">
-          <SplitTitle text="Nuestro proceso" center size="text-3xl md:text-4xl" />
-        </h2>
-        <ol role="list" className="flex flex-col gap-4">
-          {process.map((step, i) => (
-            <li key={i} className={`flex items-start gap-5 ${C.panel} border ${C.border} rounded-xl px-6 py-5`}>
-              <span className={`shrink-0 w-9 h-9 rounded-full ${C.accentBg} text-white font-extrabold text-sm flex items-center justify-center`}>
-                {i + 1}
-              </span>
-              <div>
-                <h3 className="text-base font-bold mb-1">{step.title}</h3>
-                <p className={`text-sm ${C.muted}`}>{step.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      {/* ── PROCESO ── */}
+      <section className="w-full bg-[#07213a] py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center mb-14">
+            <SplitTitle text="Nuestro proceso" center size="text-3xl md:text-4xl" />
+          </h2>
+
+          {/* Desktop: grid horizontal con línea conectora */}
+          <div
+            className="hidden md:grid gap-6 relative"
+            style={{ gridTemplateColumns: `repeat(${process.length}, 1fr)` }}
+          >
+            <div
+              aria-hidden="true"
+              className="absolute top-[26px] left-[8%] right-[8%] h-px opacity-25"
+              style={{ background: "linear-gradient(to right,#ff8c00,#818cf8,#34d399,#fbbf24,#f472b6)" }}
+            />
+            {process.map((step, i) => {
+              const COLORS = ["#ff8c00","#818cf8","#34d399","#fbbf24","#f472b6"];
+              const c = COLORS[i % COLORS.length];
+              return (
+                <div key={i} className="flex flex-col items-center text-center">
+                  <div
+                    className="relative z-10 w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-5 border font-black text-xl"
+                    style={{ background:`${c}14`, borderColor:`${c}35`, color:c, boxShadow:`0 0 24px ${c}18` }}
+                  >
+                    {i + 1}
+                    <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full" style={{ background:c }} />
+                  </div>
+                  <h3 className="text-sm font-bold text-[#ff8c00] mb-2 leading-snug">{step.title}</h3>
+                  <p className="text-xs text-white leading-relaxed">{step.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile: timeline vertical */}
+          <ol className="md:hidden space-y-8 relative" role="list">
+            <div
+              aria-hidden="true"
+              className="absolute left-[27px] top-0 bottom-0 w-px opacity-20"
+              style={{ background: "linear-gradient(to bottom,#ff8c00,#818cf8,#34d399,#fbbf24)" }}
+            />
+            {process.map((step, i) => {
+              const COLORS = ["#ff8c00","#818cf8","#34d399","#fbbf24","#f472b6"];
+              const c = COLORS[i % COLORS.length];
+              return (
+                <li key={i} className="relative flex gap-5">
+                  <div
+                    className="relative z-10 shrink-0 w-[54px] h-[54px] rounded-2xl flex items-center justify-center border font-black text-lg"
+                    style={{ background:`${c}12`, borderColor:`${c}30`, color:c }}
+                  >
+                    {i + 1}
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h3 className="text-base font-bold text-[#ff8c00] mb-1">{step.title}</h3>
+                    <p className="text-sm text-white leading-relaxed">{step.description}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </section>
 
       {/* ── FAQ + CONTACTO ── */}
@@ -149,11 +195,11 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               {faq.map((item, i) => (
                 <div key={i} className={`${C.panel} border ${C.border} rounded-xl overflow-hidden`}>
                   <details className="group">
-                    <summary className="flex justify-between items-center px-5 py-4 cursor-pointer text-sm font-semibold list-none">
+                    <summary className="flex justify-between items-center px-5 py-4 cursor-pointer text-sm font-semibold list-none text-[#adbac4]">
                       {item.q}
-                      <ChevronDown size={18} className={`${C.muted} shrink-0 transition-transform duration-200 group-open:rotate-180`} />
+                      <ChevronDown size={18} className="text-[#adbac4] shrink-0 transition-transform duration-200 group-open:rotate-180" />
                     </summary>
-                    <dd className={`px-5 pb-5 text-sm ${C.muted} leading-relaxed`}>{item.a}</dd>
+                    <dd className="px-5 pb-5 text-sm text-[#ebf2f7] leading-relaxed">{item.a}</dd>
                   </details>
                 </div>
               ))}

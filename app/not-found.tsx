@@ -85,20 +85,20 @@ const NotFound = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/" passHref>
-              <Button size="lg" className="bg-[#ebf2f7] text-[#0a2b49] font-bold hover:bg-[#ebf2f7]/90 w-full sm:w-auto">
+              <Button size="lg" className="bg-[#ff8c00] text-white font-bold hover:bg-white hover:text-[#0a2b49] transition-colors w-full sm:w-auto">
                 <Home className="mr-2 h-4 w-4" />
                 Volver al inicio
               </Button>
             </Link>
 
             <Link href="/contacto" passHref>
-              <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="border-white/40 text-[#ff8c00] hover:bg-white/10 hover:border-white/70 w-full sm:w-auto">
                 Contacto
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="/pymes" passHref>
-              <Button size="lg" variant="outline" className="border-[#ebf2f7]/20 text-[#ebf2f7] hover:bg-[#ebf2f7]/10 w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="border-white/40 text-[#ff8c00] hover:bg-white/10 hover:border-white/70 w-full sm:w-auto">
                 Pymes
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

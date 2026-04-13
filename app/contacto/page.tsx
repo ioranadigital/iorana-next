@@ -128,7 +128,7 @@ export default function ContactoPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-[#6b7c93] hover:bg-[#ff8c00] text-white hover:text-[#08223a] font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 mt-4 shadow-xl group"
+                      className="w-full bg-[#ff8c00] hover:bg-white text-[#08223a] font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 mt-4 shadow-xl group"
                     >
                       {loading ? "Enviando consulta..." : "Enviar mensaje"}
                       {!loading && <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
