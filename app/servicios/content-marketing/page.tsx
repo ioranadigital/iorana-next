@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import ContentMarketing from "@/views/servicios/ContentMarketing";
 
 export const metadata: Metadata = {
-  title: "Content Marketing & Estrategia Digital | IORANA",
+  title: "Content Marketing & Estrategia Digital | iORANA",
   description: "Creamos contenido que atrae, educa y convierte a tu audiencia en clientes leales.",
   openGraph: {
-    title: "Content Marketing & Estrategia Digital | IORANA",
+    title: "Content Marketing & Estrategia Digital | iORANA",
     description: "Creamos contenido que atrae, educa y convierte a tu audiencia en clientes leales.",
     url: "https://iorana.digital/servicios/content-marketing",
     siteName: "Iorana Digital",

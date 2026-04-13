@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import GoogleBusinessLocal from "@/views/servicios/GoogleBusinessLocal";
 
 export const metadata: Metadata = {
-  title: "Google Business Profile & SEO Local | IORANA Digital",
+  title: "Google Business Profile & SEO Local | iORANA Digital",
   description: "Aparece en el Top 3 de Google Maps cuando tu cliente ideal busca lo que ofreces. Optimización de ficha Google Business, reseñas y posicionamiento local.",
   openGraph: {
-    title: "Google Business Profile & SEO Local | IORANA Digital",
+    title: "Google Business Profile & SEO Local | iORANA Digital",
     description: "Aparece en el Top 3 de Google Maps cuando tu cliente ideal busca lo que ofreces.",
     url: "https://iorana.digital/servicios/google-business-local",
     siteName: "Iorana Digital",

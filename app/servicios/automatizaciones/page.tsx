@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import Automatizaciones from "@/views/servicios/Automatizaciones";
 
 export const metadata: Metadata = {
-  title: "Automatización de Procesos y CRM | IORANA",
+  title: "Automatización de Procesos y CRM | iORANA",
   description: "Ahorra tiempo y dinero automatizando tus flujos de trabajo, captación de leads y gestión de clientes.",
   openGraph: {
-    title: "Automatización de Procesos y CRM | IORANA",
+    title: "Automatización de Procesos y CRM | iORANA",
     description: "Ahorra tiempo y dinero automatizando tus flujos de trabajo, captación de leads y gestión de clientes.",
     url: "https://iorana.digital/servicios/automatizaciones",
     siteName: "Iorana Digital",

@@ -15,7 +15,7 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Iorana Digital | Agencia de Marketing Digital en Asturias";
+    document.title = "Iorana Digital | Agencia de Marketing Digital";
   }, []);
 
   return (

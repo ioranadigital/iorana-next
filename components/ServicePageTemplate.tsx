@@ -34,7 +34,7 @@ export interface ServicePageData {
 
 export function buildMetadata(data: ServicePageData): Metadata {
   return {
-    title: `${data.meta.title} | IORANA Digital`,
+    title: `${data.meta.title} | iORANA Digital`,
     description: data.meta.description,
     openGraph: {
       title: data.meta.title,

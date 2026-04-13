@@ -32,7 +32,7 @@ const USPSection = () => (
       >
         {/* ✅ Texto superior en naranja exacto */}
         <span className="text-sm font-bold text-[#ff8c00] tracking-[0.2em] uppercase">
-          ¿Por qué IORANA?
+          ¿Por qué iORANA?
         </span>
         <h2 className="text-3xl md:text-5xl font-heading font-extrabold mt-4 text-[#ebf2f7] tracking-tight">
          Cuidamos de tu negocio <span className="text-[#ff8c00] drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">como si fuera el nuestro</span>

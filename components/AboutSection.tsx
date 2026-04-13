@@ -33,7 +33,7 @@ const AboutSection = () => (
 
           <div className="mt-8 space-y-4">
             <p className="text-[#ebf2f7]/70 text-lg leading-relaxed">
-             IORANA Digital nace para ofrecer a empresas ambiciosas la ejecución técnica que el mercado actual exige. No creemos en fórmulas genéricas; creemos en estrategias diseñadas a medida para dominar tu sector desde el primer día.
+             iORANA Digital nace para ofrecer a empresas ambiciosas la ejecución técnica que el mercado actual exige. No creemos en fórmulas genéricas; creemos en estrategias diseñadas a medida para dominar tu sector desde el primer día.
             </p>
             <p className="text-[#ebf2f7]/70 text-lg leading-relaxed mb-10">
               Más que una agencia, somos tus aliados en la escalada de ingresos. Entendemos que en la nueva economía digital, el ROI y el crecimiento sostenible son los únicos indicadores que definen el éxito.

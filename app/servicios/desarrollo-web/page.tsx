@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import DesarrolloWeb from "@/views/servicios/DesarrolloWeb";
 
 export const metadata: Metadata = {
-  title: "Desarrollo Web High-End | Diseño y Performance | IORANA",
+  title: "Desarrollo Web High-End | Diseño y Performance | iORANA",
   description: "Diseñamos y desarrollamos sitios web de alto rendimiento, optimizados para SEO y con una experiencia de usuario impecable.",
   openGraph: {
-    title: "Desarrollo Web High-End | Diseño y Performance | IORANA",
+    title: "Desarrollo Web High-End | Diseño y Performance | iORANA",
     description: "Diseñamos y desarrollamos sitios web de alto rendimiento, optimizados para SEO y con una experiencia de usuario impecable.",
     url: "https://iorana.digital/servicios/desarrollo-web",
     siteName: "Iorana Digital",

@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import KitDigital from "@/views/soluciones/KitDigital";
 
 export const metadata: Metadata = {
-  title: "Kit Digital | Agente Digitalizador | IORANA",
+  title: "Kit Digital | Agente Digitalizador | iORANA",
   description: "Te ayudamos a gestionar tu bono del Kit Digital para digitalizar tu negocio sin costes.",
   openGraph: {
-    title: "Kit Digital | Agente Digitalizador | IORANA",
+    title: "Kit Digital | Agente Digitalizador | iORANA",
     description: "Te ayudamos a gestionar tu bono del Kit Digital para digitalizar tu negocio sin costes.",
     url: "https://iorana.digital/soluciones/kit-digital",
     siteName: "Iorana Digital",

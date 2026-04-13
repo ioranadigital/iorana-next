@@ -40,7 +40,7 @@ export default function LoginPage() {
       <div className="max-w-md w-full">
         {/* Logo / Brand */}
         <div className="text-center mb-10">
-          <span className="text-[#ff8c00] font-black text-4xl tracking-tighter">IORANA</span>
+          <span className="text-[#ff8c00] font-black text-4xl tracking-tighter">iORANA</span>
           <p className="text-[#7fa8c9] text-sm mt-2 font-medium">Panel de Control Privado</p>
         </div>
 

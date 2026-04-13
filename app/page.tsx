@@ -4,12 +4,12 @@ import Index from "./Index";
 export const metadata: Metadata = {
   title: "Iorana Digital | Agencia SEO y Marketing",
   description:
-    "Agencia de SEO técnico, desarrollo web en Next.js, PPC y automatización para empresas en España. Resultados medibles desde el primer mes.",
+    "Consultoría SEO y soluciones digitales para Pymes en Iorana Digital. Expertos en SEO técnico, automatizaciones y desarrollo web con Next.js. ¡Impulsa tu negocio hoy!",
   alternates: { canonical: "https://iorana.digital" },
   openGraph: {
     title: "Iorana Digital | Agencia SEO y Marketing",
     description:
-      "SEO técnico, Next.js, PPC y automatización para empresas en España. Resultados medibles.",
+      "Consultoría SEO y soluciones digitales para Pymes en Iorana Digital. Expertos en SEO técnico, automatizaciones y desarrollo web con Next.js. ¡Impulsa tu negocio hoy!",
     url: "https://iorana.digital",
     siteName: "Iorana Digital",
     locale: "es_ES",

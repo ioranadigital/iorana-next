@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import ImagenDeMarca from "@/views/servicios/ImagenDeMarca";
 
 export const metadata: Metadata = {
-  title: "Branding e Identidad Visual | Diseño de Marca | IORANA",
+  title: "Branding e Identidad Visual | Diseño de Marca | iORANA",
   description: "Construimos identidades visuales potentes que transmiten los valores de tu empresa y conectan con tu público.",
   openGraph: {
-    title: "Branding e Identidad Visual | Diseño de Marca | IORANA",
+    title: "Branding e Identidad Visual | Diseño de Marca | iORANA",
     description: "Construimos identidades visuales potentes que transmiten los valores de tu empresa y conectan con tu público.",
     url: "https://iorana.digital/servicios/imagen-de-marca",
     siteName: "Iorana Digital",

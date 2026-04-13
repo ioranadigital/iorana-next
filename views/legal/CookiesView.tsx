@@ -11,7 +11,7 @@ Las cookies son ampliamente utilizadas por los propietarios de sitios web para q
   },
   {
     title: "2. Tipos de Cookies que Utilizamos",
-    content: `En IORANA Digital utilizamos los siguientes tipos de cookies:
+    content: `En iORANA Digital utilizamos los siguientes tipos de cookies:
 
 • Cookies técnicas o estrictamente necesarias: son imprescindibles para que el sitio web funcione correctamente. No requieren consentimiento del usuario y no pueden desactivarse.
 
@@ -70,7 +70,7 @@ Ten en cuenta que deshabilitar ciertas cookies puede afectar a la funcionalidad 
   },
   {
     title: "7. Actualizaciones de esta Política",
-    content: `IORANA Digital se reserva el derecho de actualizar esta Política de Cookies en cualquier momento para adaptarla a novedades legislativas, tecnológicas o cambios en los servicios ofrecidos. Cualquier modificación será publicada en esta misma página.
+    content: `iORANA Digital se reserva el derecho de actualizar esta Política de Cookies en cualquier momento para adaptarla a novedades legislativas, tecnológicas o cambios en los servicios ofrecidos. Cualquier modificación será publicada en esta misma página.
 
 Te recomendamos revisar esta política periódicamente para estar informado sobre el uso de cookies en nuestro sitio web.`,
   },

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 const sections = [
   {
     title: "1. Introducción y Datos del Responsable",
-    content: `El presente documento establece la Política de Privacidad de IORANA Digital (en adelante, "la empresa"), con domicilio en Asturias, España. Nos comprometemos a proteger la privacidad de nuestros usuarios y a tratar sus datos personales de conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales (LOPDGDD).
+    content: `El presente documento establece la Política de Privacidad de iORANA Digital (en adelante, "la empresa"), con domicilio en Asturias, España. Nos comprometemos a proteger la privacidad de nuestros usuarios y a tratar sus datos personales de conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales (LOPDGDD).
 
-Responsable del tratamiento: IORANA Digital
+Responsable del tratamiento: iORANA Digital
 Email de contacto: hola@ioranadigital.com`,
   },
   {

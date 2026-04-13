@@ -53,12 +53,12 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/iorana-seo-marketing-digital.png"
-            alt="IORANA Digital - Agencia de Marketing y SEO"
+            alt="iORANA Digital - Agencia de Marketing y SEO"
             width={36} height={36}
             className="object-contain"
           />
           <span className="font-heading text-xl font-bold tracking-tight text-[#ebf2f7]">
-            <span className="text-[#ff8c00]">IORANA</span> Digital
+            <span className="text-[#ff8c00]">iORANA</span>.Digital
           </span>
         </Link>
 

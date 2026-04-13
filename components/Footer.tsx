@@ -37,11 +37,11 @@ const Footer = () => {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/iorana-seo-marketing-digital.png"
-                alt="IORANA Digital - Agencia SEO y Marketing"
+                alt="iORANA Digital - Agencia SEO y Marketing"
                 width={32} height={32}
               />
               <span className="text-xl font-bold text-white">
-                <span className="text-[#ff8c00]">IORANA</span> Digital
+                <span className="text-[#ff8c00]">iORANA</span>.Digital
               </span>
             </Link>
             <p className="text-[#ebf2f7]/60 text-sm leading-relaxed">

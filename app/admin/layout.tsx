@@ -8,7 +8,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar Fijo */}
       <aside className="w-64 border-r border-white/5 bg-[#08223a] p-6 flex flex-col sticky top-0 h-screen">
         <div className="mb-10 px-2">
-          <span className="text-[#ff8c00] font-black text-2xl tracking-tighter">IORANA</span>
+          <span className="text-[#ff8c00] font-black text-2xl tracking-tighter">iORANA</span>
           <span className="text-white/40 text-[10px] block uppercase tracking-[0.2em] font-bold mt-1">
             CRM Console
           </span>
