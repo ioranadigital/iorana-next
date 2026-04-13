@@ -1,21 +1,15 @@
 <?php
 /**
  * Iorana Blog — Child Theme de Astra
- * Carga el CSS del parent theme + estilos propios
  */
 
-add_action( 'wp_enqueue_scripts', 'iorana_blog_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'iorana_blog_enqueue_styles', 15 );
 function iorana_blog_enqueue_styles() {
-    // Parent theme
-    wp_enqueue_style(
-        'astra-parent-style',
-        get_template_directory_uri() . '/style.css'
-    );
-    // Child theme
+    // Astra gestiona su propio CSS — solo cargamos el child
     wp_enqueue_style(
         'iorana-blog-style',
         get_stylesheet_directory_uri() . '/style.css',
-        [ 'astra-parent-style' ],
+        [],
         wp_get_theme()->get( 'Version' )
     );
     // Google Fonts: Inter
@@ -28,7 +22,7 @@ function iorana_blog_enqueue_styles() {
 }
 
 /**
- * Añade clase al body según contexto (útil para overrides CSS)
+ * Añade clase al body
  */
 add_filter( 'body_class', 'iorana_blog_body_classes' );
 function iorana_blog_body_classes( $classes ) {
@@ -77,34 +71,19 @@ function iorana_blog_article_schema() {
 }
 
 /**
- * Breadcrumb Schema en archive y posts
+ * Breadcrumb Schema
  */
 add_action( 'wp_head', 'iorana_blog_breadcrumb_schema' );
 function iorana_blog_breadcrumb_schema() {
     if ( ! is_single() && ! is_home() && ! is_category() ) return;
 
     $items = [
-        [
-            '@type'    => 'ListItem',
-            'position' => 1,
-            'name'     => 'Inicio',
-            'item'     => 'https://iorana.digital/',
-        ],
-        [
-            '@type'    => 'ListItem',
-            'position' => 2,
-            'name'     => 'Blog',
-            'item'     => 'https://iorana.digital/blog/',
-        ],
+        [ '@type' => 'ListItem', 'position' => 1, 'name' => 'Inicio', 'item' => 'https://iorana.digital/' ],
+        [ '@type' => 'ListItem', 'position' => 2, 'name' => 'Blog',   'item' => 'https://iorana.digital/blog/' ],
     ];
 
     if ( is_single() ) {
-        $items[] = [
-            '@type'    => 'ListItem',
-            'position' => 3,
-            'name'     => get_the_title(),
-            'item'     => get_permalink(),
-        ];
+        $items[] = [ '@type' => 'ListItem', 'position' => 3, 'name' => get_the_title(), 'item' => get_permalink() ];
     }
 
     $schema = [
