@@ -103,7 +103,7 @@ const ServicesSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.07 }}
-            className={`group relative flex flex-col justify-between p-6 rounded-3xl border border-white/10 bg-[#0d3355]/60 backdrop-blur-sm overflow-hidden shadow-md shadow-black/20 transition-all duration-500 hover:bg-[#0a2b49] hover:border-[#ff8c00]/30 hover:shadow-2xl hover:shadow-[#ff8c00]/8${
+            className={`group relative flex flex-col justify-between p-6 rounded-3xl border border-white/10 bg-[#08223a] backdrop-blur-sm overflow-hidden shadow-md shadow-black/20 transition-all duration-500 hover:bg-[#0d3355]/60 hover:border-[#ff8c00]/30 hover:shadow-2xl hover:shadow-[#ff8c00]/8${
               i === 6 ? " lg:col-span-2" : ""
             }`}
           >

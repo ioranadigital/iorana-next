@@ -106,11 +106,23 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <h2 className="mb-6">
           <SplitTitle text="¿Qué incluye?" size="text-2xl md:text-3xl" />
         </h2>
-        <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {includes.map((item, i) => (
-            <li key={i} className="flex flex-col items-center text-center gap-3 bg-[#0d3355]/60 border border-white/10 rounded-2xl px-4 py-5 text-xs text-white leading-snug hover:border-[#ff8c00]/30 hover:bg-[#0a2b49] transition-all duration-300">
-              <CheckCircle2 size={20} className="text-[#ff8c00] shrink-0" />
-              {item.text}
+            <li
+              key={i}
+              className="group relative flex flex-col items-center text-center gap-4 rounded-3xl px-5 py-8 text-xs text-white leading-snug transition-all duration-500 shadow-2xl overflow-hidden hover:-translate-y-1 hover:shadow-black/30"
+              style={{
+                background: "rgba(129,140,248,0.06)",
+                border: "1px solid rgba(129,140,248,0.18)",
+              }}
+            >
+              <CheckCircle2 size={28} className="text-[#ff8c00] shrink-0" />
+              <span className="text-sm font-medium leading-relaxed">{item.text}</span>
+              {/* Decoración Hover */}
+              <div
+                className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                style={{ background: "#ff8c00" }}
+              />
             </li>
           ))}
         </ul>
