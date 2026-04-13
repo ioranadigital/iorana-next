@@ -79,6 +79,8 @@
     "typescript": "^5"
   },
   "optionalDependencies": {
+    "@tailwindcss/oxide-linux-arm64-gnu": "*",
+    "@tailwindcss/oxide-linux-x64-gnu": "*",
     "lightningcss-linux-arm64-gnu": "*",
     "lightningcss-linux-x64-gnu": "*"
   },
