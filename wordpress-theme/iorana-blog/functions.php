@@ -3,22 +3,13 @@
  * Iorana Blog — Child Theme de Astra
  */
 
-add_action( 'wp_enqueue_scripts', 'iorana_blog_enqueue_styles', 15 );
-function iorana_blog_enqueue_styles() {
-    // Astra gestiona su propio CSS — solo cargamos el child
-    wp_enqueue_style(
-        'iorana-blog-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        [],
-        wp_get_theme()->get( 'Version' )
-    );
-    // Google Fonts: Inter
-    wp_enqueue_style(
-        'iorana-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
-        [],
-        null
-    );
+add_action( 'wp_head', 'iorana_blog_inject_styles', 999 );
+function iorana_blog_inject_styles() {
+    $css_url   = get_stylesheet_directory_uri() . '/style.css?v=' . wp_get_theme()->get( 'Version' );
+    $fonts_url = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="stylesheet" href="' . esc_url( $fonts_url ) . '">' . "\n";
+    echo '<link rel="stylesheet" href="' . esc_url( $css_url ) . '">' . "\n";
 }
 
 /**
