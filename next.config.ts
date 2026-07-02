@@ -2,6 +2,8 @@
 const WP_HOST = process.env.WP_HOST ?? "http://89.167.103.147";
 
 const nextConfig = {
+  output: "standalone",
+
   async rewrites() {
     return [
       // Todo /blog/* se proxifica al VPS donde corre WordPress
